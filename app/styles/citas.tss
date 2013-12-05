@@ -1,0 +1,4 @@
+"#svCitas":{
+	width: Ti.UI.FILL,
+	height: Ti.UI.FILL
+}

@@ -1,0 +1,76 @@
+".container": {
+	backgroundColor:"white",
+	layout:'vertical'	
+},
+"Label": {
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	color: "#001f5b"
+} 
+,
+".Titulo":{
+	width: Ti.UI.FILL,
+	textAlign: 'center',
+	font:{ fontSize: "35%", fontWeight :'bold', font: 'PT Sans'},
+	color:"#FFF",
+	backgroundGradient: {
+		type: 'linear',
+		colors: [ '#001f5b', '#4E6EAD'],
+	},
+	zIndex: 0
+},
+"TextField":{
+	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+	borderWidth:'1dp',
+	borderRadius:5,
+	borderColor:'#999',
+	color: "#001f5b",
+	font:{fontSize: '15%'}
+},
+"Button":{
+	backgroundGradient: {
+		type: 'linear',
+		colors: [ '#001f5b', '#4E6EAD'],
+	},
+	color: "#FFF",
+	font: { fontSize: '20%', fontWeight:'blod' },
+	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+	borderWidth : '1dp',
+	borderRadius : 5
+}
+,
+".tabMenu":{
+	height: '20px'
+},
+".dato":{
+	color:'#666',
+	font:{ fontSize: "25%", fontWeight :'bold', font: 'PT Sans'},
+},
+".lbl":{
+	width:'40%',
+	font:{ fontSize: "20%", fontWeight :'bold', font: 'PT Sans'},
+},
+".rowDatos":{
+	touchEnabled: false
+},
+".vwDatos":
+{
+	font: { fontSize: '20%'},
+	layout:'horizontal'
+},
+".cargando":{
+	width:Ti.UI.FILL,
+	height:60,
+	message : 'Cargando...',
+	font : { fontSize : '16px' },
+	color:'001f5b',
+	left: '50%',
+	top:'50%',
+	style: Ti.UI.ActivityIndicatorStyle.BIG
+},
+".cabezera":{
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	font:{ fontSize: "25%", fontWeight :'bold', font: 'PT Sans'},
+	color: "#001f5b"
+}

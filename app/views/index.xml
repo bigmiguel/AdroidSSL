@@ -1,0 +1,13 @@
+<Alloy>
+	<Window class="container" orientationModes="[Titanium.UI.PORTRAIT]">
+		<Label id="label" class="Titulo" >Salud Laboral</Label>
+		<View id="vwLogin" top="20%"  layout="vertical">
+			<Label font="35%">Numero de Empleado:</Label>
+			<TextField id="txtNEmpleado" class="txtLogin"></TextField>
+			<Label>Empresa:</Label>
+			<Picker id="pckEmpresas">				
+			</Picker>			
+			<Button id="btnLogin">Login</Button>
+		</View>		
+	</Window>
+</Alloy>

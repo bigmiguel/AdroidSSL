@@ -1,0 +1,5 @@
+<Alloy>
+	<Window fullscreen="true" backgroundColor="bla4ck">
+		<ActivityIndicator class="cargando" >Cargando...</ActivityIndicator>
+	</Window>
+</Alloy>

@@ -1,0 +1,8 @@
+<Alloy>
+	<TableViewRow id="row">
+		<View layout="horizontal">				
+	 		<Label id="lblIndicador" class="lbl"></Label><Label id="lblValor" class="dato">Miguel</Label>	 		
+		</View>
+		<ImageView id="imgBien"></ImageView>
+	</TableViewRow>
+</Alloy>

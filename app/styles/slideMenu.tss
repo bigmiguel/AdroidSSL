@@ -1,0 +1,47 @@
+"#leftMenu": {
+	top: "0dp",
+	left: "0dp",
+	width: "60%",
+	zIndex: "0",
+	backgroundColor : "#303030",
+	layout:"vertical"
+},
+"#navview": {
+	top: "0dp",
+	left: "0dp",
+	width : Ti.Platform.displayCaps.platformWidth,
+	height : "8%",
+	backgroundColor:"#001f5b",
+	color:"#FFF",
+	backgroundGradient: {
+		type: 'linear',
+		colors: [ '#001f5b', '#4E6EAD'],
+	}	
+},
+"#contentview": {
+	left : "0dp",
+	width : Ti.Platform.displayCaps.platformWidth,
+	height : Ti.UI.Fill,
+	top : "7%",
+	backgroundColor : 'white'
+},
+"#shadowview": {
+	shadowColor:"black",
+    shadowOffset:{x:"0",y:"0"},
+    shadowRadius:"2.5"
+},
+"#btnMenu": {
+	backgroundImage : '/images/ButtonMenu.png',	
+	backgroundColor:'none',	
+	left : "2%",
+	top : "7%",
+	width : "10%",
+	height : "80%",
+	style : "none",
+	zIndex: 2
+},
+"#lblNombre":{
+	color:'#FFF',
+	font: { fontSize: '12%'},
+	left: '5%'
+}

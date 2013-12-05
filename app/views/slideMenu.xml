@@ -1,0 +1,25 @@
+<Alloy>
+	<Window id="wnSlideMenu" orientationModes="[Titanium.UI.PORTRAIT]">		
+		<View id="containerview">			
+				<View id="leftMenu" >
+					<View layout="horizontal" bacbackgroundColor="#040404" height="12%" >
+						<ImageView id="imgEmpelado" left='5px' top="5px" width="15%" height="40%" image="/images/empDefault.png"></ImageView>
+						<Label id="lblNombre" ></Label>
+					</View>					
+					<TableView id="leftTableView" >  						
+					</TableView>					
+				</View>		
+				<View id="movableview">
+					<View id="shadowview">
+						<View id="navview">							
+							<Button id="btnMenu" />								
+							<Label class="Titulo" backgroundColor="none" backgroundGradient="none"   >Salud Laboral</Label>														
+						</View>						
+						<View id="contentview">
+							<ActivityIndicator id="cargando" class=".cargando"></ActivityIndicator>
+						</View>
+					</View>
+				</View>
+		</View>		
+	</Window>
+</Alloy>

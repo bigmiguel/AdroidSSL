@@ -1,0 +1,44 @@
+<Alloy>	
+	<Window class="container">		
+		<View layout="vertical">
+			<ImageView width="33%" height="25%" image="/images/empDefault.png"></ImageView>
+			<TableView>		
+				<HeaderView>
+					<Label class="cabezera">Mis Datos:</Label>
+				</HeaderView>		
+				<TableViewSection>									
+					<TableViewRow class="rowDatos">
+						<View layout="horizontal">				
+					 		<Label  class="lbl">Nombre:</Label><Label id="lblNombre" class="dato">Miguel</Label>
+						</View>
+					</TableViewRow>
+					<TableViewRow class="rowDatos">
+						<View layout="horizontal">
+					 		<Label class="lbl" >Edad:</Label><Label id="lblEdad" class="dato">Miguel</Label>
+						</View>
+					</TableViewRow>
+					<TableViewRow class="rowDatos">
+						<View layout="horizontal">
+							 <Label class="lbl" >Num. Empleado:</Label><Label id="lblNEmpleado" class="dato">Miguel</Label>
+						</View>		
+					</TableViewRow>
+					<TableViewRow class="rowDatos">
+						<View layout="horizontal">
+					 		<Label class="lbl" >Centro Laboral:</Label><Label id="lblNomCentro" class="dato">Miguel</Label>
+						</View>
+					</TableViewRow>
+					<TableViewRow class="rowDatos">
+						<View layout="horizontal">
+					 		<Label class="lbl" >Area:</Label><Label id="lblNomArea" class="dato">Miguel</Label>
+						</View>
+					</TableViewRow>
+					<TableViewRow class="rowDatos">
+						<View layout="horizontal">
+							 <Label class="lbl" >Puesto:</Label><Label id="lblNomPuesto" class="dato">Miguel</Label>
+						</View>
+					</TableViewRow>
+				</TableViewSection>
+			</TableView>
+		</View>
+	</Window>	
+</Alloy>
