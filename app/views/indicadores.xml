@@ -1,19 +1,17 @@
 <Alloy>	
-	<Window id="wnIndicadores" class="container" layout="vertical">
-		<TableView id="tbIndicadores">
-			<HeaderView>
-				<Label class="cabezera">Mis Indicadores:</Label>
-			</HeaderView>		
-			<TableViewRow id="rowPeso" idIndicador="-1" nombreIndicador="Peso">
-				<View layout="horizontal">				
-			 		<Label class="lbl">Peso:</Label><Label id="lblPeso" class="dato"></Label>
-				</View>
-			</TableViewRow>
-			<TableViewRow >
-				<View layout="horizontal">				
-			 		<Label class="lbl">Estatura:</Label><Label id="lblEstatura" class="dato"></Label>
-				</View>
-			</TableViewRow>
-		</TableView>
-	</Window>	
+	<TableView id="tbIndicadores">
+		<HeaderView>
+			<Label class="cabezera">Mis Indicadores:</Label>
+		</HeaderView>		
+		<TableViewRow id="rowPeso" idIndicador="-1" nombreIndicador="Peso">
+			<View id="vwPeso" layout="horizontal">				
+		 		<Label class="lbl">Peso:</Label><Label id="lblPeso" class="dato"></Label>
+			</View>
+		</TableViewRow>
+		<TableViewRow>
+			<View id="vwEstatura" layout="horizontal">				
+		 		<Label class="lbl">Estatura:</Label><Label id="lblEstatura" class="dato"></Label>
+			</View>
+		</TableViewRow>
+	</TableView>
 </Alloy>

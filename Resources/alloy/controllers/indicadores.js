@@ -11,7 +11,7 @@ function Controller() {
                 if (null != _indciadorActual) {
                     Ti.API.info('------------indicador "Borrado"---------------');
                     _indciadorActual.close();
-                    _indciadorActual = null;
+                    _indcwnIndicadoresiadorActual = null;
                 }
                 _indciadorActual = Alloy.createController("indicadorDetalle", {
                     nombreIndicador: e.row.nombreIndicador,
@@ -41,25 +41,19 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.wnIndicadores = Ti.UI.createWindow({
-        backgroundColor: "white",
-        layout: "vertical",
-        id: "wnIndicadores"
-    });
-    $.__views.wnIndicadores && $.addTopLevelView($.__views.wnIndicadores);
     $.__views.rowPeso = Ti.UI.createTableViewRow({
         id: "rowPeso",
         idIndicador: "-1",
         nombreIndicador: "Peso"
     });
-    var __alloyId57 = [];
-    __alloyId57.push($.__views.rowPeso);
-    $.__views.__alloyId58 = Ti.UI.createView({
-        layout: "horizontal",
-        id: "__alloyId58"
+    var __alloyId53 = [];
+    __alloyId53.push($.__views.rowPeso);
+    $.__views.vwPeso = Ti.UI.createView({
+        id: "vwPeso",
+        layout: "horizontal"
     });
-    $.__views.rowPeso.add($.__views.__alloyId58);
-    $.__views.__alloyId59 = Ti.UI.createLabel({
+    $.__views.rowPeso.add($.__views.vwPeso);
+    $.__views.__alloyId54 = Ti.UI.createLabel({
         width: "40%",
         height: Ti.UI.SIZE,
         color: "#001f5b",
@@ -69,9 +63,9 @@ function Controller() {
             font: "PT Sans"
         },
         text: "Peso:",
-        id: "__alloyId59"
+        id: "__alloyId54"
     });
-    $.__views.__alloyId58.add($.__views.__alloyId59);
+    $.__views.vwPeso.add($.__views.__alloyId54);
     $.__views.lblPeso = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
@@ -83,17 +77,17 @@ function Controller() {
         },
         id: "lblPeso"
     });
-    $.__views.__alloyId58.add($.__views.lblPeso);
-    $.__views.__alloyId60 = Ti.UI.createTableViewRow({
-        id: "__alloyId60"
+    $.__views.vwPeso.add($.__views.lblPeso);
+    $.__views.__alloyId55 = Ti.UI.createTableViewRow({
+        id: "__alloyId55"
     });
-    __alloyId57.push($.__views.__alloyId60);
-    $.__views.__alloyId61 = Ti.UI.createView({
-        layout: "horizontal",
-        id: "__alloyId61"
+    __alloyId53.push($.__views.__alloyId55);
+    $.__views.vwEstatura = Ti.UI.createView({
+        id: "vwEstatura",
+        layout: "horizontal"
     });
-    $.__views.__alloyId60.add($.__views.__alloyId61);
-    $.__views.__alloyId62 = Ti.UI.createLabel({
+    $.__views.__alloyId55.add($.__views.vwEstatura);
+    $.__views.__alloyId56 = Ti.UI.createLabel({
         width: "40%",
         height: Ti.UI.SIZE,
         color: "#001f5b",
@@ -103,9 +97,9 @@ function Controller() {
             font: "PT Sans"
         },
         text: "Estatura:",
-        id: "__alloyId62"
+        id: "__alloyId56"
     });
-    $.__views.__alloyId61.add($.__views.__alloyId62);
+    $.__views.vwEstatura.add($.__views.__alloyId56);
     $.__views.lblEstatura = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
@@ -117,13 +111,12 @@ function Controller() {
         },
         id: "lblEstatura"
     });
-    $.__views.__alloyId61.add($.__views.lblEstatura);
+    $.__views.vwEstatura.add($.__views.lblEstatura);
     $.__views.tbIndicadores = Ti.UI.createTableView({
-        data: __alloyId57,
+        data: __alloyId53,
         id: "tbIndicadores"
     });
-    $.__views.wnIndicadores.add($.__views.tbIndicadores);
-    $.__views.__alloyId56 = Ti.UI.createLabel({
+    $.__views.__alloyId52 = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
         color: "#001f5b",
@@ -133,11 +126,15 @@ function Controller() {
             font: "PT Sans"
         },
         text: "Mis Indicadores:",
-        id: "__alloyId56"
+        id: "__alloyId52"
     });
-    $.__views.tbIndicadores.headerView = $.__views.__alloyId56;
+    $.__views.tbIndicadores.headerView = $.__views.__alloyId52;
+    $.__views.tbIndicadores && $.addTopLevelView($.__views.tbIndicadores);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    var alto = .08 * Titanium.Platform.displayCaps.platformHeight;
+    $.vwPeso.setHeight(alto);
+    $.vwEstatura.setHeight(alto);
     var emp = JSON.parse(Ti.App.Properties.getString("Empleado"));
     var api = Alloy.CFG.urlAPI + "EmpleadoIndicadores?idEmpresa=" + emp.idEmpresa + "&numEmpleado=" + emp.numEmpleado;
     Ti.API.info(api);
@@ -160,9 +157,6 @@ function Controller() {
         cliSSL.setRequestHeader("Accept", "application/json");
         cliSSL.send();
     } else creaTablaIndicadores(indicadores);
-    $.wnIndicadores.addEventListener("focus", function() {
-        Ti.API.info("----------------Disparo--------------");
-    });
     _.extend($, exports);
 }
 

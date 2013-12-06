@@ -1,9 +1,9 @@
 ".lblCita":{
 	width:'30%',
-	font: { fontSize: '12%' }	
+	font: { fontSize: '20%' }	
 },
 ".datoCita":
 {
 	color:'#666',
-	font: { fontSize: '12%' }
+	font: { fontSize: '20%' }
 }

@@ -25,13 +25,13 @@ function Controller() {
         id: "leftMenu"
     });
     $.__views.containerview.add($.__views.leftMenu);
-    $.__views.__alloyId65 = Ti.UI.createView({
+    $.__views.__alloyId58 = Ti.UI.createView({
         layout: "horizontal",
         bacbackgroundColor: "#040404",
         height: "12%",
-        id: "__alloyId65"
+        id: "__alloyId58"
     });
-    $.__views.leftMenu.add($.__views.__alloyId65);
+    $.__views.leftMenu.add($.__views.__alloyId58);
     $.__views.imgEmpelado = Ti.UI.createImageView({
         id: "imgEmpelado",
         left: "5px",
@@ -40,7 +40,7 @@ function Controller() {
         height: "40%",
         image: "/images/empDefault.png"
     });
-    $.__views.__alloyId65.add($.__views.imgEmpelado);
+    $.__views.__alloyId58.add($.__views.imgEmpelado);
     $.__views.lblNombre = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
@@ -51,7 +51,7 @@ function Controller() {
         left: "5%",
         id: "lblNombre"
     });
-    $.__views.__alloyId65.add($.__views.lblNombre);
+    $.__views.__alloyId58.add($.__views.lblNombre);
     $.__views.leftTableView = Ti.UI.createTableView({
         id: "leftTableView"
     });
@@ -102,13 +102,13 @@ function Controller() {
         left: "2%",
         top: "7%",
         width: "10%",
-        height: "80%",
+        height: "75%",
         style: "none",
         zIndex: 2,
         id: "btnMenu"
     });
     $.__views.navview.add($.__views.btnMenu);
-    $.__views.__alloyId66 = Ti.UI.createLabel({
+    $.__views.__alloyId59 = Ti.UI.createLabel({
         width: Ti.UI.FILL,
         height: Ti.UI.SIZE,
         color: "#FFF",
@@ -122,15 +122,16 @@ function Controller() {
         zIndex: 0,
         text: "Salud Laboral",
         backgroundColor: "none",
-        id: "__alloyId66"
+        id: "__alloyId59"
     });
-    $.__views.navview.add($.__views.__alloyId66);
+    $.__views.navview.add($.__views.__alloyId59);
     $.__views.contentview = Ti.UI.createView({
         left: "0dp",
         width: Ti.Platform.displayCaps.platformWidth,
         height: Ti.UI.Fill,
         top: "7%",
         backgroundColor: "white",
+        zindex: 2,
         id: "contentview"
     });
     $.__views.shadowview.add($.__views.contentview);

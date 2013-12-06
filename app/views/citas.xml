@@ -1,10 +1,8 @@
 <Alloy>
-	<Window class="container">
-		<View top="0" height="15%">
-            <Label class="cabezera" left="0">Mis Citas:</Label>
-        </View>
-        <ScrollView id="svCitas" showVerticalScrollIndicator="true" top="0" layout="vertical" >
-                      
-        </ScrollView>
-	</Window>	
+	<View top="0" height="15%">
+        <Label class="cabezera" left="0">Mis Citas:</Label>
+    </View>
+    <ScrollView id="svCitas" showVerticalScrollIndicator="true" top="0" layout="vertical" >
+                  
+    </ScrollView>	
 </Alloy>

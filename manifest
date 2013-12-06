@@ -1,9 +1,9 @@
-#appname: AlloySSL
-#appid: com.si.ssl
-#type: mobile
-#guid: 8960d55e-d180-471c-b854-adc3a5c18fd8
-#version: 1.0
-#publisher: not specified
-#url: not specified
-#image: appicon.png
-#desc: not specified
+#appname:AlloySSL
+#appid:com.si.ssl
+#type:mobile
+#guid:8960d55e-d180-471c-b854-adc3a5c18fd8
+#version:1.0
+#publisher:jbennetts
+#url:http://
+#image:appicon.png
+#desc:not specified

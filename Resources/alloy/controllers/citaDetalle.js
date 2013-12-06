@@ -14,15 +14,16 @@ function Controller() {
     $.__views.citaDetalle && $.addTopLevelView($.__views.citaDetalle);
     $.__views.__alloyId1 = Ti.UI.createImageView({
         image: "/images/calendar.png",
-        top: "30%",
+        top: "23%",
         left: "0",
+        width: "15%",
         id: "__alloyId1"
     });
     $.__views.citaDetalle.add($.__views.__alloyId1);
     $.__views.__alloyId2 = Ti.UI.createView({
         layout: "vertical",
         top: "0",
-        left: "35",
+        left: "16%",
         id: "__alloyId2"
     });
     $.__views.citaDetalle.add($.__views.__alloyId2);
@@ -47,7 +48,7 @@ function Controller() {
         height: Ti.UI.SIZE,
         color: "#001f5b",
         font: {
-            fontSize: "12%"
+            fontSize: "20%"
         },
         text: "Fecha:",
         id: "__alloyId8"
@@ -58,7 +59,7 @@ function Controller() {
         height: Ti.UI.SIZE,
         color: "#666",
         font: {
-            fontSize: "12%"
+            fontSize: "20%"
         },
         id: "lblFecha"
     });
@@ -77,7 +78,7 @@ function Controller() {
         height: Ti.UI.SIZE,
         color: "#001f5b",
         font: {
-            fontSize: "12%"
+            fontSize: "20%"
         },
         text: "Horario:",
         id: "__alloyId11"
@@ -88,7 +89,7 @@ function Controller() {
         height: Ti.UI.SIZE,
         color: "#666",
         font: {
-            fontSize: "12%"
+            fontSize: "20%"
         },
         id: "lblHorario"
     });
@@ -107,7 +108,7 @@ function Controller() {
         height: Ti.UI.SIZE,
         color: "#001f5b",
         font: {
-            fontSize: "12%"
+            fontSize: "20%"
         },
         text: "Consultorio:",
         id: "__alloyId14"
@@ -118,7 +119,7 @@ function Controller() {
         height: Ti.UI.SIZE,
         color: "#666",
         font: {
-            fontSize: "12%"
+            fontSize: "20%"
         },
         id: "lblConsultorio"
     });
@@ -137,7 +138,7 @@ function Controller() {
         height: Ti.UI.SIZE,
         color: "#001f5b",
         font: {
-            fontSize: "12%"
+            fontSize: "20%"
         },
         text: "Medico:",
         id: "__alloyId17"
@@ -148,7 +149,7 @@ function Controller() {
         height: Ti.UI.SIZE,
         color: "#666",
         font: {
-            fontSize: "12%"
+            fontSize: "20%"
         },
         id: "lblMedico"
     });
@@ -167,7 +168,7 @@ function Controller() {
         height: Ti.UI.SIZE,
         color: "#001f5b",
         font: {
-            fontSize: "12%"
+            fontSize: "20%"
         },
         text: "Estatus:",
         id: "__alloyId20"
@@ -178,7 +179,7 @@ function Controller() {
         height: Ti.UI.SIZE,
         color: "#666",
         font: {
-            fontSize: "12%"
+            fontSize: "20%"
         },
         id: "lblEstatus"
     });
@@ -197,7 +198,7 @@ function Controller() {
         height: Ti.UI.SIZE,
         color: "#001f5b",
         font: {
-            fontSize: "12%"
+            fontSize: "20%"
         },
         text: "Especialidad:",
         id: "__alloyId23"
@@ -208,7 +209,7 @@ function Controller() {
         height: Ti.UI.SIZE,
         color: "#666",
         font: {
-            fontSize: "12%"
+            fontSize: "20%"
         },
         id: "lblEspecialidad"
     });

@@ -28,19 +28,13 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.citas = Ti.UI.createWindow({
-        backgroundColor: "white",
-        layout: "vertical",
+    $.__views.citas = Ti.UI.createView({
+        top: "0",
+        height: "15%",
         id: "citas"
     });
     $.__views.citas && $.addTopLevelView($.__views.citas);
-    $.__views.__alloyId24 = Ti.UI.createView({
-        top: "0",
-        height: "15%",
-        id: "__alloyId24"
-    });
-    $.__views.citas.add($.__views.__alloyId24);
-    $.__views.__alloyId25 = Ti.UI.createLabel({
+    $.__views.__alloyId24 = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
         color: "#001f5b",
@@ -51,9 +45,9 @@ function Controller() {
         },
         text: "Mis Citas:",
         left: "0",
-        id: "__alloyId25"
+        id: "__alloyId24"
     });
-    $.__views.__alloyId24.add($.__views.__alloyId25);
+    $.__views.citas.add($.__views.__alloyId24);
     $.__views.svCitas = Ti.UI.createScrollView({
         width: Ti.UI.FILL,
         height: Ti.UI.FILL,
@@ -62,7 +56,7 @@ function Controller() {
         top: "0",
         layout: "vertical"
     });
-    $.__views.citas.add($.__views.svCitas);
+    $.__views.svCitas && $.addTopLevelView($.__views.svCitas);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var emp = JSON.parse(Ti.App.Properties.getString("Empleado"));

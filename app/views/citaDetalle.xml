@@ -1,7 +1,7 @@
 <Alloy>
 	 <View top="0" height="33%">
-    	<ImageView image="/images/calendar.png" top="30%" left="0"></ImageView>
-    	<View layout="vertical" top="0" left="35" >
+    	<ImageView image="/images/calendar.png" top="23%" left="0" width="15%"></ImageView>
+    	<View layout="vertical" top="0" left="16%" >
     		<View height="1px" backgroundColor="#001f5b"></View>
     		<TableView allowsSelection="false" separatorColor="transparent">   
 					<TableViewRow >

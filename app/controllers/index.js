@@ -1,12 +1,19 @@
-Ti.Android.currentActivity.setRequestedOrientation(Ti.Android.SCREEN_ORIENTATION_PORTRAIT);
+if (Titanium.Platform.osname == 'android') 
+	Ti.Android.currentActivity.setRequestedOrientation(Ti.Android.SCREEN_ORIENTATION_PORTRAIT);
+
+var idEmpresa = 0;
 //Evento que que se dispara cuando se quiere firmar un usuario
 $.btnLogin.addEventListener('click', function(e){
 	if($.txtNEmpleado.value == '')
-		{
-			alert("El numero de empledo no puede estar vacio.");			
-			return;
-		}
-	
+	{
+		alert("El numero de empledo no puede estar vacio.");			
+		return;
+	}
+	if(idEmpresa == 0)
+	{
+		alert("No has seleccionado una Empresa");
+		return;
+	}
 	//Obtiene la url de la api de la configuracion	
 	var api = Alloy.CFG.urlAPI + 'login';	
 	
@@ -28,16 +35,21 @@ $.btnLogin.addEventListener('click', function(e){
 		//En caso de error
 		onerror:function(e)
 		{			
-			Ti.API.info("Received text: " + this.responseText);
+			//Ti.API.info("Received text: " + this.responseText);
 			var error = JSON.parse(this.responseText);
-			alert(error.Message);		
+			Ti.UI.createAlertDialog({
+				message : error.Message,
+				ok : 'Ok',
+				title : 'Datos invalidos'
+			}).show();
+					
 		}		
 	});
 	
 	//Objeto que se le manda al servicio
 	var user ={
 		numEmpleado: $.txtNEmpleado.value,
-		idEmpresa : $.pckEmpresas.getSelectedRow(0).value,
+		idEmpresa : idEmpresa,
 		movilID: Ti.Platform.getId(),
 		modelo: Ti.Platform.model
 	};
@@ -77,15 +89,25 @@ $.index.addEventListener('open', function(e)
 			Ti.API.info("Received text: " + this.responseText);
 			//Se obtiene las empresa que tiene el sistema
 			var Empresas = JSON.parse(this.responseText);
+			
+			var opciones = [ ];
 			//Se llena el picker
 			for (var i=0; i < Empresas.length; i++) {
 			 	Empresa= Empresas[i];
-				 var pckRow = Ti.UI.createPickerRow({
-				 	title: Empresa.nomNombre,
-				 	value: Empresa.idEmpresa			 	
-				 });
-		 		$.pckEmpresas.add(pckRow);
+				 opciones.push(Empresa.nomNombre);
 			};
+			//Dialogo para seleccionar empresa
+			var dialogo = Ti.UI.createOptionDialog({ title: 'Empresas:',
+		 							options: opciones
+		 							});
+			dialogo.addEventListener('click', function(e){
+				idEmpresa = Empresas[e.index].idEmpresa;
+				$.lblEmpresa.text = 'Empresa: ' + Empresas[e.index].nomNombre;
+			});
+			$.btnSeleccionaEmpresa.addEventListener('click', function(e){
+				dialogo.show();
+			});
+
 		},
 		onerror:function(e){			
 			var error = JSON.parse(this.responseText);

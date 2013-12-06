@@ -1,3 +1,7 @@
+//Se asigna tamaño de las filas
+var alto = Titanium.Platform.displayCaps.platformHeight * .08;
+$.vwPeso.setHeight(alto);
+$.vwEstatura.setHeight(alto);
 //Obtiene datos del usuario
 var emp = JSON.parse(Ti.App.Properties.getString("Empleado"));
 
@@ -53,7 +57,7 @@ function creaTablaIndicadores(indicadores){
 	 	 	if(_indciadorActual != null){
 	 	 		Ti.API.info('------------indicador "Borrado"---------------');	 	 		
 	 			_indciadorActual.close();
-    			_indciadorActual = null;
+    			_indcwnIndicadoresiadorActual = null;
     			};
 	 	 _indciadorActual = Alloy.createController('indicadorDetalle',{ nombreIndicador : e.row.nombreIndicador, idIndicador: e.row.idIndicador }).getView();
 	 	 _indciadorActual.open({ modal: true, navBarHidden: true });	 	 
@@ -65,7 +69,3 @@ function creaTablaIndicadores(indicadores){
 	 	_indciadorActual = Alloy.createController('indicadorDetalle',{ nombreIndicador : e.row.nombreIndicador, idIndicador: e.row.idIndicador }).getView().open({ modal: true, navBarHidden: true });
 	});	 	
 }
-$.wnIndicadores.addEventListener('focus', function(e){
-		Ti.API.info('----------------Disparo--------------');
-		
-	 	 	});
