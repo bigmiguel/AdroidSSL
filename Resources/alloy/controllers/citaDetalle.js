@@ -6,12 +6,11 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.citaDetalle = Ti.UI.createView({
-        top: "0",
-        height: "33%",
-        id: "citaDetalle"
+    $.__views.vwCita = Ti.UI.createView({
+        id: "vwCita",
+        top: "0"
     });
-    $.__views.citaDetalle && $.addTopLevelView($.__views.citaDetalle);
+    $.__views.vwCita && $.addTopLevelView($.__views.vwCita);
     $.__views.__alloyId1 = Ti.UI.createImageView({
         image: "/images/calendar.png",
         top: "23%",
@@ -19,14 +18,14 @@ function Controller() {
         width: "15%",
         id: "__alloyId1"
     });
-    $.__views.citaDetalle.add($.__views.__alloyId1);
+    $.__views.vwCita.add($.__views.__alloyId1);
     $.__views.__alloyId2 = Ti.UI.createView({
         layout: "vertical",
         top: "0",
         left: "16%",
         id: "__alloyId2"
     });
-    $.__views.citaDetalle.add($.__views.__alloyId2);
+    $.__views.vwCita.add($.__views.__alloyId2);
     $.__views.__alloyId3 = Ti.UI.createView({
         height: "1px",
         backgroundColor: "#001f5b",
@@ -230,6 +229,9 @@ function Controller() {
     $.lblMedico.text = parametros.nomMedico.length > 20 ? parametros.nomMedico.substring(0, 17) + "..." : parametros.nomMedico;
     $.lblEstatus.text = parametros.nomEstatusAgenda;
     $.lblEspecialidad.text = parametros.especialidad;
+    var alto = .21 * Titanium.Platform.displayCaps.platformHeight;
+    $.vwCita.setHeight(alto);
+    Ti.API.info("---Entro--");
     _.extend($, exports);
 }
 

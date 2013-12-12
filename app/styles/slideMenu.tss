@@ -45,4 +45,9 @@
 	color:'#FFF',
 	font: { fontSize: '12%'},
 	left: '5%'
+},
+".lblHeaderMenu":{
+	color:'#FFF',
+	font: { fontSize: '20%'},
+	left: '3%'
 }

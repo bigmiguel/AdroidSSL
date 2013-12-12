@@ -1,5 +1,6 @@
 
 //Obtiene datos del usuario
+var alto = Titanium.Platform.displayCaps.platformHeight;
 var emp = JSON.parse(Ti.App.Properties.getString("Empleado"));
 
 $.lblNombre.text =  emp.nombre;
@@ -7,17 +8,17 @@ $.lblNombre.text =  emp.nombre;
 //Crea el mnenu de la applicacion
 var Menu = [
 	{
-		icon:'/images/menuIconDefault.png',
+		icon:'/images/user.png',
 		titulo : 'Mis Datos',
 		vista : 'datos'
 	},
 	{
-		icon:'/images/menuIconDefault.png',
+		icon:'/images/indicadores.png',
 		titulo : 'Mis Indicadores',
 		vista : 'indicadores'
 	},
 	{
-		icon:'/images/menuIconDefault.png',
+		icon:'/images/citas.png',
 		titulo : 'Mis Citas',
 		vista : 'citas'
 	}
@@ -33,10 +34,14 @@ for (var i=0; i < Menu.length; i++) {
 };
 
 $.leftTableView.data =_d;
+$.leftTableView.setHeight(alto * .15);
+
+
+
+$.leftTableViewSI.setHeight(alto * .25);
 //Evento que se dispara cuando se hace click sobre una opcion del menu
 $.leftTableView.addEventListener('click',function(e)
 {
-	
 	$.btnMenu.fireEvent('click');
 	$.cargando.show();
 	$.contentview.remove(_currentView);

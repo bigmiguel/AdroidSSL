@@ -10,11 +10,11 @@ function Controller() {
         id: "row"
     });
     $.__views.row && $.addTopLevelView($.__views.row);
-    $.__views.__alloyId50 = Ti.UI.createView({
+    $.__views.__alloyId51 = Ti.UI.createView({
         layout: "horizontal",
-        id: "__alloyId50"
+        id: "__alloyId51"
     });
-    $.__views.row.add($.__views.__alloyId50);
+    $.__views.row.add($.__views.__alloyId51);
     $.__views.lblIndicador = Ti.UI.createLabel({
         width: "40%",
         height: Ti.UI.SIZE,
@@ -26,24 +26,25 @@ function Controller() {
         },
         id: "lblIndicador"
     });
-    $.__views.__alloyId50.add($.__views.lblIndicador);
+    $.__views.__alloyId51.add($.__views.lblIndicador);
     $.__views.lblValor = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
         color: "#666",
         font: {
-            fontSize: "25%",
+            fontSize: "20%",
             fontWeight: "bold",
             font: "PT Sans"
         },
         text: "Miguel",
         id: "lblValor"
     });
-    $.__views.__alloyId50.add($.__views.lblValor);
+    $.__views.__alloyId51.add($.__views.lblValor);
     $.__views.imgBien = Ti.UI.createImageView({
         right: "1dp",
-        top: "0dp",
-        id: "imgBien"
+        top: "10%",
+        id: "imgBien",
+        height: "80%"
     });
     $.__views.row.add($.__views.imgBien);
     exports.destroy = function() {};
@@ -52,7 +53,7 @@ function Controller() {
     $.row.idIndicador = parametros.idIndicador;
     $.row.nombreIndicador = $.lblIndicador.text = parametros.nombreIndicador;
     $.lblValor.text = parametros.valor;
-    $.imgBien.image = "/images/" + (parametros.bien ? "smile" : "sad") + ".png";
+    $.imgBien.image = "/images/" + (parametros.bien ? "pro" : "contra") + ".png";
     var alto = .05 * Titanium.Platform.displayCaps.platformHeight;
     $.row.setHeight(alto);
     _.extend($, exports);

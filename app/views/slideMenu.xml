@@ -5,9 +5,23 @@
 					<View layout="horizontal" bacbackgroundColor="#040404" height="12%" >
 						<ImageView id="imgEmpelado" left='5px' top="5px" width="15%" height="40%" image="/images/empDefault.png"></ImageView>
 						<Label id="lblNombre" ></Label>
-					</View>					
-					<TableView id="leftTableView" >  						
-					</TableView>					
+					</View>	
+					<TableView id="leftTableView"> 				
+						<HeaderView>
+							<View layout="horizontal">
+							<View height="1px" backgroundColor="#FFF" width="Ti.UI.FILL"></View>
+								<Label class="lblHeaderMenu">Salud Laboral</Label>
+							</View>
+						</HeaderView> 						
+					</TableView>		
+					<TableView id="leftTableViewSI"> 				
+						<HeaderView>
+							<View layout="horizontal">
+							<View height="1px" backgroundColor="#FFF" width="Ti.UI.FILL"></View>
+								<Label class="lblHeaderMenu">Salud Interactiva</Label>
+							</View>
+						</HeaderView> 						
+					</TableView>	
 				</View>		
 				<View id="movableview">
 					<View id="shadowview">

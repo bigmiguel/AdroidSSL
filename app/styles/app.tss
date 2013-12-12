@@ -44,7 +44,7 @@
 },
 ".dato":{
 	color:'#666',
-	font:{ fontSize: "25%", fontWeight :'bold', font: 'PT Sans'},
+	font:{ fontSize: "20%", fontWeight :'bold', font: 'PT Sans'},
 },
 ".lbl":{
 	width:'40%',

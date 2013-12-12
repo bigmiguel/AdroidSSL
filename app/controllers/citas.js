@@ -11,10 +11,9 @@ function actulizaCitas () {
 	var cliSSL =Ti.Network.createHTTPClient({
 		//En case de exito
 		onload: function(e){
-				
+				Ti.API.info(this.responseText);
 				var citas = JSON.parse(this.responseText);
 				for (var i=0; i < citas.length; i++) {
-					Ti.API.info('---Entro--');
 				 var cita = citas[i];
 				 var vwCita = Alloy.createController('citaDetalle', cita).getView();
 				 $.svCitas.add(vwCita);

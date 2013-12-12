@@ -1,5 +1,5 @@
 //Se asigna tamaño de las filas
-var alto = Titanium.Platform.displayCaps.platformHeight * .08;
+var alto = Titanium.Platform.displayCaps.platformHeight * .05;
 $.vwPeso.setHeight(alto);
 $.vwEstatura.setHeight(alto);
 //Obtiene datos del usuario

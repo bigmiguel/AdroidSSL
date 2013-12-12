@@ -1,5 +1,5 @@
 <Alloy>
-	 <View top="0" height="33%">
+	 <View id="vwCita" top="0">
     	<ImageView image="/images/calendar.png" top="23%" left="0" width="15%"></ImageView>
     	<View layout="vertical" top="0" left="16%" >
     		<View height="1px" backgroundColor="#001f5b"></View>
@@ -35,7 +35,6 @@
 					</View>
 				</TableViewRow>			              				
     		</TableView>
-    		
     	</View>
     </View>
 </Alloy>

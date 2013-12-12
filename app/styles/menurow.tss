@@ -9,7 +9,6 @@
   backgroundColor : "none"
   },
 "#icon": {
-  width: "38dp",
   left: "5dp"
 },
 "#title": {

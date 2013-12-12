@@ -3,6 +3,6 @@
 		<View layout="horizontal" class="vwFila">				
 	 		<Label id="lblIndicador" class="lbl"></Label><Label id="lblValor" class="dato">Miguel</Label>	 		
 		</View>
-		<ImageView id="imgBien"></ImageView>
+		<ImageView id="imgBien" top="10%" height="80%"></ImageView>
 	</TableViewRow>
 </Alloy>

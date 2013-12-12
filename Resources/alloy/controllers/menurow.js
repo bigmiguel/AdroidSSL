@@ -15,17 +15,18 @@ function Controller() {
     });
     $.__views.row && $.addTopLevelView($.__views.row);
     $.__views.icon = Ti.UI.createImageView({
-        width: "38dp",
         left: "5dp",
-        id: "icon"
+        id: "icon",
+        height: "80%",
+        top: "10%"
     });
     $.__views.row.add($.__views.icon);
-    $.__views.__alloyId57 = Ti.UI.createView({
+    $.__views.__alloyId58 = Ti.UI.createView({
         layout: "vertical",
         height: Ti.UI.SIZE,
-        id: "__alloyId57"
+        id: "__alloyId58"
     });
-    $.__views.row.add($.__views.__alloyId57);
+    $.__views.row.add($.__views.__alloyId58);
     $.__views.title = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
@@ -36,7 +37,7 @@ function Controller() {
         },
         id: "title"
     });
-    $.__views.__alloyId57.add($.__views.title);
+    $.__views.__alloyId58.add($.__views.title);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var parametros = arguments[0] || {};

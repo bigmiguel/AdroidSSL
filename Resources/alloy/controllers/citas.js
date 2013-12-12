@@ -5,9 +5,9 @@ function Controller() {
         var api = Alloy.CFG.urlAPI + "citas?idEmpresa=" + emp.idEmpresa + "&idEmpleado=" + emp.idEmpleado;
         var cliSSL = Ti.Network.createHTTPClient({
             onload: function() {
+                Ti.API.info(this.responseText);
                 var citas = JSON.parse(this.responseText);
                 for (var i = 0; citas.length > i; i++) {
-                    Ti.API.info("---Entro--");
                     var cita = citas[i];
                     var vwCita = Alloy.createController("citaDetalle", cita).getView();
                     $.svCitas.add(vwCita);
@@ -29,12 +29,18 @@ function Controller() {
     var $ = this;
     var exports = {};
     $.__views.citas = Ti.UI.createView({
-        top: "0",
-        height: "15%",
+        backgroundColor: "white",
+        layout: "vertical",
         id: "citas"
     });
     $.__views.citas && $.addTopLevelView($.__views.citas);
-    $.__views.__alloyId24 = Ti.UI.createLabel({
+    $.__views.__alloyId24 = Ti.UI.createView({
+        top: "0",
+        height: "15%",
+        id: "__alloyId24"
+    });
+    $.__views.citas.add($.__views.__alloyId24);
+    $.__views.__alloyId25 = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
         color: "#001f5b",
@@ -45,9 +51,9 @@ function Controller() {
         },
         text: "Mis Citas:",
         left: "0",
-        id: "__alloyId24"
+        id: "__alloyId25"
     });
-    $.__views.citas.add($.__views.__alloyId24);
+    $.__views.__alloyId24.add($.__views.__alloyId25);
     $.__views.svCitas = Ti.UI.createScrollView({
         width: Ti.UI.FILL,
         height: Ti.UI.FILL,
@@ -56,7 +62,7 @@ function Controller() {
         top: "0",
         layout: "vertical"
     });
-    $.__views.svCitas && $.addTopLevelView($.__views.svCitas);
+    $.__views.citas.add($.__views.svCitas);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var emp = JSON.parse(Ti.App.Properties.getString("Empleado"));

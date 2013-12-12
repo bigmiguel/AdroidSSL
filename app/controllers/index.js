@@ -41,8 +41,7 @@ $.btnLogin.addEventListener('click', function(e){
 				message : error.Message,
 				ok : 'Ok',
 				title : 'Datos invalidos'
-			}).show();
-					
+			}).show();		
 		}		
 	});
 	
