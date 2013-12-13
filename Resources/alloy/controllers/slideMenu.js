@@ -25,13 +25,13 @@ function Controller() {
         id: "leftMenu"
     });
     $.__views.containerview.add($.__views.leftMenu);
-    $.__views.__alloyId59 = Ti.UI.createView({
+    $.__views.__alloyId43 = Ti.UI.createView({
         layout: "horizontal",
         bacbackgroundColor: "#040404",
         height: "12%",
-        id: "__alloyId59"
+        id: "__alloyId43"
     });
-    $.__views.leftMenu.add($.__views.__alloyId59);
+    $.__views.leftMenu.add($.__views.__alloyId43);
     $.__views.imgEmpelado = Ti.UI.createImageView({
         id: "imgEmpelado",
         left: "5px",
@@ -40,74 +40,65 @@ function Controller() {
         height: "40%",
         image: "/images/empDefault.png"
     });
-    $.__views.__alloyId59.add($.__views.imgEmpelado);
+    $.__views.__alloyId43.add($.__views.imgEmpelado);
     $.__views.lblNombre = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
         color: "#FFF",
-        font: {
-            fontSize: "12%"
-        },
         left: "5%",
         id: "lblNombre"
     });
-    $.__views.__alloyId59.add($.__views.lblNombre);
+    $.__views.__alloyId43.add($.__views.lblNombre);
     $.__views.leftTableView = Ti.UI.createTableView({
         id: "leftTableView"
     });
     $.__views.leftMenu.add($.__views.leftTableView);
-    $.__views.__alloyId61 = Ti.UI.createView({
+    $.__views.__alloyId45 = Ti.UI.createView({
         layout: "horizontal",
-        id: "__alloyId61"
+        id: "__alloyId45"
     });
-    $.__views.__alloyId62 = Ti.UI.createView({
+    $.__views.__alloyId46 = Ti.UI.createView({
         height: "1px",
         backgroundColor: "#FFF",
         width: Ti.UI.FILL,
-        id: "__alloyId62"
+        id: "__alloyId46"
     });
-    $.__views.__alloyId61.add($.__views.__alloyId62);
-    $.__views.__alloyId63 = Ti.UI.createLabel({
+    $.__views.__alloyId45.add($.__views.__alloyId46);
+    $.__views.lblHeaderSL = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
         color: "#FFF",
-        font: {
-            fontSize: "20%"
-        },
-        left: "3%",
+        left: "5%",
         text: "Salud Laboral",
-        id: "__alloyId63"
+        id: "lblHeaderSL"
     });
-    $.__views.__alloyId61.add($.__views.__alloyId63);
-    $.__views.leftTableView.headerView = $.__views.__alloyId61;
+    $.__views.__alloyId45.add($.__views.lblHeaderSL);
+    $.__views.leftTableView.headerView = $.__views.__alloyId45;
     $.__views.leftTableViewSI = Ti.UI.createTableView({
         id: "leftTableViewSI"
     });
     $.__views.leftMenu.add($.__views.leftTableViewSI);
-    $.__views.__alloyId65 = Ti.UI.createView({
+    $.__views.__alloyId48 = Ti.UI.createView({
         layout: "horizontal",
-        id: "__alloyId65"
+        id: "__alloyId48"
     });
-    $.__views.__alloyId66 = Ti.UI.createView({
+    $.__views.__alloyId49 = Ti.UI.createView({
         height: "1px",
         backgroundColor: "#FFF",
         width: Ti.UI.FILL,
-        id: "__alloyId66"
+        id: "__alloyId49"
     });
-    $.__views.__alloyId65.add($.__views.__alloyId66);
-    $.__views.__alloyId67 = Ti.UI.createLabel({
+    $.__views.__alloyId48.add($.__views.__alloyId49);
+    $.__views.lblHeaderSI = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
         color: "#FFF",
-        font: {
-            fontSize: "20%"
-        },
-        left: "3%",
+        left: "5%",
         text: "Salud Interactiva",
-        id: "__alloyId67"
+        id: "lblHeaderSI"
     });
-    $.__views.__alloyId65.add($.__views.__alloyId67);
-    $.__views.leftTableViewSI.headerView = $.__views.__alloyId65;
+    $.__views.__alloyId48.add($.__views.lblHeaderSI);
+    $.__views.leftTableViewSI.headerView = $.__views.__alloyId48;
     $.__views.movableview = Ti.UI.createView({
         id: "movableview"
     });
@@ -160,23 +151,18 @@ function Controller() {
         id: "btnMenu"
     });
     $.__views.navview.add($.__views.btnMenu);
-    $.__views.__alloyId68 = Ti.UI.createLabel({
+    $.__views.lblTitulo = Ti.UI.createLabel({
         width: Ti.UI.FILL,
         height: Ti.UI.SIZE,
         color: "#FFF",
         textAlign: "center",
-        font: {
-            fontSize: "35%",
-            fontWeight: "bold",
-            font: "PT Sans"
-        },
         backgroundGradient: "none",
         zIndex: 0,
         text: "Salud Laboral",
-        backgroundColor: "none",
-        id: "__alloyId68"
+        id: "lblTitulo",
+        backgroundColor: "none"
     });
-    $.__views.navview.add($.__views.__alloyId68);
+    $.__views.navview.add($.__views.lblTitulo);
     $.__views.contentview = Ti.UI.createView({
         left: "0dp",
         width: Ti.Platform.displayCaps.platformWidth,
@@ -193,7 +179,11 @@ function Controller() {
     $.__views.contentview.add($.__views.cargando);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    var alto = Titanium.Platform.displayCaps.platformHeight;
+    $.lblTitulo.applyProperties($.createStyle(Alloy.FuenteTitulo()));
+    $.lblNombre.applyProperties($.createStyle(Alloy.FuenteChica()));
+    $.lblHeaderSL.applyProperties($.createStyle(Alloy.Fuente()));
+    $.lblHeaderSI.applyProperties($.createStyle(Alloy.Fuente()));
+    Titanium.Platform.displayCaps.platformHeight;
     var emp = JSON.parse(Ti.App.Properties.getString("Empleado"));
     $.lblNombre.text = emp.nombre;
     var Menu = [ {
@@ -216,8 +206,11 @@ function Controller() {
         _d.push(_menuFila);
     }
     $.leftTableView.data = _d;
-    $.leftTableView.setHeight(.15 * alto);
-    $.leftTableViewSI.setHeight(.25 * alto);
+    $.wnSlideMenu.addEventListener("load", function() {
+        var altoMenu = (Menu.length + 1) * $.leftTableView.headerView.size.height + 5;
+        $.leftTableView.setHeight(altoMenu);
+        $.leftTableViewSI.setHeight(altoMenu);
+    });
     $.leftTableView.addEventListener("click", function(e) {
         $.btnMenu.fireEvent("click");
         $.cargando.show();

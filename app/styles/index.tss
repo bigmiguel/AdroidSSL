@@ -1,15 +1,12 @@
 ".txtLogin":{
 	top: "5px",
 	width: "70%",
-	font:{ fontWeight :'bold', font: 'PT Sans'},
 	autocorrect: false,
 	returnKeyType: Titanium.UI.RETURNKEY_DONE 
 },
 ".Login":{	
-	top: '5px',	
-	font:{ fontSize: "20%", fontWeight :'bold', font: 'PT Sans'}
+	top: '5px'
 },
 ".lblEmpresa": {
-	top: '5px',
-	font:{ fontSize: "20%", fontWeight :'bold', font: 'PT Sans'}
+	top: '5px'
 }

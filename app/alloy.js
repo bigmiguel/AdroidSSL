@@ -10,3 +10,49 @@
 //
 // Alloy.Globals.someGlobalFunction = function(){};
 
+Alloy.FuenteTitulo = function () {
+ if(Alloy.Dimension() == 'baja')
+ {
+ 	return { font:{ fontSize: "18%", fontWeight :'bold', font: 'PT Sans'} };
+ }
+ else if(Alloy.Dimension()=='media')
+ {
+ 	return { font:{ fontSize: "30%", fontWeight :'bold', font: 'PT Sans'} };
+ }
+};
+
+Alloy.Fuente = function () {
+ if(Alloy.Dimension() == 'baja')
+ {
+ 	return { font:{ fontSize: "10%", fontWeight :'bold', font: 'PT Sans'} };
+ }
+ else if(Alloy.Dimension()=='media')
+ {
+ 	return { font:{ fontSize: "20%", fontWeight :'bold', font: 'PT Sans'} };
+ }
+};
+
+Alloy.FuenteChica = function () {
+ if(Alloy.Dimension() == 'baja')
+ {
+ 	return { font:{ fontSize: "8%", fontWeight :'bold', font: 'PT Sans'} };
+ }
+ else if(Alloy.Dimension()=='media')
+ {
+ 	return { font:{ fontSize: "16%", fontWeight :'bold', font: 'PT Sans'} };
+ }
+};
+
+Alloy.Dimension = function  () {
+  var ancho = Titanium.Platform.displayCaps.platformWidth;
+ // Ti.API.info('------------------Ancho: ' + ancho);
+  if(ancho < 480)
+  {
+  	return 'baja';
+  }
+  else if(ancho >= 480){
+  	return 'media';
+  };		
+};
+  
+  

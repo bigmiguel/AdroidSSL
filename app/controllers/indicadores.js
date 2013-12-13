@@ -1,7 +1,10 @@
-//Se asigna tamaño de las filas
-var alto = Titanium.Platform.displayCaps.platformHeight * .05;
-$.vwPeso.setHeight(alto);
-$.vwEstatura.setHeight(alto);
+
+//Estilo a los controles
+$.lblTPeso.applyProperties( $.createStyle(Alloy.Fuente()) );
+$.lblTEstatura.applyProperties( $.createStyle(Alloy.Fuente()) );
+$.lblPeso.applyProperties( $.createStyle(Alloy.Fuente()) );
+$.lblEstatura.applyProperties( $.createStyle(Alloy.Fuente()) );
+
 //Obtiene datos del usuario
 var emp = JSON.parse(Ti.App.Properties.getString("Empleado"));
 

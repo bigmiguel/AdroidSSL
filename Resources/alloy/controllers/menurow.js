@@ -21,29 +21,29 @@ function Controller() {
         top: "10%"
     });
     $.__views.row.add($.__views.icon);
-    $.__views.__alloyId58 = Ti.UI.createView({
+    $.__views.__alloyId42 = Ti.UI.createView({
         layout: "vertical",
         height: Ti.UI.SIZE,
-        id: "__alloyId58"
+        top: "10%",
+        bottom: "10%",
+        id: "__alloyId42"
     });
-    $.__views.row.add($.__views.__alloyId58);
+    $.__views.row.add($.__views.__alloyId42);
     $.__views.title = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
         color: "#FFF",
         left: "48dp",
-        font: {
-            fontSize: "20%"
-        },
         id: "title"
     });
-    $.__views.__alloyId58.add($.__views.title);
+    $.__views.__alloyId42.add($.__views.title);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var parametros = arguments[0] || {};
     $.icon.image = parametros.icon;
     $.title.text = parametros.titulo || "";
     $.row.vista = parametros.vista || "";
+    $.title.applyProperties($.createStyle(Alloy.Fuente()));
     _.extend($, exports);
 }
 

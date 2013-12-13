@@ -1,5 +1,11 @@
 if (Titanium.Platform.osname == 'android') 
 	Ti.Android.currentActivity.setRequestedOrientation(Ti.Android.SCREEN_ORIENTATION_PORTRAIT);
+//Estilos controles
+$.lblTitulo.applyProperties( $.createStyle(Alloy.FuenteTitulo()) );
+$.lblEmpresa.applyProperties( $.createStyle(Alloy.FuenteTitulo()) );
+$.btnSeleccionaEmpresa.applyProperties( $.createStyle(Alloy.Fuente()) );
+$.btnLogin.applyProperties( $.createStyle(Alloy.Fuente()) );
+
 
 var idEmpresa = 0;
 //Evento que que se dispara cuando se quiere firmar un usuario
@@ -63,18 +69,11 @@ $.btnLogin.addEventListener('click', function(e){
 
 //Evento para que no se pierda de vista la caja de texto
 $.txtNEmpleado.addEventListener('focus', txtFocus);
-$.txtNEmpleado.addEventListener('blur', txtBlur);
 
 function txtFocus(e){	
 	if ($.vwLogin.top == '20%') {
-		$.vwLogin.animate({ top:'26px', duration : 2000});	
+		$.vwLogin.animate({ top:'8%', duration : 2000});	
 	};		
-}
-function txtBlur(e)
-{
-	if ($.vwLogin.top == '26px') {
-	$.vwLogin.animate({ top:'20%', duration : 2000});
-	};
 }
 //Evento que se dispara cuando se carga la vista
 $.index.addEventListener('open', function(e)
@@ -105,6 +104,7 @@ $.index.addEventListener('open', function(e)
 			});
 			$.btnSeleccionaEmpresa.addEventListener('click', function(e){
 				dialogo.show();
+				$.txtNEmpleado.blur();
 			});
 
 		},

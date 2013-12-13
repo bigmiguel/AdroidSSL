@@ -1,13 +1,7 @@
 function Controller() {
     function txtFocus() {
         "20%" == $.vwLogin.top && $.vwLogin.animate({
-            top: "26px",
-            duration: 2e3
-        });
-    }
-    function txtBlur() {
-        "26px" == $.vwLogin.top && $.vwLogin.animate({
-            top: "20%",
+            top: "8%",
             duration: 2e3
         });
     }
@@ -25,25 +19,32 @@ function Controller() {
         id: "index"
     });
     $.__views.index && $.addTopLevelView($.__views.index);
-    $.__views.label = Ti.UI.createLabel({
-        width: Ti.UI.FILL,
-        height: Ti.UI.SIZE,
+    $.__views.navview = Ti.UI.createView({
+        top: "0dp",
+        left: "0dp",
+        width: Ti.Platform.displayCaps.platformWidth,
+        height: "8%",
+        backgroundColor: "#001f5b",
         color: "#FFF",
-        textAlign: "center",
-        font: {
-            fontSize: "35%",
-            fontWeight: "bold",
-            font: "PT Sans"
-        },
         backgroundGradient: {
             type: "linear",
             colors: [ "#001f5b", "#4E6EAD" ]
         },
+        id: "navview"
+    });
+    $.__views.index.add($.__views.navview);
+    $.__views.lblTitulo = Ti.UI.createLabel({
+        width: Ti.UI.FILL,
+        height: Ti.UI.SIZE,
+        color: "#FFF",
+        textAlign: "center",
+        backgroundGradient: "none",
         zIndex: 0,
         text: "Salud Laboral",
-        id: "label"
+        id: "lblTitulo",
+        backgroundColor: "none"
     });
-    $.__views.index.add($.__views.label);
+    $.__views.navview.add($.__views.lblTitulo);
     $.__views.vwLogin = Ti.UI.createView({
         id: "vwLogin",
         top: "20%",
@@ -57,8 +58,7 @@ function Controller() {
         borderColor: "#999",
         color: "#001f5b",
         font: {
-            fontWeight: "bold",
-            font: "PT Sans"
+            fontSize: "15%"
         },
         top: "5px",
         width: "70%",
@@ -76,8 +76,7 @@ function Controller() {
         color: "#FFF",
         font: {
             fontSize: "20%",
-            fontWeight: "bold",
-            font: "PT Sans"
+            fontWeight: "blod"
         },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         borderWidth: "1dp",
@@ -103,8 +102,7 @@ function Controller() {
         color: "#FFF",
         font: {
             fontSize: "20%",
-            fontWeight: "bold",
-            font: "PT Sans"
+            fontWeight: "blod"
         },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         borderWidth: "1dp",
@@ -117,6 +115,10 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     Ti.Android.currentActivity.setRequestedOrientation(Ti.Android.SCREEN_ORIENTATION_PORTRAIT);
+    $.lblTitulo.applyProperties($.createStyle(Alloy.FuenteTitulo()));
+    $.lblEmpresa.applyProperties($.createStyle(Alloy.FuenteTitulo()));
+    $.btnSeleccionaEmpresa.applyProperties($.createStyle(Alloy.Fuente()));
+    $.btnLogin.applyProperties($.createStyle(Alloy.Fuente()));
     var idEmpresa = 0;
     $.btnLogin.addEventListener("click", function() {
         if ("" == $.txtNEmpleado.value) {
@@ -158,7 +160,6 @@ function Controller() {
         cliSSL.send(JSON.stringify(user));
     });
     $.txtNEmpleado.addEventListener("focus", txtFocus);
-    $.txtNEmpleado.addEventListener("blur", txtBlur);
     $.index.addEventListener("open", function() {
         var api = Alloy.CFG.urlAPI + "/Empresa";
         var cliSSL = Ti.Network.createHTTPClient({
@@ -180,6 +181,7 @@ function Controller() {
                 });
                 $.btnSeleccionaEmpresa.addEventListener("click", function() {
                     dialogo.show();
+                    $.txtNEmpleado.blur();
                 });
             },
             onerror: function() {

@@ -1,6 +1,8 @@
 ".vgroup": {
   layout: "vertical",
-  height: Ti.UI.SIZE
+  height: Ti.UI.SIZE,
+  top: '10%',
+  bottom: '10%'
 },
 "#row": {
   selectedBackgroundColor : "#001f5b",
@@ -13,6 +15,5 @@
 },
 "#title": {
   left: "48dp",
-  color:"#FFF",
-  font:{fontSize:'20%'}
+  color:"#FFF"
 }

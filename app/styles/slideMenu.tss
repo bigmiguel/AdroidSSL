@@ -6,18 +6,6 @@
 	backgroundColor : "#303030",
 	layout:"vertical"
 },
-"#navview": {
-	top: "0dp",
-	left: "0dp",
-	width : Ti.Platform.displayCaps.platformWidth,
-	height : "8%",
-	backgroundColor:"#001f5b",
-	color:"#FFF",
-	backgroundGradient: {
-		type: 'linear',
-		colors: [ '#001f5b', '#4E6EAD'],
-	}	
-},
 "#contentview": {
 	left : "0dp",
 	width : Ti.Platform.displayCaps.platformWidth,
@@ -43,11 +31,9 @@
 },
 "#lblNombre":{
 	color:'#FFF',
-	font: { fontSize: '12%'},
 	left: '5%'
 },
 ".lblHeaderMenu":{
 	color:'#FFF',
-	font: { fontSize: '20%'},
-	left: '3%'
+	left: '5%'
 }

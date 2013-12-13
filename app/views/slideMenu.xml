@@ -10,7 +10,7 @@
 						<HeaderView>
 							<View layout="horizontal">
 							<View height="1px" backgroundColor="#FFF" width="Ti.UI.FILL"></View>
-								<Label class="lblHeaderMenu">Salud Laboral</Label>
+								<Label id="lblHeaderSL" class="lblHeaderMenu">Salud Laboral</Label>
 							</View>
 						</HeaderView> 						
 					</TableView>		
@@ -18,7 +18,7 @@
 						<HeaderView>
 							<View layout="horizontal">
 							<View height="1px" backgroundColor="#FFF" width="Ti.UI.FILL"></View>
-								<Label class="lblHeaderMenu">Salud Interactiva</Label>
+								<Label id="lblHeaderSI" class="lblHeaderMenu">Salud Interactiva</Label>
 							</View>
 						</HeaderView> 						
 					</TableView>	
@@ -27,7 +27,7 @@
 					<View id="shadowview">
 						<View id="navview">							
 							<Button id="btnMenu" />								
-							<Label class="Titulo" backgroundColor="none" backgroundGradient="none"   >Salud Laboral</Label>														
+							<Label id="lblTitulo" class="Titulo" backgroundColor="none" backgroundGradient="none">Salud Laboral</Label>														
 						</View>						
 						<View id="contentview">
 							<ActivityIndicator id="cargando" class=".cargando"></ActivityIndicator>

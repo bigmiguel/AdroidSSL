@@ -11,7 +11,6 @@
 ".Titulo":{
 	width: Ti.UI.FILL,
 	textAlign: 'center',
-	font:{ fontSize: "35%", fontWeight :'bold', font: 'PT Sans'},
 	color:"#FFF",
 	backgroundGradient: {
 		type: 'linear',
@@ -43,12 +42,10 @@
 	height: '20px'
 },
 ".dato":{
-	color:'#666',
-	font:{ fontSize: "20%", fontWeight :'bold', font: 'PT Sans'},
+	color:'#666' 
 },
 ".lbl":{
-	width:'40%',
-	font:{ fontSize: "20%", fontWeight :'bold', font: 'PT Sans'},
+	width:'40%'
 },
 ".rowDatos":{
 	touchEnabled: false
@@ -71,6 +68,17 @@
 ".cabezera":{
 	width: Ti.UI.SIZE,
 	height: Ti.UI.SIZE,
-	font:{ fontSize: "25%", fontWeight :'bold', font: 'PT Sans'},
 	color: "#001f5b"
+},
+"#navview": {
+	top: "0dp",
+	left: "0dp",
+	width : Ti.Platform.displayCaps.platformWidth,
+	height : "8%",
+	backgroundColor:"#001f5b",
+	color:"#FFF",
+	backgroundGradient: {
+		type: 'linear',
+		colors: [ '#001f5b', '#4E6EAD'],
+	}	
 }

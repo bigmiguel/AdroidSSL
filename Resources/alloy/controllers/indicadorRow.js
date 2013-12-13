@@ -10,36 +10,26 @@ function Controller() {
         id: "row"
     });
     $.__views.row && $.addTopLevelView($.__views.row);
-    $.__views.__alloyId51 = Ti.UI.createView({
+    $.__views.__alloyId37 = Ti.UI.createView({
         layout: "horizontal",
-        id: "__alloyId51"
+        id: "__alloyId37"
     });
-    $.__views.row.add($.__views.__alloyId51);
+    $.__views.row.add($.__views.__alloyId37);
     $.__views.lblIndicador = Ti.UI.createLabel({
         width: "40%",
         height: Ti.UI.SIZE,
         color: "#001f5b",
-        font: {
-            fontSize: "20%",
-            fontWeight: "bold",
-            font: "PT Sans"
-        },
         id: "lblIndicador"
     });
-    $.__views.__alloyId51.add($.__views.lblIndicador);
+    $.__views.__alloyId37.add($.__views.lblIndicador);
     $.__views.lblValor = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
         color: "#666",
-        font: {
-            fontSize: "20%",
-            fontWeight: "bold",
-            font: "PT Sans"
-        },
         text: "Miguel",
         id: "lblValor"
     });
-    $.__views.__alloyId51.add($.__views.lblValor);
+    $.__views.__alloyId37.add($.__views.lblValor);
     $.__views.imgBien = Ti.UI.createImageView({
         right: "1dp",
         top: "10%",
@@ -54,8 +44,8 @@ function Controller() {
     $.row.nombreIndicador = $.lblIndicador.text = parametros.nombreIndicador;
     $.lblValor.text = parametros.valor;
     $.imgBien.image = "/images/" + (parametros.bien ? "pro" : "contra") + ".png";
-    var alto = .05 * Titanium.Platform.displayCaps.platformHeight;
-    $.row.setHeight(alto);
+    $.lblIndicador.applyProperties($.createStyle(Alloy.Fuente()));
+    $.lblValor.applyProperties($.createStyle(Alloy.Fuente()));
     _.extend($, exports);
 }
 

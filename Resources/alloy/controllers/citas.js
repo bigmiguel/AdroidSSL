@@ -34,26 +34,15 @@ function Controller() {
         id: "citas"
     });
     $.__views.citas && $.addTopLevelView($.__views.citas);
-    $.__views.__alloyId24 = Ti.UI.createView({
-        top: "0",
-        height: "15%",
-        id: "__alloyId24"
-    });
-    $.__views.citas.add($.__views.__alloyId24);
-    $.__views.__alloyId25 = Ti.UI.createLabel({
+    $.__views.__alloyId17 = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
         color: "#001f5b",
-        font: {
-            fontSize: "25%",
-            fontWeight: "bold",
-            font: "PT Sans"
-        },
         text: "Mis Citas:",
         left: "0",
-        id: "__alloyId25"
+        id: "__alloyId17"
     });
-    $.__views.__alloyId24.add($.__views.__alloyId25);
+    $.__views.citas.add($.__views.__alloyId17);
     $.__views.svCitas = Ti.UI.createScrollView({
         width: Ti.UI.FILL,
         height: Ti.UI.FILL,

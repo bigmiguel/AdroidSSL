@@ -1,5 +1,6 @@
 <Alloy>
 	<Window id="wnIndDet"> 
+		
 		<WebView id="wbvGrafica" url="/html/indicador.html" height="60%" width="Ti.UI.FILL"></WebView>	
 	</Window>	
 </Alloy>

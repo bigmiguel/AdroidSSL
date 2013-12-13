@@ -1,6 +1,8 @@
 <Alloy>
 	<Window class="container" orientationModes="[Titanium.UI.PORTRAIT]">
-		<Label id="label" class="Titulo" >Salud Laboral</Label>
+		<View id="navview">													
+			<Label id="lblTitulo" class="Titulo" backgroundColor="none" backgroundGradient="none">Salud Laboral</Label>														
+		</View>	
 		<View id="vwLogin" top="20%"  layout="vertical">
 			<TextField id="txtNEmpleado" class="txtLogin" hintText="Numero de Empleado"></TextField>
 			<Button id="btnSeleccionaEmpresa" class="Login">Selecciona Empresa</Button>

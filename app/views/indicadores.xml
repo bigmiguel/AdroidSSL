@@ -5,12 +5,12 @@
 		</HeaderView>		
 		<TableViewRow id="rowPeso" idIndicador="-1" nombreIndicador="Peso">
 			<View id="vwPeso" layout="horizontal">				
-		 		<Label class="lbl">Peso:</Label><Label id="lblPeso" class="dato"></Label>
+		 		<Label id="lblTPeso" class="lbl">Peso:</Label><Label id="lblPeso" class="dato"></Label>
 			</View>
 		</TableViewRow>
 		<TableViewRow>
 			<View id="vwEstatura" layout="horizontal">				
-		 		<Label class="lbl">Estatura:</Label><Label id="lblEstatura" class="dato"></Label>
+		 		<Label id="lblTEstatura" class="lbl">Estatura:</Label><Label id="lblEstatura" class="dato"></Label>
 			</View>
 		</TableViewRow>
 	</TableView>

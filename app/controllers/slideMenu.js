@@ -1,3 +1,8 @@
+//Estilos controles
+$.lblTitulo.applyProperties( $.createStyle(Alloy.FuenteTitulo()) );
+$.lblNombre.applyProperties( $.createStyle(Alloy.FuenteChica()) );
+$.lblHeaderSL.applyProperties( $.createStyle(Alloy.Fuente()) );
+$.lblHeaderSI.applyProperties( $.createStyle(Alloy.Fuente()) );
 
 //Obtiene datos del usuario
 var alto = Titanium.Platform.displayCaps.platformHeight;
@@ -29,16 +34,18 @@ var _d =[];
 	
 for (var i=0; i < Menu.length; i++) {
   	var _parametros = Menu[i];
-  	var _menuFila = Alloy.createController('menurow',_parametros).getView();  		 
+  	var _menuFila = Alloy.createController('menurow', _parametros).getView();  		 
 	_d.push(_menuFila);
 };
 
 $.leftTableView.data =_d;
-$.leftTableView.setHeight(alto * .15);
 
-
-
-$.leftTableViewSI.setHeight(alto * .25);
+$.wnSlideMenu.addEventListener('load', function (e) {
+	//alert($.leftTableView.headerView.size.height);//.size.height);  
+	var altoMenu = ((Menu.length + 1) * $.leftTableView.headerView.size.height) + 5;
+	$.leftTableView.setHeight(altoMenu);
+	$.leftTableViewSI.setHeight(altoMenu);
+});
 //Evento que se dispara cuando se hace click sobre una opcion del menu
 $.leftTableView.addEventListener('click',function(e)
 {
