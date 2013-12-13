@@ -34,15 +34,15 @@ function Controller() {
         id: "citas"
     });
     $.__views.citas && $.addTopLevelView($.__views.citas);
-    $.__views.__alloyId17 = Ti.UI.createLabel({
+    $.__views.lblCabecera = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
         color: "#001f5b",
         text: "Mis Citas:",
-        left: "0",
-        id: "__alloyId17"
+        id: "lblCabecera",
+        left: "0"
     });
-    $.__views.citas.add($.__views.__alloyId17);
+    $.__views.citas.add($.__views.lblCabecera);
     $.__views.svCitas = Ti.UI.createScrollView({
         width: Ti.UI.FILL,
         height: Ti.UI.FILL,
@@ -54,6 +54,7 @@ function Controller() {
     $.__views.citas.add($.__views.svCitas);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    $.lblCabecera.applyProperties($.createStyle(Alloy.FuenteMedia()));
     var emp = JSON.parse(Ti.App.Properties.getString("Empleado"));
     actulizaCitas();
     var posYini = 0;

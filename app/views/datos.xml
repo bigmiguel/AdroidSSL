@@ -3,7 +3,7 @@
 		<ImageView width="30%" height="22%" image="/images/empDefault.png"></ImageView>
 		<TableView>		
 			<HeaderView>
-				<Label class="cabezera">Mis Datos:</Label>
+				<Label id="lblCabecera" class="cabezera">Mis Datos:</Label>
 			</HeaderView>		
 			<TableViewSection>									
 				<TableViewRow class="rowDatos">

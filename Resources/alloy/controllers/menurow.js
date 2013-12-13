@@ -21,14 +21,14 @@ function Controller() {
         top: "10%"
     });
     $.__views.row.add($.__views.icon);
-    $.__views.__alloyId42 = Ti.UI.createView({
+    $.__views.__alloyId40 = Ti.UI.createView({
         layout: "vertical",
         height: Ti.UI.SIZE,
         top: "10%",
         bottom: "10%",
-        id: "__alloyId42"
+        id: "__alloyId40"
     });
-    $.__views.row.add($.__views.__alloyId42);
+    $.__views.row.add($.__views.__alloyId40);
     $.__views.title = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
@@ -36,14 +36,14 @@ function Controller() {
         left: "48dp",
         id: "title"
     });
-    $.__views.__alloyId42.add($.__views.title);
+    $.__views.__alloyId40.add($.__views.title);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var parametros = arguments[0] || {};
     $.icon.image = parametros.icon;
     $.title.text = parametros.titulo || "";
     $.row.vista = parametros.vista || "";
-    $.title.applyProperties($.createStyle(Alloy.Fuente()));
+    $.title.applyProperties($.createStyle(Alloy.FuenteMedia()));
     _.extend($, exports);
 }
 

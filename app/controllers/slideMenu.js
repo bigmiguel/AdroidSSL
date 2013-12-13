@@ -1,8 +1,8 @@
 //Estilos controles
 $.lblTitulo.applyProperties( $.createStyle(Alloy.FuenteTitulo()) );
 $.lblNombre.applyProperties( $.createStyle(Alloy.FuenteChica()) );
-$.lblHeaderSL.applyProperties( $.createStyle(Alloy.Fuente()) );
-$.lblHeaderSI.applyProperties( $.createStyle(Alloy.Fuente()) );
+$.lblHeaderSL.applyProperties( $.createStyle(Alloy.FuenteMedia()) );
+$.lblHeaderSI.applyProperties( $.createStyle(Alloy.FuenteMedia()) );
 
 //Obtiene datos del usuario
 var alto = Titanium.Platform.displayCaps.platformHeight;

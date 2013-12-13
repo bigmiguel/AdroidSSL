@@ -32,6 +32,17 @@ Alloy.Fuente = function () {
  }
 };
 
+Alloy.FuenteMedia = function () {
+ if(Alloy.Dimension() == 'baja')
+ {
+ 	return { font:{ fontSize: "15%", fontWeight :'bold', font: 'PT Sans'} };
+ }
+ else if(Alloy.Dimension()=='media')
+ {
+ 	return { font:{ fontSize: "25%", fontWeight :'bold', font: 'PT Sans'} };
+ }
+};
+
 Alloy.FuenteChica = function () {
  if(Alloy.Dimension() == 'baja')
  {

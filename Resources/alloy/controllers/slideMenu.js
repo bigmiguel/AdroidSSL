@@ -25,13 +25,13 @@ function Controller() {
         id: "leftMenu"
     });
     $.__views.containerview.add($.__views.leftMenu);
-    $.__views.__alloyId43 = Ti.UI.createView({
+    $.__views.__alloyId41 = Ti.UI.createView({
         layout: "horizontal",
         bacbackgroundColor: "#040404",
         height: "12%",
-        id: "__alloyId43"
+        id: "__alloyId41"
     });
-    $.__views.leftMenu.add($.__views.__alloyId43);
+    $.__views.leftMenu.add($.__views.__alloyId41);
     $.__views.imgEmpelado = Ti.UI.createImageView({
         id: "imgEmpelado",
         left: "5px",
@@ -40,7 +40,7 @@ function Controller() {
         height: "40%",
         image: "/images/empDefault.png"
     });
-    $.__views.__alloyId43.add($.__views.imgEmpelado);
+    $.__views.__alloyId41.add($.__views.imgEmpelado);
     $.__views.lblNombre = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
@@ -48,22 +48,22 @@ function Controller() {
         left: "5%",
         id: "lblNombre"
     });
-    $.__views.__alloyId43.add($.__views.lblNombre);
+    $.__views.__alloyId41.add($.__views.lblNombre);
     $.__views.leftTableView = Ti.UI.createTableView({
         id: "leftTableView"
     });
     $.__views.leftMenu.add($.__views.leftTableView);
-    $.__views.__alloyId45 = Ti.UI.createView({
+    $.__views.__alloyId43 = Ti.UI.createView({
         layout: "horizontal",
-        id: "__alloyId45"
+        id: "__alloyId43"
     });
-    $.__views.__alloyId46 = Ti.UI.createView({
+    $.__views.__alloyId44 = Ti.UI.createView({
         height: "1px",
         backgroundColor: "#FFF",
         width: Ti.UI.FILL,
-        id: "__alloyId46"
+        id: "__alloyId44"
     });
-    $.__views.__alloyId45.add($.__views.__alloyId46);
+    $.__views.__alloyId43.add($.__views.__alloyId44);
     $.__views.lblHeaderSL = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
@@ -72,23 +72,23 @@ function Controller() {
         text: "Salud Laboral",
         id: "lblHeaderSL"
     });
-    $.__views.__alloyId45.add($.__views.lblHeaderSL);
-    $.__views.leftTableView.headerView = $.__views.__alloyId45;
+    $.__views.__alloyId43.add($.__views.lblHeaderSL);
+    $.__views.leftTableView.headerView = $.__views.__alloyId43;
     $.__views.leftTableViewSI = Ti.UI.createTableView({
         id: "leftTableViewSI"
     });
     $.__views.leftMenu.add($.__views.leftTableViewSI);
-    $.__views.__alloyId48 = Ti.UI.createView({
+    $.__views.__alloyId46 = Ti.UI.createView({
         layout: "horizontal",
-        id: "__alloyId48"
+        id: "__alloyId46"
     });
-    $.__views.__alloyId49 = Ti.UI.createView({
+    $.__views.__alloyId47 = Ti.UI.createView({
         height: "1px",
         backgroundColor: "#FFF",
         width: Ti.UI.FILL,
-        id: "__alloyId49"
+        id: "__alloyId47"
     });
-    $.__views.__alloyId48.add($.__views.__alloyId49);
+    $.__views.__alloyId46.add($.__views.__alloyId47);
     $.__views.lblHeaderSI = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
@@ -97,8 +97,8 @@ function Controller() {
         text: "Salud Interactiva",
         id: "lblHeaderSI"
     });
-    $.__views.__alloyId48.add($.__views.lblHeaderSI);
-    $.__views.leftTableViewSI.headerView = $.__views.__alloyId48;
+    $.__views.__alloyId46.add($.__views.lblHeaderSI);
+    $.__views.leftTableViewSI.headerView = $.__views.__alloyId46;
     $.__views.movableview = Ti.UI.createView({
         id: "movableview"
     });
@@ -181,8 +181,8 @@ function Controller() {
     _.extend($, $.__views);
     $.lblTitulo.applyProperties($.createStyle(Alloy.FuenteTitulo()));
     $.lblNombre.applyProperties($.createStyle(Alloy.FuenteChica()));
-    $.lblHeaderSL.applyProperties($.createStyle(Alloy.Fuente()));
-    $.lblHeaderSI.applyProperties($.createStyle(Alloy.Fuente()));
+    $.lblHeaderSL.applyProperties($.createStyle(Alloy.FuenteMedia()));
+    $.lblHeaderSI.applyProperties($.createStyle(Alloy.FuenteMedia()));
     Titanium.Platform.displayCaps.platformHeight;
     var emp = JSON.parse(Ti.App.Properties.getString("Empleado"));
     $.lblNombre.text = emp.nombre;

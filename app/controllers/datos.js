@@ -8,6 +8,7 @@ $.lblNEmpleado.text = emp.numEmpleado;
 $.lblNomArea.text = emp.nomArea;
 $.lblNomPuesto.text = emp.nomPuesto;
 
+//Estilo a los controles
 $.lblNombre.applyProperties( $.createStyle(Alloy.Fuente()) );
 $.lblNomCentro.applyProperties( $.createStyle(Alloy.Fuente()) );
 $.lblEdad.applyProperties( $.createStyle(Alloy.Fuente()) );
@@ -21,3 +22,4 @@ $.lblTCentroLaboral.applyProperties( $.createStyle(Alloy.Fuente()) );
 $.lblTArea.applyProperties( $.createStyle(Alloy.Fuente()) );
 $.lblTPuesto.applyProperties( $.createStyle(Alloy.Fuente()) );
 
+$.lblCabecera.applyProperties( $.createStyle(Alloy.FuenteMedia()) );

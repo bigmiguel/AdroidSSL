@@ -34,6 +34,23 @@ Alloy.Fuente = function() {
     };
 };
 
+Alloy.FuenteMedia = function() {
+    if ("baja" == Alloy.Dimension()) return {
+        font: {
+            fontSize: "15%",
+            fontWeight: "bold",
+            font: "PT Sans"
+        }
+    };
+    if ("media" == Alloy.Dimension()) return {
+        font: {
+            fontSize: "25%",
+            fontWeight: "bold",
+            font: "PT Sans"
+        }
+    };
+};
+
 Alloy.FuenteChica = function() {
     if ("baja" == Alloy.Dimension()) return {
         font: {
