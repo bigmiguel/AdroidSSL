@@ -13,7 +13,21 @@ function Controller() {
     $.__views.mapview && $.addTopLevelView($.__views.mapview);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    $.mapview.addEventListener("click", function() {});
+    var mountainView = Alloy.Globals.Map.createAnnotation({
+        latitude: 37.390749,
+        longitude: -122.081651,
+        title: "Appcelerator Headquarters",
+        subtitle: "Mountain View, CA",
+        pincolor: Alloy.Globals.Map.ANNOTATION_RED,
+        myid: 1
+    });
+    $.mapview.region = {
+        latitude: 33.74511,
+        longitude: -84.38993,
+        latitudeDelta: .01,
+        longitudeDelta: .01
+    };
+    $.mapview.addAnnotation(mountainView);
     _.extend($, exports);
 }
 

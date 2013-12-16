@@ -201,7 +201,7 @@ function Controller() {
     } ];
     var MenuSI = [ {
         icon: "/images/doc.png",
-        titulo: "Medico",
+        titulo: "Medicos",
         vista: "redMedicos"
     } ];
     var _d = [];

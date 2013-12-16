@@ -1,5 +1,7 @@
 var Alloy = require("alloy"), _ = Alloy._, Backbone = Alloy.Backbone;
 
+Alloy.Globals.Map = require("ti.map");
+
 Alloy.FuenteTitulo = function() {
     if ("baja" == Alloy.Dimension()) return {
         font: {

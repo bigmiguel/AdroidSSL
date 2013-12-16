@@ -30,7 +30,7 @@ var Menu = [
 ];
 var MenuSI = [{
 		icon:'/images/doc.png',
-		titulo : 'Medico',
+		titulo : 'Medicos',
 		vista : 'redMedicos'
 	}];
 	
