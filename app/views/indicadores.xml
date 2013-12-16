@@ -1,7 +1,7 @@
 <Alloy>	
 	<TableView id="tbIndicadores">
 		<HeaderView>
-			<Label class="cabezera">Mis Indicadores:</Label>
+			<Label id="lblCabecera" class="cabezera">Mis Indicadores:</Label>
 		</HeaderView>		
 		<TableViewRow id="rowPeso" idIndicador="-1" nombreIndicador="Peso">
 			<View id="vwPeso" layout="horizontal">				

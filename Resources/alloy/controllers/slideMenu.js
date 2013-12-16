@@ -25,13 +25,13 @@ function Controller() {
         id: "leftMenu"
     });
     $.__views.containerview.add($.__views.leftMenu);
-    $.__views.__alloyId41 = Ti.UI.createView({
+    $.__views.__alloyId40 = Ti.UI.createView({
         layout: "horizontal",
         bacbackgroundColor: "#040404",
         height: "12%",
-        id: "__alloyId41"
+        id: "__alloyId40"
     });
-    $.__views.leftMenu.add($.__views.__alloyId41);
+    $.__views.leftMenu.add($.__views.__alloyId40);
     $.__views.imgEmpelado = Ti.UI.createImageView({
         id: "imgEmpelado",
         left: "5px",
@@ -40,7 +40,7 @@ function Controller() {
         height: "40%",
         image: "/images/empDefault.png"
     });
-    $.__views.__alloyId41.add($.__views.imgEmpelado);
+    $.__views.__alloyId40.add($.__views.imgEmpelado);
     $.__views.lblNombre = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
@@ -48,22 +48,22 @@ function Controller() {
         left: "5%",
         id: "lblNombre"
     });
-    $.__views.__alloyId41.add($.__views.lblNombre);
+    $.__views.__alloyId40.add($.__views.lblNombre);
     $.__views.leftTableView = Ti.UI.createTableView({
         id: "leftTableView"
     });
     $.__views.leftMenu.add($.__views.leftTableView);
-    $.__views.__alloyId43 = Ti.UI.createView({
+    $.__views.__alloyId42 = Ti.UI.createView({
         layout: "horizontal",
-        id: "__alloyId43"
+        id: "__alloyId42"
     });
-    $.__views.__alloyId44 = Ti.UI.createView({
+    $.__views.__alloyId43 = Ti.UI.createView({
         height: "1px",
         backgroundColor: "#FFF",
         width: Ti.UI.FILL,
-        id: "__alloyId44"
+        id: "__alloyId43"
     });
-    $.__views.__alloyId43.add($.__views.__alloyId44);
+    $.__views.__alloyId42.add($.__views.__alloyId43);
     $.__views.lblHeaderSL = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
@@ -72,23 +72,23 @@ function Controller() {
         text: "Salud Laboral",
         id: "lblHeaderSL"
     });
-    $.__views.__alloyId43.add($.__views.lblHeaderSL);
-    $.__views.leftTableView.headerView = $.__views.__alloyId43;
+    $.__views.__alloyId42.add($.__views.lblHeaderSL);
+    $.__views.leftTableView.headerView = $.__views.__alloyId42;
     $.__views.leftTableViewSI = Ti.UI.createTableView({
         id: "leftTableViewSI"
     });
     $.__views.leftMenu.add($.__views.leftTableViewSI);
-    $.__views.__alloyId46 = Ti.UI.createView({
+    $.__views.__alloyId45 = Ti.UI.createView({
         layout: "horizontal",
-        id: "__alloyId46"
+        id: "__alloyId45"
     });
-    $.__views.__alloyId47 = Ti.UI.createView({
+    $.__views.__alloyId46 = Ti.UI.createView({
         height: "1px",
         backgroundColor: "#FFF",
         width: Ti.UI.FILL,
-        id: "__alloyId47"
+        id: "__alloyId46"
     });
-    $.__views.__alloyId46.add($.__views.__alloyId47);
+    $.__views.__alloyId45.add($.__views.__alloyId46);
     $.__views.lblHeaderSI = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
@@ -97,8 +97,8 @@ function Controller() {
         text: "Salud Interactiva",
         id: "lblHeaderSI"
     });
-    $.__views.__alloyId46.add($.__views.lblHeaderSI);
-    $.__views.leftTableViewSI.headerView = $.__views.__alloyId46;
+    $.__views.__alloyId45.add($.__views.lblHeaderSI);
+    $.__views.leftTableViewSI.headerView = $.__views.__alloyId45;
     $.__views.movableview = Ti.UI.createView({
         id: "movableview"
     });
@@ -199,13 +199,25 @@ function Controller() {
         titulo: "Mis Citas",
         vista: "citas"
     } ];
+    var MenuSI = [ {
+        icon: "/images/doc.png",
+        titulo: "Medico",
+        vista: "redMedicos"
+    } ];
     var _d = [];
+    var _dSI = [];
     for (var i = 0; Menu.length > i; i++) {
         var _parametros = Menu[i];
         var _menuFila = Alloy.createController("menurow", _parametros).getView();
         _d.push(_menuFila);
     }
+    for (var i = 0; MenuSI.length > i; i++) {
+        var _parametros = MenuSI[i];
+        var _menuFila = Alloy.createController("menurow", _parametros).getView();
+        _dSI.push(_menuFila);
+    }
     $.leftTableView.data = _d;
+    $.leftTableViewSI.data = _dSI;
     $.wnSlideMenu.addEventListener("load", function() {
         var altoMenu = (Menu.length + 1) * $.leftTableView.headerView.size.height + 5;
         $.leftTableView.setHeight(altoMenu);
@@ -220,8 +232,18 @@ function Controller() {
         _currentView = nuevaVista;
         $.cargando.hide();
     });
+    $.leftTableViewSI.addEventListener("click", function(e) {
+        $.btnMenu.fireEvent("click");
+        $.cargando.show();
+        $.contentview.remove(_currentView);
+        var nuevaVista = Alloy.createController(e.row.vista).getView();
+        $.contentview.add(nuevaVista);
+        _currentView = nuevaVista;
+        $.cargando.hide();
+    });
     $.btnMenu.addEventListener("click", function(e) {
         if (true == e.source.toggle) {
+            $.movableview.setWidth(Titanium.Platform.displayCaps.platformWidth);
             $.movableview.animate({
                 left: 0,
                 duration: 400,

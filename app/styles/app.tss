@@ -60,7 +60,7 @@
 	height:60,
 	message : 'Cargando...',
 	font : { fontSize : '16px' },
-	color:'001f5b',
+	color:'#001f5b',
 	left: '50%',
 	top:'50%',
 	style: Ti.UI.ActivityIndicatorStyle.BIG

@@ -9,13 +9,15 @@
 // object. For example:
 //
 // Alloy.Globals.someGlobalFunction = function(){};
+//Alloy.Globals.Map = require('ti.map');
+
 
 Alloy.FuenteTitulo = function () {
  if(Alloy.Dimension() == 'baja')
  {
  	return { font:{ fontSize: "18%", fontWeight :'bold', font: 'PT Sans'} };
  }
- else if(Alloy.Dimension()=='media')
+ else if(Alloy.Dimension() =='media')
  {
  	return { font:{ fontSize: "30%", fontWeight :'bold', font: 'PT Sans'} };
  }
@@ -26,7 +28,7 @@ Alloy.Fuente = function () {
  {
  	return { font:{ fontSize: "10%", fontWeight :'bold', font: 'PT Sans'} };
  }
- else if(Alloy.Dimension()=='media')
+ else if(Alloy.Dimension() =='media')
  {
  	return { font:{ fontSize: "20%", fontWeight :'bold', font: 'PT Sans'} };
  }

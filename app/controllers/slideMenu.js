@@ -28,8 +28,14 @@ var Menu = [
 		vista : 'citas'
 	}
 ];
-
-var _d =[];
+var MenuSI = [{
+		icon:'/images/doc.png',
+		titulo : 'Medico',
+		vista : 'redMedicos'
+	}];
+	
+var _d = [];
+var _dSI = [];
 	
 	
 for (var i=0; i < Menu.length; i++) {
@@ -38,7 +44,14 @@ for (var i=0; i < Menu.length; i++) {
 	_d.push(_menuFila);
 };
 
+for (var i=0; i < MenuSI.length; i++) {
+  	var _parametros = MenuSI[i];
+  	var _menuFila = Alloy.createController('menurow', _parametros).getView();  		 
+	_dSI.push(_menuFila);
+};
+
 $.leftTableView.data =_d;
+$.leftTableViewSI.data = _dSI;
 
 $.wnSlideMenu.addEventListener('load', function (e) {
 	//alert($.leftTableView.headerView.size.height);//.size.height);  
@@ -57,9 +70,20 @@ $.leftTableView.addEventListener('click',function(e)
 	_currentView = nuevaVista;
 	$.cargando.hide();
 });
+$.leftTableViewSI.addEventListener('click',function(e)
+{
+	$.btnMenu.fireEvent('click');
+	$.cargando.show();
+	$.contentview.remove(_currentView);
+	var nuevaVista = Alloy.createController(e.row.vista).getView();	
+	$.contentview.add(nuevaVista);
+	_currentView = nuevaVista;
+	$.cargando.hide();
+});
 
 $.btnMenu.addEventListener('click',function(e){
 	 if(e.source.toggle == true){
+	 	$.movableview.setWidth(Titanium.Platform.displayCaps.platformWidth);
         $.movableview.animate({
             left:0,
             duration:400,

@@ -4,6 +4,7 @@ $.lblTPeso.applyProperties( $.createStyle(Alloy.Fuente()) );
 $.lblTEstatura.applyProperties( $.createStyle(Alloy.Fuente()) );
 $.lblPeso.applyProperties( $.createStyle(Alloy.Fuente()) );
 $.lblEstatura.applyProperties( $.createStyle(Alloy.Fuente()) );
+$.lblCabecera.applyProperties( $.createStyle(Alloy.FuenteMedia()) );
 
 //Obtiene datos del usuario
 var emp = JSON.parse(Ti.App.Properties.getString("Empleado"));
