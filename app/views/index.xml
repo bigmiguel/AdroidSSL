@@ -1,5 +1,5 @@
 <Alloy>
-	<Window class="container" orientationModes="[Titanium.UI.PORTRAIT]">
+	<Window class="container">
 		<View id="navview">													
 			<Label id="lblTitulo" class="Titulo" backgroundColor="none" backgroundGradient="none">Salud Laboral</Label>														
 		</View>	

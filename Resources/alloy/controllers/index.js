@@ -15,7 +15,6 @@ function Controller() {
     $.__views.index = Ti.UI.createWindow({
         backgroundColor: "white",
         layout: "vertical",
-        orientationModes: "[Titanium.UI.PORTRAIT]",
         id: "index"
     });
     $.__views.index && $.addTopLevelView($.__views.index);

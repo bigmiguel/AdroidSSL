@@ -55,7 +55,7 @@ $.leftTableViewSI.data = _dSI;
 
 $.wnSlideMenu.addEventListener('load', function (e) {
 	//alert($.leftTableView.headerView.size.height);//.size.height);  
-	var altoMenu = ((Menu.length + 1) * $.leftTableView.headerView.size.height) + 5;
+	var altoMenu = ((Menu.length + 1) * $.leftTableView.headerView.size.height) + 10;
 	$.leftTableView.setHeight(altoMenu);
 	$.leftTableViewSI.setHeight(altoMenu);
 });

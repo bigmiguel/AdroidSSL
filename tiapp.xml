@@ -58,7 +58,7 @@
             <application>
                 <!-- Replace "PASTE YOUR GOOGLE MAPS API KEY HERE" with the Google API key you obtained -->
                 <meta-data
-                    android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyC3__ak8P8ZihYl2Y2SCXHfFW_4ogCNaZA" />
+                    android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyC3__ak8P8ZihYl2Y2SCXHfFW_4ogCNaZA"/>
             </application>
         </manifest>
     </android>
@@ -71,8 +71,6 @@
         <theme>default</theme>
     </mobileweb>
     <modules>
-        <module platform="commonjs">ti.cloud</module>
-        <module platform="android">ti.cloudpush</module>
         <module platform="android">ti.map</module>
     </modules>
     <deployment-targets>

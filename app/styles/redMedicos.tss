@@ -1,4 +1,20 @@
 
 ".container" : {
   
+}, 
+"#mapview" :{
+	width: Ti.UI.FILL,
+	height: Ti.UI.FILL,
+	zIndex: 3,
+	mapType: Alloy.Globals.Map.NORMAL_TYPE,
+	regionFit: true,
+	top: 0,
+	backgroundColor: "white"
+},
+"#mapContainer":
+{
+	width: Ti.UI.FILL,
+	height: Ti.UI.FILL,
+	backgroundColor: "white"
 }
+

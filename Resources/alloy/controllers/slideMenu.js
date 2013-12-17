@@ -219,7 +219,7 @@ function Controller() {
     $.leftTableView.data = _d;
     $.leftTableViewSI.data = _dSI;
     $.wnSlideMenu.addEventListener("load", function() {
-        var altoMenu = (Menu.length + 1) * $.leftTableView.headerView.size.height + 5;
+        var altoMenu = (Menu.length + 1) * $.leftTableView.headerView.size.height + 10;
         $.leftTableView.setHeight(altoMenu);
         $.leftTableViewSI.setHeight(altoMenu);
     });
