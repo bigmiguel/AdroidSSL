@@ -42,12 +42,8 @@ var anotacionUsuario = Alloy.Globals.Map.createAnnotation({
 $.mapview.addAnnotation(anotacionUsuario);
 setTimeout(function(){
 	UbicacionActual();
-}, 3000);
+}, 4000);
 
-
-setTimeout(function(){
-	UbicacionActual();
-}, 1000);
 
 //----------------------Funciones
 
@@ -79,3 +75,89 @@ function UbicacionActual () {
 	anotacionUsuario.latitude = latitudG;
 	anotacionUsuario.longitude = longitudG;
 }
+var deltaautomatico = 0.03;
+function downMedicosCercanos() {
+	var tableData = [];
+	var url = 'http://50.57.28.96/MedicallHomeWeb/index.php/Api/BuscaGeo';
+	var xhr = Titanium.Network.createHTTPClient({
+
+		onload : function(e) {
+			try {
+				obj = JSON.parse(this.responseText);
+				mapview.removeAllAnnotations();
+				mapview.addAnnotation(anotacionUsuario);
+
+				if (obj.mresultados == null) {
+					alert("no hay resultados");
+				} else {
+					
+					for (var i = 0; i < obj.mresultados.length; i++) {
+
+						var uno = obj.mresultados[i];
+
+						mapaLatitudR = uno.latitud;
+						mapaLongitudR = uno.longitud;
+
+						var prueba = Math.pow((Math.pow((mapaLongitudR - longitudG), 2) + Math.pow((mapaLatitudR - latitudG), 2)), .5) * 111.11;
+
+						if (prueba < distancia) {
+							distancia = prueba;
+							deltaautomatico = 2.0 * Math.pow((Math.pow((mapaLongitudR - longitudG), 2) + Math.pow((mapaLatitudR - latitudG), 2)), 0.5);
+						}
+
+						idMedicoDetail[i] = uno.id;
+						
+						var annotationDoctor = MapModule.createAnnotation({
+							latitude : mapaLatitudR,
+							longitude : mapaLongitudR,
+							image : '/images/doc' + calidad,
+							animate : true,
+							title : '' + uno.nomCompleto,
+							leftButton : '/imagenes/docleft' + calidad,
+							myId : uno.id,
+							rightButton : '/imagenes/der' + calidad,
+							subtitle : 'Servicio Médico'
+						});
+						
+						mapview.addAnnotation(annotationDoctor);
+					}
+
+					tabla.setData(tableData);
+					var newRegion = {
+						latitude : latitudG,
+						longitude : longitudG,
+						animate : true,
+						latitudeDelta : deltaautomatico,
+						longitudeDelta : deltaautomatico
+					};
+
+					setTimeout(function() {
+						mapview.setLocation(newRegion);
+						actInd.hide();
+						win2.remove(vistaCargando);
+						mainLib.isClickeable = true;
+					}, 1000);
+
+				}
+			} catch (errora) {
+
+			}
+		},
+		onerror : function(e) {
+		},
+		timeout : 20000
+	});
+
+	var params = {
+		'FiltroEstado[idAfiliacion]' : '2',
+		'Filtros[idTipoBusqueda]' : '1',
+		'FiltroEstado[latitud]' : latitudG,
+		'FiltroEstado[longitud]' : longitudG,
+		'FiltroEstado[idEspecialidad]' : ""
+	};
+
+	xhr.open("POST", url);
+	xhr.send(params);
+
+};
+
