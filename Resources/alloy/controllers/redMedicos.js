@@ -1,4 +1,24 @@
 function Controller() {
+    function UbicacionActual() {
+        Titanium.Geolocation.accuracy = Titanium.Geolocation.ACCURACY_BEST;
+        Titanium.Geolocation.distanceFilter = 10;
+        Ti.Geolocation.purpose = "Mostrar tu posición actual";
+        Titanium.Geolocation.getCurrentPosition(function(e) {
+            if (!e.success || e.error) return;
+            longitudG = e.coords.longitude;
+            latitudG = e.coords.latitude;
+        });
+        var newRegion = {
+            latitude: latitudG,
+            longitude: longitudG,
+            animate: true,
+            latitudeDelta: .03,
+            longitudeDelta: .03
+        };
+        $.mapview.setLocation(newRegion);
+        anotacionUsuario.latitude = latitudG;
+        anotacionUsuario.longitude = longitudG;
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "redMedicos";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -21,6 +41,7 @@ function Controller() {
         regionFit: true,
         top: 0,
         backgroundColor: "white",
+        left: "0%",
         id: "mapview",
         ns: "Alloy.Globals.Map"
     });
@@ -52,31 +73,31 @@ function Controller() {
       default:
         alert("Unknown error.");
     }
-    var mountainView = Alloy.Globals.Map.createAnnotation({
-        latitude: 37.390749,
-        longitude: -122.081651,
-        title: "Appcelerator Headquarters",
-        subtitle: "Mountain View, CA",
-        pincolor: Alloy.Globals.Map.ANNOTATION_RED,
-        myid: 1
-    });
+    var calidad = Alloy.Dimension() + ".png";
+    var latitudG = 22.71539;
+    var longitudG = -101.25489;
     $.mapview.region = {
-        latitude: 33.74511,
-        longitude: -84.38993,
-        latitudeDelta: .5,
-        longitudeDelta: .5
+        latitude: latitudG,
+        longitude: longitudG,
+        latitudeDelta: 25,
+        longitudeDelta: 30
     };
-    $.mapview.setLocation({
-        latitude: 37.337681,
-        longitude: -122.038193,
-        animate: true,
-        latitudeDelta: .04,
-        longitudeDelta: .04
-    });
     $.mapview.userLocation = true;
     $.mapview.userLocationButton = true;
-    $.mapview.addAnnotation(mountainView);
-    setTimeout(function() {}, 2e3);
+    var anotacionUsuario = Alloy.Globals.Map.createAnnotation({
+        latitude: latitudG,
+        longitude: longitudG,
+        image: "/images/user" + calidad,
+        animate: true,
+        title: "Tu Ubicaciòn Actual"
+    });
+    $.mapview.addAnnotation(anotacionUsuario);
+    setTimeout(function() {
+        UbicacionActual();
+    }, 3e3);
+    setTimeout(function() {
+        UbicacionActual();
+    }, 1e3);
     _.extend($, exports);
 }
 

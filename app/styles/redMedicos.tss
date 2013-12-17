@@ -9,7 +9,7 @@
 	mapType: Alloy.Globals.Map.NORMAL_TYPE,
 	regionFit: true,
 	top: 0,
-	backgroundColor: "white"
+	left: '0%'
 },
 "#mapContainer":
 {

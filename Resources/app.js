@@ -73,7 +73,8 @@ Alloy.FuenteChica = function() {
 Alloy.Dimension = function() {
     var ancho = Titanium.Platform.displayCaps.platformWidth;
     if (480 > ancho) return "baja";
-    if (ancho >= 480) return "media";
+    if (ancho >= 480 && 600 > ancho) return "media";
+    if (ancho >= 600) return "alta";
 };
 
 Alloy.createController("index");

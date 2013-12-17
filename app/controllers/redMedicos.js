@@ -1,4 +1,4 @@
-
+/*-------------Valida servicios de google play----------------*/
 var rc = Alloy.Globals.Map.isGooglePlayServicesAvailable();
 switch (rc) {
     case Alloy.Globals.Map.SUCCESS:
@@ -20,25 +20,62 @@ switch (rc) {
         alert('Unknown error.');
         break;
 }
-var mountainView = Alloy.Globals.Map.createAnnotation({
-    latitude:37.390749,
-    longitude:-122.081651,
-    title:"Appcelerator Headquarters",
-    subtitle:'Mountain View, CA',
-    pincolor:Alloy.Globals.Map.ANNOTATION_RED,
-    myid:1 // Custom property to uniquely identify this annotation.
-});
+/*-----------------------------Variables--------------------*/
+var calidad = Alloy.Dimension() + '.png';
+var latitudG = 22.71539;
+var longitudG = -101.25489;
 
-$.mapview.region = {latitude:33.74511, longitude:-84.38993,
-                    latitudeDelta:0.5, longitudeDelta:0.5};
-$.mapview.setLocation({
-    latitude:37.337681, longitude:-122.038193, animate:true,
-    latitudeDelta:0.04, longitudeDelta:0.04});
+$.mapview.region = {latitude: latitudG, longitude: longitudG,
+                    latitudeDelta: 25, longitudeDelta: 30 };
+                    
                    
 $.mapview.userLocation = true;
 $.mapview.userLocationButton = true;
-$.mapview.addAnnotation(mountainView);
+var anotacionUsuario = Alloy.Globals.Map.createAnnotation({
+	latitude: latitudG,
+	longitude: longitudG,
+	image: '/images/user' + calidad,
+	animate: true,
+	title: 'Tu Ubicaciòn Actual'
+});
+
+$.mapview.addAnnotation(anotacionUsuario);
+setTimeout(function(){
+	UbicacionActual();
+}, 3000);
+
 
 setTimeout(function(){
+	UbicacionActual();
+}, 1000);
+
+//----------------------Funciones
+
+function UbicacionActual () {
+  	Titanium.Geolocation.accuracy = Titanium.Geolocation.ACCURACY_BEST;
+	Titanium.Geolocation.distanceFilter = 10;
+	Ti.Geolocation.purpose = "Mostrar tu posición actual";
+	Titanium.Geolocation.getCurrentPosition(function(e) {
+		if(!e.success || e.error) {
+			                // currentLocation.text = 'error: ' + JSON.stringify(e.error);
+			                // Ti.API.info("Code translation: "+translateErrorCode(e.code));
+			                // alert('error ' + JSON.stringify(e.error));
+			                //alert(e.error + " - " + e.code );
+			                return;
+		}
+		longitudG = e.coords.longitude;
+		latitudG = e.coords.latitude;
+	});
+
+	var newRegion = {
+		latitude : latitudG,
+		longitude : longitudG,
+		animate : true,
+		latitudeDelta : 0.03,
+		longitudeDelta : 0.03
+	};
 	
-}, 2000);
+	$.mapview.setLocation(newRegion);
+	anotacionUsuario.latitude = latitudG;
+	anotacionUsuario.longitude = longitudG;
+}

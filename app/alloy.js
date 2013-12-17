@@ -63,8 +63,11 @@ Alloy.Dimension = function  () {
   {
   	return 'baja';
   }
-  else if(ancho >= 480){
+  else if(ancho >= 480 && ancho < 600){
   	return 'media';
+  }
+  else if(ancho >= 600){
+  	return 'alta';
   };		
 };
   
