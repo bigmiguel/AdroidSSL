@@ -23,13 +23,13 @@ var Menu = [
 		vista : 'indicadores'
 	},
 	{
-		icon:'/images/citas.png',
+		icon:'/images/user.png',
 		titulo : 'Mis Citas',
 		vista : 'citas'
 	}
 ];
 var MenuSI = [{
-		icon:'/images/doc.png',
+		icon:'/images/docleftmedia.png',
 		titulo : 'Medicos',
 		vista : 'redMedicos'
 	}];

@@ -42,6 +42,9 @@ var anotacionUsuario = Alloy.Globals.Map.createAnnotation({
 $.mapview.addAnnotation(anotacionUsuario);
 setTimeout(function(){
 	UbicacionActual();
+	setTimeout(function(){
+		downMedicosCercanos();
+	}, 1000);
 }, 4000);
 
 
@@ -95,8 +98,8 @@ function downMedicosCercanos() {
 
 						var uno = obj.mresultados[i];
 
-						mapaLatitudR = uno.latitud;
-						mapaLongitudR = uno.longitud;
+						var	mapaLatitudR = uno.latitud;
+						var mapaLongitudR = uno.longitud;
 
 						var prueba = Math.pow((Math.pow((mapaLongitudR - longitudG), 2) + Math.pow((mapaLatitudR - latitudG), 2)), .5) * 111.11;
 
@@ -122,7 +125,6 @@ function downMedicosCercanos() {
 						mapview.addAnnotation(annotationDoctor);
 					}
 
-					tabla.setData(tableData);
 					var newRegion = {
 						latitude : latitudG,
 						longitude : longitudG,
@@ -133,9 +135,6 @@ function downMedicosCercanos() {
 
 					setTimeout(function() {
 						mapview.setLocation(newRegion);
-						actInd.hide();
-						win2.remove(vistaCargando);
-						mainLib.isClickeable = true;
 					}, 1000);
 
 				}
