@@ -200,7 +200,7 @@ function Controller() {
         vista: "citas"
     } ];
     var MenuSI = [ {
-        icon: "/images/doc.png",
+        icon: "/images/docleftmedia.png",
         titulo: "Medicos",
         vista: "redMedicos"
     } ];

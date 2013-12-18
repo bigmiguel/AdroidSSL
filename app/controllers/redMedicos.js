@@ -80,7 +80,6 @@ function UbicacionActual () {
 }
 var deltaautomatico = 0.03;
 function downMedicosCercanos() {
-	var tableData = [];
 	var url = 'http://50.57.28.96/MedicallHomeWeb/index.php/Api/BuscaGeo';
 	var xhr = Titanium.Network.createHTTPClient({
 
@@ -108,21 +107,19 @@ function downMedicosCercanos() {
 							deltaautomatico = 2.0 * Math.pow((Math.pow((mapaLongitudR - longitudG), 2) + Math.pow((mapaLatitudR - latitudG), 2)), 0.5);
 						}
 
-						idMedicoDetail[i] = uno.id;
-						
 						var annotationDoctor = MapModule.createAnnotation({
 							latitude : mapaLatitudR,
 							longitude : mapaLongitudR,
 							image : '/images/doc' + calidad,
 							animate : true,
 							title : '' + uno.nomCompleto,
-							leftButton : '/imagenes/docleft' + calidad,
+							leftButton : '/images/docleft' + calidad,
 							myId : uno.id,
-							rightButton : '/imagenes/der' + calidad,
+							rightButton : '/images/der' + calidad,
 							subtitle : 'Servicio Médico'
 						});
 						
-						mapview.addAnnotation(annotationDoctor);
+						$.mapview.addAnnotation(annotationDoctor);
 					}
 
 					var newRegion = {

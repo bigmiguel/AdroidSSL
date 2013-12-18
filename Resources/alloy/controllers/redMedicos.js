@@ -19,6 +19,64 @@ function Controller() {
         anotacionUsuario.latitude = latitudG;
         anotacionUsuario.longitude = longitudG;
     }
+    function downMedicosCercanos() {
+        var url = "http://50.57.28.96/MedicallHomeWeb/index.php/Api/BuscaGeo";
+        var xhr = Titanium.Network.createHTTPClient({
+            onload: function() {
+                try {
+                    obj = JSON.parse(this.responseText);
+                    mapview.removeAllAnnotations();
+                    mapview.addAnnotation(anotacionUsuario);
+                    if (null == obj.mresultados) alert("no hay resultados"); else {
+                        for (var i = 0; obj.mresultados.length > i; i++) {
+                            var uno = obj.mresultados[i];
+                            var mapaLatitudR = uno.latitud;
+                            var mapaLongitudR = uno.longitud;
+                            var prueba = 111.11 * Math.pow(Math.pow(mapaLongitudR - longitudG, 2) + Math.pow(mapaLatitudR - latitudG, 2), .5);
+                            if (distancia > prueba) {
+                                distancia = prueba;
+                                deltaautomatico = 2 * Math.pow(Math.pow(mapaLongitudR - longitudG, 2) + Math.pow(mapaLatitudR - latitudG, 2), .5);
+                            }
+                            idMedicoDetail[i] = uno.id;
+                            var annotationDoctor = MapModule.createAnnotation({
+                                latitude: mapaLatitudR,
+                                longitude: mapaLongitudR,
+                                image: "/images/doc" + calidad,
+                                animate: true,
+                                title: "" + uno.nomCompleto,
+                                leftButton: "/imagenes/docleft" + calidad,
+                                myId: uno.id,
+                                rightButton: "/imagenes/der" + calidad,
+                                subtitle: "Servicio Médico"
+                            });
+                            mapview.addAnnotation(annotationDoctor);
+                        }
+                        var newRegion = {
+                            latitude: latitudG,
+                            longitude: longitudG,
+                            animate: true,
+                            latitudeDelta: deltaautomatico,
+                            longitudeDelta: deltaautomatico
+                        };
+                        setTimeout(function() {
+                            mapview.setLocation(newRegion);
+                        }, 1e3);
+                    }
+                } catch (errora) {}
+            },
+            onerror: function() {},
+            timeout: 2e4
+        });
+        var params = {
+            "FiltroEstado[idAfiliacion]": "2",
+            "Filtros[idTipoBusqueda]": "1",
+            "FiltroEstado[latitud]": latitudG,
+            "FiltroEstado[longitud]": longitudG,
+            "FiltroEstado[idEspecialidad]": ""
+        };
+        xhr.open("POST", url);
+        xhr.send(params);
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "redMedicos";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -40,7 +98,6 @@ function Controller() {
         mapType: Alloy.Globals.Map.NORMAL_TYPE,
         regionFit: true,
         top: 0,
-        backgroundColor: "white",
         left: "0%",
         id: "mapview",
         ns: "Alloy.Globals.Map"
@@ -94,10 +151,11 @@ function Controller() {
     $.mapview.addAnnotation(anotacionUsuario);
     setTimeout(function() {
         UbicacionActual();
-    }, 3e3);
-    setTimeout(function() {
-        UbicacionActual();
-    }, 1e3);
+        setTimeout(function() {
+            downMedicosCercanos();
+        }, 1e3);
+    }, 4e3);
+    var deltaautomatico = .03;
     _.extend($, exports);
 }
 

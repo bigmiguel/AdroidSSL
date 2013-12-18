@@ -23,7 +23,7 @@ var Menu = [
 		vista : 'indicadores'
 	},
 	{
-		icon:'/images/user.png',
+		icon:'/images/citas.png',
 		titulo : 'Mis Citas',
 		vista : 'citas'
 	}
@@ -55,9 +55,9 @@ $.leftTableViewSI.data = _dSI;
 
 $.wnSlideMenu.addEventListener('load', function (e) {
 	//alert($.leftTableView.headerView.size.height);//.size.height);  
-	var altoMenu = ((Menu.length + 1) * $.leftTableView.headerView.size.height) + 10;
+	/*var altoMenu = ((Menu.length + 1) * $.leftTableView.headerView.size.height) + 10;
 	$.leftTableView.setHeight(altoMenu);
-	$.leftTableViewSI.setHeight(altoMenu);
+	$.leftTableViewSI.setHeight(altoMenu);*/
 });
 //Evento que se dispara cuando se hace click sobre una opcion del menu
 $.leftTableView.addEventListener('click',function(e)
