@@ -12,6 +12,8 @@
 	width: Ti.UI.FILL,
 	textAlign: 'center',
 	color:"#FFF",
+	shadowColor: '#000000',
+    shadowOffset: {x:0,y:-3},
 	backgroundGradient: {
 		type: 'linear',
 		colors: [ '#001f5b', '#4E6EAD'],
@@ -74,7 +76,7 @@
 	top: "0dp",
 	left: "0dp",
 	width : Ti.Platform.displayCaps.platformWidth,
-	height : "8%",
+	height : "10%",
 	backgroundColor:"#001f5b",
 	color:"#FFF",
 	backgroundGradient: {

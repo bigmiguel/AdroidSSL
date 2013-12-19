@@ -22,7 +22,7 @@ function Controller() {
         top: "0dp",
         left: "0dp",
         width: Ti.Platform.displayCaps.platformWidth,
-        height: "8%",
+        height: "10%",
         backgroundColor: "#001f5b",
         color: "#FFF",
         backgroundGradient: {
@@ -37,6 +37,11 @@ function Controller() {
         height: Ti.UI.SIZE,
         color: "#FFF",
         textAlign: "center",
+        shadowColor: "#000000",
+        shadowOffset: {
+            x: 0,
+            y: -3
+        },
         backgroundGradient: "none",
         zIndex: 0,
         text: "Salud Laboral",

@@ -2,7 +2,9 @@
   <TableViewRow id="row">
     <ImageView id="icon" height="80%"  top="10%" />
     <View class="vgroup">
-      <Label id="title"></Label>
+       <View height="3dp"> </View>
+       <Label id="title"></Label>
+       <View height="3dp"> </View>
     </View>
   </TableViewRow>
 </Alloy>

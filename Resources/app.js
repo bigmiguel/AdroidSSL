@@ -1,6 +1,8 @@
 var Alloy = require("alloy"), _ = Alloy._, Backbone = Alloy.Backbone;
 
-Alloy.Globals.Map = require("ti.map");
+try {
+    Alloy.Globals.Map = require("ti.map");
+} catch (ex) {}
 
 Alloy.FuenteTitulo = function() {
     if ("baja" == Alloy.Dimension()) return {
@@ -13,6 +15,13 @@ Alloy.FuenteTitulo = function() {
     if ("media" == Alloy.Dimension()) return {
         font: {
             fontSize: "30%",
+            fontWeight: "bold",
+            font: "PT Sans"
+        }
+    };
+    if ("alta" == Alloy.Dimension()) return {
+        font: {
+            fontSize: "45%",
             fontWeight: "bold",
             font: "PT Sans"
         }
@@ -34,6 +43,13 @@ Alloy.Fuente = function() {
             font: "PT Sans"
         }
     };
+    if ("alta" == Alloy.Dimension()) return {
+        font: {
+            fontSize: "30%",
+            fontWeight: "bold",
+            font: "PT Sans"
+        }
+    };
 };
 
 Alloy.FuenteMedia = function() {
@@ -51,6 +67,13 @@ Alloy.FuenteMedia = function() {
             font: "PT Sans"
         }
     };
+    if ("alta" == Alloy.Dimension()) return {
+        font: {
+            fontSize: "30%",
+            fontWeight: "bold",
+            font: "PT Sans"
+        }
+    };
 };
 
 Alloy.FuenteChica = function() {
@@ -64,6 +87,13 @@ Alloy.FuenteChica = function() {
     if ("media" == Alloy.Dimension()) return {
         font: {
             fontSize: "16%",
+            fontWeight: "bold",
+            font: "PT Sans"
+        }
+    };
+    if ("alta" == Alloy.Dimension()) return {
+        font: {
+            fontSize: "24%",
             fontWeight: "bold",
             font: "PT Sans"
         }

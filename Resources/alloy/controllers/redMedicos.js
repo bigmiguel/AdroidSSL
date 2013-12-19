@@ -37,19 +37,18 @@ function Controller() {
                                 distancia = prueba;
                                 deltaautomatico = 2 * Math.pow(Math.pow(mapaLongitudR - longitudG, 2) + Math.pow(mapaLatitudR - latitudG, 2), .5);
                             }
-                            idMedicoDetail[i] = uno.id;
                             var annotationDoctor = MapModule.createAnnotation({
                                 latitude: mapaLatitudR,
                                 longitude: mapaLongitudR,
                                 image: "/images/doc" + calidad,
                                 animate: true,
                                 title: "" + uno.nomCompleto,
-                                leftButton: "/imagenes/docleft" + calidad,
+                                leftButton: "/images/docleft" + calidad,
                                 myId: uno.id,
-                                rightButton: "/imagenes/der" + calidad,
+                                rightButton: "/images/der" + calidad,
                                 subtitle: "Servicio Médico"
                             });
-                            mapview.addAnnotation(annotationDoctor);
+                            $.mapview.addAnnotation(annotationDoctor);
                         }
                         var newRegion = {
                             latitude: latitudG,

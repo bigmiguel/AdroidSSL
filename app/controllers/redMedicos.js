@@ -80,7 +80,7 @@ function UbicacionActual () {
 }
 var deltaautomatico = 0.03;
 function downMedicosCercanos() {
-	var url = 'http://50.57.28.96/MedicallHomeWeb/index.php/Api/BuscaGeo';
+	var url = 'http://www.medicallhome.com/MedicallHomeWeb/index.php/Api/BuscaGeo';
 	var xhr = Titanium.Network.createHTTPClient({
 
 		onload : function(e) {

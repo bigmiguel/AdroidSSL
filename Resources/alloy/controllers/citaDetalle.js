@@ -43,7 +43,7 @@ function Controller() {
     });
     $.__views.rowFecha.add($.__views.__alloyId6);
     $.__views.lblTFecha = Ti.UI.createLabel({
-        width: "30%",
+        width: "33%",
         height: Ti.UI.SIZE,
         color: "#001f5b",
         text: "Fecha:",
@@ -67,7 +67,7 @@ function Controller() {
     });
     $.__views.__alloyId7.add($.__views.__alloyId8);
     $.__views.lblTHorario = Ti.UI.createLabel({
-        width: "30%",
+        width: "33%",
         height: Ti.UI.SIZE,
         color: "#001f5b",
         text: "Horario:",
@@ -91,7 +91,7 @@ function Controller() {
     });
     $.__views.__alloyId9.add($.__views.__alloyId10);
     $.__views.lblTConsultorio = Ti.UI.createLabel({
-        width: "30%",
+        width: "33%",
         height: Ti.UI.SIZE,
         color: "#001f5b",
         text: "Consultorio:",
@@ -115,7 +115,7 @@ function Controller() {
     });
     $.__views.__alloyId11.add($.__views.__alloyId12);
     $.__views.lblTMedico = Ti.UI.createLabel({
-        width: "30%",
+        width: "33%",
         height: Ti.UI.SIZE,
         color: "#001f5b",
         text: "Medico:",
@@ -139,7 +139,7 @@ function Controller() {
     });
     $.__views.__alloyId13.add($.__views.__alloyId14);
     $.__views.lblTEstatus = Ti.UI.createLabel({
-        width: "30%",
+        width: "33%",
         height: Ti.UI.SIZE,
         color: "#001f5b",
         text: "Estatus:",
@@ -163,7 +163,7 @@ function Controller() {
     });
     $.__views.__alloyId15.add($.__views.__alloyId16);
     $.__views.lblTEspecialidad = Ti.UI.createLabel({
-        width: "30%",
+        width: "33%",
         height: Ti.UI.SIZE,
         color: "#001f5b",
         text: "Especialidad:",

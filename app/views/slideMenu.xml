@@ -9,15 +9,14 @@
 					<TableView id="leftTableView"> 				
 						<HeaderView>
 							<View layout="horizontal">
-							<View height="1px" backgroundColor="#FFF" width="Ti.UI.FILL"></View>
-								<Label id="lblHeaderSL" class="lblHeaderMenu">Salud Laboral</Label>
+								<Label id="lblHeaderSL" class="lblHeaderMenu">Salud Laboral</Label>	
 							</View>
 						</HeaderView> 						
 					</TableView>		
 					<TableView id="leftTableViewSI"> 				
 						<HeaderView>
 							<View layout="horizontal">
-							<View height="1px" backgroundColor="#FFF" width="Ti.UI.FILL"></View>
+							<View height="3dp"/>
 								<Label id="lblHeaderSI" class="lblHeaderMenu">Salud Interactiva</Label>
 							</View>
 						</HeaderView> 						

@@ -46,13 +46,18 @@ function Controller() {
         idIndicador: "-1",
         nombreIndicador: "Peso"
     });
-    var __alloyId37 = [];
-    __alloyId37.push($.__views.rowPeso);
+    var __alloyId45 = [];
+    __alloyId45.push($.__views.rowPeso);
     $.__views.vwPeso = Ti.UI.createView({
         id: "vwPeso",
         layout: "horizontal"
     });
     $.__views.rowPeso.add($.__views.vwPeso);
+    $.__views.__alloyId46 = Ti.UI.createView({
+        height: "3dp",
+        id: "__alloyId46"
+    });
+    $.__views.vwPeso.add($.__views.__alloyId46);
     $.__views.lblTPeso = Ti.UI.createLabel({
         width: "40%",
         height: Ti.UI.SIZE,
@@ -68,15 +73,25 @@ function Controller() {
         id: "lblPeso"
     });
     $.__views.vwPeso.add($.__views.lblPeso);
-    $.__views.__alloyId38 = Ti.UI.createTableViewRow({
-        id: "__alloyId38"
+    $.__views.__alloyId47 = Ti.UI.createView({
+        height: "3dp",
+        id: "__alloyId47"
     });
-    __alloyId37.push($.__views.__alloyId38);
+    $.__views.vwPeso.add($.__views.__alloyId47);
+    $.__views.__alloyId48 = Ti.UI.createTableViewRow({
+        id: "__alloyId48"
+    });
+    __alloyId45.push($.__views.__alloyId48);
     $.__views.vwEstatura = Ti.UI.createView({
         id: "vwEstatura",
         layout: "horizontal"
     });
-    $.__views.__alloyId38.add($.__views.vwEstatura);
+    $.__views.__alloyId48.add($.__views.vwEstatura);
+    $.__views.__alloyId49 = Ti.UI.createView({
+        height: "3dp",
+        id: "__alloyId49"
+    });
+    $.__views.vwEstatura.add($.__views.__alloyId49);
     $.__views.lblTEstatura = Ti.UI.createLabel({
         width: "40%",
         height: Ti.UI.SIZE,
@@ -92,8 +107,13 @@ function Controller() {
         id: "lblEstatura"
     });
     $.__views.vwEstatura.add($.__views.lblEstatura);
+    $.__views.__alloyId50 = Ti.UI.createView({
+        height: "3dp",
+        id: "__alloyId50"
+    });
+    $.__views.vwEstatura.add($.__views.__alloyId50);
     $.__views.tbIndicadores = Ti.UI.createTableView({
-        data: __alloyId37,
+        data: __alloyId45,
         id: "tbIndicadores"
     });
     $.__views.lblCabecera = Ti.UI.createLabel({

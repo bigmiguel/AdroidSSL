@@ -9,8 +9,10 @@
 // object. For example:
 //
 // Alloy.Globals.someGlobalFunction = function(){};
+try{
 Alloy.Globals.Map = require('ti.map');
-
+}
+catch(ex){}
 
 Alloy.FuenteTitulo = function () {
  if(Alloy.Dimension() == 'baja')
@@ -20,6 +22,10 @@ Alloy.FuenteTitulo = function () {
  else if(Alloy.Dimension() =='media')
  {
  	return { font:{ fontSize: "30%", fontWeight :'bold', font: 'PT Sans'} };
+ }
+ else if(Alloy.Dimension() == 'alta')
+ {
+ 	return { font:{ fontSize: "45%", fontWeight :'bold', font: 'PT Sans'} };
  }
 };
 
@@ -32,6 +38,10 @@ Alloy.Fuente = function () {
  {
  	return { font:{ fontSize: "20%", fontWeight :'bold', font: 'PT Sans'} };
  }
+ else if(Alloy.Dimension()=='alta')
+ {
+ 	return { font:{ fontSize: "30%", fontWeight :'bold', font: 'PT Sans'} };
+ }
 };
 
 Alloy.FuenteMedia = function () {
@@ -43,6 +53,10 @@ Alloy.FuenteMedia = function () {
  {
  	return { font:{ fontSize: "25%", fontWeight :'bold', font: 'PT Sans'} };
  }
+ else if(Alloy.Dimension()=='alta')
+ {
+ 	return { font:{ fontSize: "30%", fontWeight :'bold', font: 'PT Sans'} };
+ }
 };
 
 Alloy.FuenteChica = function () {
@@ -53,6 +67,10 @@ Alloy.FuenteChica = function () {
  else if(Alloy.Dimension()=='media')
  {
  	return { font:{ fontSize: "16%", fontWeight :'bold', font: 'PT Sans'} };
+ }
+ else if(Alloy.Dimension()=='alta')
+ {
+ 	return { font:{ fontSize: "24%", fontWeight :'bold', font: 'PT Sans'} };
  }
 };
 

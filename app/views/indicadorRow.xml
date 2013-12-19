@@ -1,7 +1,9 @@
 <Alloy>
 	<TableViewRow id="row">
-		<View layout="horizontal" class="vwFila">				
-	 		<Label id="lblIndicador" class="lbl"></Label><Label id="lblValor" class="dato">Miguel</Label>	 		
+		<View layout="horizontal" class="vwFila">
+			<View height="3dp"> </View>			
+	 		<Label id="lblIndicador" class="lbl"></Label><Label id="lblValor" class="dato">Miguel</Label>
+	 		<View height="3dp"> </View>	 		
 		</View>
 		<ImageView id="imgBien" top="10%" height="80%"></ImageView>
 	</TableViewRow>

@@ -4,13 +4,17 @@
 			<Label id="lblCabecera" class="cabezera">Mis Indicadores:</Label>
 		</HeaderView>		
 		<TableViewRow id="rowPeso" idIndicador="-1" nombreIndicador="Peso">
-			<View id="vwPeso" layout="horizontal">				
+			<View id="vwPeso" layout="horizontal">
+				<View height="3dp"> </View>				
 		 		<Label id="lblTPeso" class="lbl">Peso:</Label><Label id="lblPeso" class="dato"></Label>
+		 		<View height="3dp"> </View>
 			</View>
 		</TableViewRow>
 		<TableViewRow>
-			<View id="vwEstatura" layout="horizontal">				
+			<View id="vwEstatura" layout="horizontal">
+				<View height="3dp"> </View>				
 		 		<Label id="lblTEstatura" class="lbl">Estatura:</Label><Label id="lblEstatura" class="dato"></Label>
+		 		<View height="3dp"> </View>
 			</View>
 		</TableViewRow>
 	</TableView>

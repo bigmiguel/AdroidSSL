@@ -53,12 +53,14 @@ for (var i=0; i < MenuSI.length; i++) {
 $.leftTableView.data =_d;
 $.leftTableViewSI.data = _dSI;
 
-$.wnSlideMenu.addEventListener('load', function (e) {
-	//alert($.leftTableView.headerView.size.height);//.size.height);  
-	/*var altoMenu = ((Menu.length + 1) * $.leftTableView.headerView.size.height) + 10;
+$.leftTableViewSI.addEventListener('postlayout', acomodaMenu);
+function acomodaMenu (e) {
+	
+	var altoMenu = ((Menu.length + 1) * $.leftTableView.headerView.size.height) + 15  + (Menu.length * 6); 
 	$.leftTableView.setHeight(altoMenu);
-	$.leftTableViewSI.setHeight(altoMenu);*/
-});
+	$.leftTableViewSI.setHeight(altoMenu);
+	$.leftTableViewSI.removeEventListener('postlayout', acomodaMenu);
+}
 //Evento que se dispara cuando se hace click sobre una opcion del menu
 $.leftTableView.addEventListener('click',function(e)
 {

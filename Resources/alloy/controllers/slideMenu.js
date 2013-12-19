@@ -1,4 +1,10 @@
 function Controller() {
+    function acomodaMenu() {
+        var altoMenu = (Menu.length + 1) * $.leftTableView.headerView.size.height + 15 + 6 * Menu.length;
+        $.leftTableView.setHeight(altoMenu);
+        $.leftTableViewSI.setHeight(altoMenu);
+        $.leftTableViewSI.removeEventListener("postlayout", acomodaMenu);
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "slideMenu";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -25,13 +31,13 @@ function Controller() {
         id: "leftMenu"
     });
     $.__views.containerview.add($.__views.leftMenu);
-    $.__views.__alloyId40 = Ti.UI.createView({
+    $.__views.__alloyId54 = Ti.UI.createView({
         layout: "horizontal",
         bacbackgroundColor: "#040404",
         height: "12%",
-        id: "__alloyId40"
+        id: "__alloyId54"
     });
-    $.__views.leftMenu.add($.__views.__alloyId40);
+    $.__views.leftMenu.add($.__views.__alloyId54);
     $.__views.imgEmpelado = Ti.UI.createImageView({
         id: "imgEmpelado",
         left: "5px",
@@ -40,7 +46,7 @@ function Controller() {
         height: "40%",
         image: "/images/empDefault.png"
     });
-    $.__views.__alloyId40.add($.__views.imgEmpelado);
+    $.__views.__alloyId54.add($.__views.imgEmpelado);
     $.__views.lblNombre = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
@@ -48,22 +54,15 @@ function Controller() {
         left: "5%",
         id: "lblNombre"
     });
-    $.__views.__alloyId40.add($.__views.lblNombre);
+    $.__views.__alloyId54.add($.__views.lblNombre);
     $.__views.leftTableView = Ti.UI.createTableView({
         id: "leftTableView"
     });
     $.__views.leftMenu.add($.__views.leftTableView);
-    $.__views.__alloyId42 = Ti.UI.createView({
+    $.__views.__alloyId56 = Ti.UI.createView({
         layout: "horizontal",
-        id: "__alloyId42"
+        id: "__alloyId56"
     });
-    $.__views.__alloyId43 = Ti.UI.createView({
-        height: "1px",
-        backgroundColor: "#FFF",
-        width: Ti.UI.FILL,
-        id: "__alloyId43"
-    });
-    $.__views.__alloyId42.add($.__views.__alloyId43);
     $.__views.lblHeaderSL = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
@@ -72,23 +71,21 @@ function Controller() {
         text: "Salud Laboral",
         id: "lblHeaderSL"
     });
-    $.__views.__alloyId42.add($.__views.lblHeaderSL);
-    $.__views.leftTableView.headerView = $.__views.__alloyId42;
+    $.__views.__alloyId56.add($.__views.lblHeaderSL);
+    $.__views.leftTableView.headerView = $.__views.__alloyId56;
     $.__views.leftTableViewSI = Ti.UI.createTableView({
         id: "leftTableViewSI"
     });
     $.__views.leftMenu.add($.__views.leftTableViewSI);
-    $.__views.__alloyId45 = Ti.UI.createView({
+    $.__views.__alloyId58 = Ti.UI.createView({
         layout: "horizontal",
-        id: "__alloyId45"
+        id: "__alloyId58"
     });
-    $.__views.__alloyId46 = Ti.UI.createView({
-        height: "1px",
-        backgroundColor: "#FFF",
-        width: Ti.UI.FILL,
-        id: "__alloyId46"
+    $.__views.__alloyId59 = Ti.UI.createView({
+        height: "3dp",
+        id: "__alloyId59"
     });
-    $.__views.__alloyId45.add($.__views.__alloyId46);
+    $.__views.__alloyId58.add($.__views.__alloyId59);
     $.__views.lblHeaderSI = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
@@ -97,8 +94,8 @@ function Controller() {
         text: "Salud Interactiva",
         id: "lblHeaderSI"
     });
-    $.__views.__alloyId45.add($.__views.lblHeaderSI);
-    $.__views.leftTableViewSI.headerView = $.__views.__alloyId45;
+    $.__views.__alloyId58.add($.__views.lblHeaderSI);
+    $.__views.leftTableViewSI.headerView = $.__views.__alloyId58;
     $.__views.movableview = Ti.UI.createView({
         id: "movableview"
     });
@@ -117,7 +114,7 @@ function Controller() {
         top: "0dp",
         left: "0dp",
         width: Ti.Platform.displayCaps.platformWidth,
-        height: "8%",
+        height: "10%",
         backgroundColor: "#001f5b",
         color: "#FFF",
         backgroundGradient: {
@@ -143,7 +140,7 @@ function Controller() {
         backgroundImage: "/images/ButtonMenu.png",
         backgroundColor: "none",
         left: "2%",
-        top: "7%",
+        top: "13%",
         width: "10%",
         height: "75%",
         style: "none",
@@ -156,6 +153,11 @@ function Controller() {
         height: Ti.UI.SIZE,
         color: "#FFF",
         textAlign: "center",
+        shadowColor: "#000000",
+        shadowOffset: {
+            x: 0,
+            y: -3
+        },
         backgroundGradient: "none",
         zIndex: 0,
         text: "Salud Laboral",
@@ -167,7 +169,7 @@ function Controller() {
         left: "0dp",
         width: Ti.Platform.displayCaps.platformWidth,
         height: Ti.UI.Fill,
-        top: "7%",
+        top: "10%",
         backgroundColor: "white",
         zindex: 2,
         id: "contentview"
@@ -218,11 +220,7 @@ function Controller() {
     }
     $.leftTableView.data = _d;
     $.leftTableViewSI.data = _dSI;
-    $.wnSlideMenu.addEventListener("load", function() {
-        var altoMenu = (Menu.length + 1) * $.leftTableView.headerView.size.height + 10;
-        $.leftTableView.setHeight(altoMenu);
-        $.leftTableViewSI.setHeight(altoMenu);
-    });
+    $.leftTableViewSI.addEventListener("postlayout", acomodaMenu);
     $.leftTableView.addEventListener("click", function(e) {
         $.btnMenu.fireEvent("click");
         $.cargando.show();
