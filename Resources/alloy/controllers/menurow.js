@@ -1,4 +1,8 @@
 function Controller() {
+    function ajustaVista() {
+        $.row.setHeight($.title.size.height + 6);
+        $.row.removeListener("postlayout", ajustaVista);
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "menurow";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -6,7 +10,7 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.row = Ti.UI.createTableViewRow({
+    $.__views.row = Ti.UI.createView({
         selectedBackgroundColor: "#001f5b",
         selectedColor: "#FFF",
         color: "#FFF",
@@ -52,8 +56,9 @@ function Controller() {
     var parametros = arguments[0] || {};
     $.icon.image = parametros.icon;
     $.title.text = parametros.titulo || "";
-    $.row.vista = parametros.vista || "";
+    this.vista = $.title.vista = $.icon.vista = $.row.vista = parametros.vista || "";
     $.title.applyProperties($.createStyle(Alloy.FuenteMedia()));
+    $.row.addEventListener("postlayout", ajustaVista);
     _.extend($, exports);
 }
 

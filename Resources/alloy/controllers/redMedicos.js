@@ -12,8 +12,8 @@ function Controller() {
             latitude: latitudG,
             longitude: longitudG,
             animate: true,
-            latitudeDelta: .03,
-            longitudeDelta: .03
+            latitudeDelta: .02,
+            longitudeDelta: .02
         };
         $.mapview.setLocation(newRegion);
         anotacionUsuario.latitude = latitudG;
@@ -61,7 +61,9 @@ function Controller() {
                             mapview.setLocation(newRegion);
                         }, 1e3);
                     }
-                } catch (errora) {}
+                } catch (errora) {
+                    alert("Error: " + errora);
+                }
             },
             onerror: function() {},
             timeout: 2e4

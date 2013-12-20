@@ -70,8 +70,8 @@ function UbicacionActual () {
 		latitude : latitudG,
 		longitude : longitudG,
 		animate : true,
-		latitudeDelta : 0.03,
-		longitudeDelta : 0.03
+		latitudeDelta : 0.02,
+		longitudeDelta : 0.02
 	};
 	
 	$.mapview.setLocation(newRegion);
@@ -85,6 +85,7 @@ function downMedicosCercanos() {
 
 		onload : function(e) {
 			try {
+				alert(JSON.stringify(this.responseText));
 				obj = JSON.parse(this.responseText);
 				mapview.removeAllAnnotations();
 				mapview.addAnnotation(anotacionUsuario);
@@ -136,7 +137,7 @@ function downMedicosCercanos() {
 
 				}
 			} catch (errora) {
-
+				alert('Error: ' + errora);
 			}
 		},
 		onerror : function(e) {

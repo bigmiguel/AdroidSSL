@@ -1,10 +1,10 @@
 <Alloy>
-  <TableViewRow id="row">
+  <View id="row">
     <ImageView id="icon" height="80%"  top="10%" />
     <View class="vgroup">
        <View height="3dp"> </View>
        <Label id="title"></Label>
        <View height="3dp"> </View>
     </View>
-  </TableViewRow>
+  </View>
 </Alloy>

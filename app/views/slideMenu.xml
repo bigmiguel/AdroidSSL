@@ -6,21 +6,9 @@
 						<ImageView id="imgEmpelado" left='5px' top="5px" width="15%" height="40%" image="/images/empDefault.png"></ImageView>
 						<Label id="lblNombre" ></Label>
 					</View>	
-					<TableView id="leftTableView"> 				
-						<HeaderView>
-							<View layout="horizontal">
-								<Label id="lblHeaderSL" class="lblHeaderMenu">Salud Laboral</Label>	
-							</View>
-						</HeaderView> 						
-					</TableView>		
-					<TableView id="leftTableViewSI"> 				
-						<HeaderView>
-							<View layout="horizontal">
-							<View height="3dp"/>
-								<Label id="lblHeaderSI" class="lblHeaderMenu">Salud Interactiva</Label>
-							</View>
-						</HeaderView> 						
-					</TableView>	
+					<ScrollView id="leftTableView" layout="vertical">
+						<Label id="lblHeaderSL" class="lblHeaderMenu">Salud Laboral</Label>	
+					</ScrollView>
 				</View>		
 				<View id="movableview">
 					<View id="shadowview">
