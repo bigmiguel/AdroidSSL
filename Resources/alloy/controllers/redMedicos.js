@@ -85,25 +85,22 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.mapContainer = Ti.UI.createView({
-        width: Ti.UI.FILL,
-        height: Ti.UI.FILL,
-        backgroundColor: "white",
-        id: "mapContainer"
+    $.__views.redMedicos = Ti.UI.createWindow({
+        id: "redMedicos"
     });
-    $.__views.mapContainer && $.addTopLevelView($.__views.mapContainer);
+    $.__views.redMedicos && $.addTopLevelView($.__views.redMedicos);
     $.__views.mapview = Alloy.Globals.Map.createView({
         width: Ti.UI.FILL,
         height: Ti.UI.FILL,
-        zIndex: 3,
         mapType: Alloy.Globals.Map.NORMAL_TYPE,
         regionFit: true,
         top: 0,
         left: "0%",
         id: "mapview",
-        ns: "Alloy.Globals.Map"
+        ns: "Alloy.Globals.Map",
+        zOrderOnTop: "true"
     });
-    $.__views.mapContainer.add($.__views.mapview);
+    $.__views.redMedicos.add($.__views.mapview);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var rc = Alloy.Globals.Map.isGooglePlayServicesAvailable();

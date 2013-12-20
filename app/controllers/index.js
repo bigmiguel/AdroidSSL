@@ -5,6 +5,7 @@ $.lblTitulo.applyProperties( $.createStyle(Alloy.FuenteTitulo()) );
 $.lblEmpresa.applyProperties( $.createStyle(Alloy.FuenteTitulo()) );
 $.btnSeleccionaEmpresa.applyProperties( $.createStyle(Alloy.Fuente()) );
 $.btnLogin.applyProperties( $.createStyle(Alloy.Fuente()) );
+$.txtNEmpleado.applyProperties( $.createStyle(Alloy.Fuente()) );
 
 
 var idEmpresa = 0;

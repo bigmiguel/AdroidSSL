@@ -6,8 +6,7 @@
 	width: Ti.UI.SIZE,
 	height: Ti.UI.SIZE,
 	color: "#001f5b"
-} 
-,
+} ,
 ".Titulo":{
 	width: Ti.UI.FILL,
 	textAlign: 'center',
@@ -25,8 +24,7 @@
 	borderWidth:'1dp',
 	borderRadius:5,
 	borderColor:'#999',
-	color: "#001f5b",
-	font:{fontSize: '15%'}
+	color: "#001f5b"
 },
 "Button":{
 	backgroundGradient: {
@@ -34,7 +32,6 @@
 		colors: [ '#001f5b', '#4E6EAD'],
 	},
 	color: "#FFF",
-	font: { fontSize: '20%', fontWeight:'blod' },
 	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
 	borderWidth : '1dp',
 	borderRadius : 5
@@ -54,7 +51,6 @@
 },
 ".vwDatos":
 {
-	font: { fontSize: '20%'},
 	layout:'horizontal'
 },
 ".cargando":{

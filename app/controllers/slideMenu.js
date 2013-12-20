@@ -1,4 +1,4 @@
-Alloy.parent = this;
+
 //Estilos controles
 $.lblTitulo.applyProperties( $.createStyle(Alloy.FuenteTitulo()) );
 $.lblNombre.applyProperties( $.createStyle(Alloy.FuenteChica()) );
@@ -77,6 +77,8 @@ for (var i=0; i < MenuSI.length; i++) {
 		$.contentview.add(nuevaVista);
 		_currentView = nuevaVista;
 		$.cargando.hide();
+		$.contentview.setZIndex(2);
+		
 	});
 };
 

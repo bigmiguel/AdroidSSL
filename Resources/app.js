@@ -2,7 +2,9 @@ var Alloy = require("alloy"), _ = Alloy._, Backbone = Alloy.Backbone;
 
 try {
     Alloy.Globals.Map = require("ti.map");
-} catch (ex) {}
+} catch (ex) {
+    alert(ex);
+}
 
 Alloy.FuenteTitulo = function() {
     if ("baja" == Alloy.Dimension()) return {
@@ -14,14 +16,14 @@ Alloy.FuenteTitulo = function() {
     };
     if ("media" == Alloy.Dimension()) return {
         font: {
-            fontSize: "50%",
+            fontSize: "36%",
             fontWeight: "bold",
             font: "PT Sans"
         }
     };
     if ("alta" == Alloy.Dimension()) return {
         font: {
-            fontSize: "70%",
+            fontSize: "72%",
             fontWeight: "bold",
             font: "PT Sans"
         }
@@ -45,7 +47,7 @@ Alloy.Fuente = function() {
     };
     if ("alta" == Alloy.Dimension()) return {
         font: {
-            fontSize: "30%",
+            fontSize: "40%",
             fontWeight: "bold",
             font: "PT Sans"
         }
@@ -62,7 +64,7 @@ Alloy.FuenteMedia = function() {
     };
     if ("media" == Alloy.Dimension()) return {
         font: {
-            fontSize: "35%",
+            fontSize: "25%",
             fontWeight: "bold",
             font: "PT Sans"
         }
@@ -93,11 +95,17 @@ Alloy.FuenteChica = function() {
     };
     if ("alta" == Alloy.Dimension()) return {
         font: {
-            fontSize: "24%",
+            fontSize: "32%",
             fontWeight: "bold",
             font: "PT Sans"
         }
     };
+};
+
+Alloy.espacioMenu = function() {
+    if ("baja" == Alloy.Dimension()) return 6;
+    if ("media" == Alloy.Dimension()) return 15;
+    if ("alta" == Alloy.Dimension()) return 30;
 };
 
 Alloy.Dimension = function() {

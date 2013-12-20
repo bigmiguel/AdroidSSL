@@ -23,4 +23,3 @@ $.lblTArea.applyProperties( $.createStyle(Alloy.Fuente()) );
 $.lblTPuesto.applyProperties( $.createStyle(Alloy.Fuente()) );
 
 $.lblCabecera.applyProperties( $.createStyle(Alloy.FuenteMedia()) );
-

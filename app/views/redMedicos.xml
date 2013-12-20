@@ -1,5 +1,5 @@
 <Alloy>
-	<View id="mapContainer">
-		<View id="mapview" ns="Alloy.Globals.Map"  />
-	</View>
+	<Window>
+		<View id="mapview" ns="Alloy.Globals.Map" zOrderOnTop="true" />
+	</Window>
 </Alloy>

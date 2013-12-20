@@ -7,6 +7,6 @@ this.vista = $.title.vista = $.icon.vista = $.row.vista = parametros.vista || ''
 $.title.applyProperties( $.createStyle(Alloy.FuenteMedia()) );
 $.row.addEventListener('postlayout',ajustaVista);
 function ajustaVista(e){
-	$.row.setHeight($.title.size.height + 6);
+	$.row.setHeight($.title.size.height + Alloy.espacioMenu());
 	$.row.removeListener('postlayout',ajustaVista);
 }

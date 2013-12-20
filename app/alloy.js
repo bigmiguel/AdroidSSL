@@ -12,7 +12,9 @@
 try{
 Alloy.Globals.Map = require('ti.map');
 }
-catch(ex){}
+catch(ex){
+	alert(ex);
+}
 
 Alloy.FuenteTitulo = function () {
  if(Alloy.Dimension() == 'baja')
@@ -51,11 +53,11 @@ Alloy.FuenteMedia = function () {
  }
  else if(Alloy.Dimension()=='media')
  {
- 	return { font:{ fontSize: "30%", fontWeight :'bold', font: 'PT Sans'} };
+ 	return { font:{ fontSize: "25%", fontWeight :'bold', font: 'PT Sans'} };
  }
  else if(Alloy.Dimension()=='alta')
  {
- 	return { font:{ fontSize: "60%", fontWeight :'bold', font: 'PT Sans'} };
+ 	return { font:{ fontSize: "50%", fontWeight :'bold', font: 'PT Sans'} };
  }
 };
 
@@ -74,6 +76,20 @@ Alloy.FuenteChica = function () {
  }
 };
 
+Alloy.espacioMenu = function () {
+ if(Alloy.Dimension() == 'baja')
+ {
+ 	return 6;
+ }
+ else if(Alloy.Dimension()=='media')
+ {
+ 	return 15;
+ }
+ else if(Alloy.Dimension()=='alta')
+ {
+ 	return 30;
+ }
+};
 Alloy.Dimension = function  () {
   var ancho = Titanium.Platform.displayCaps.platformWidth;
  // Ti.API.info('------------------Ancho: ' + ancho);

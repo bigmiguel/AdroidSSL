@@ -61,9 +61,6 @@ function Controller() {
         borderRadius: 5,
         borderColor: "#999",
         color: "#001f5b",
-        font: {
-            fontSize: "15%"
-        },
         top: "5px",
         width: "70%",
         autocorrect: false,
@@ -78,10 +75,6 @@ function Controller() {
             colors: [ "#001f5b", "#4E6EAD" ]
         },
         color: "#FFF",
-        font: {
-            fontSize: "20%",
-            fontWeight: "blod"
-        },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         borderWidth: "1dp",
         borderRadius: 5,
@@ -104,10 +97,6 @@ function Controller() {
             colors: [ "#001f5b", "#4E6EAD" ]
         },
         color: "#FFF",
-        font: {
-            fontSize: "20%",
-            fontWeight: "blod"
-        },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         borderWidth: "1dp",
         borderRadius: 5,
@@ -123,6 +112,7 @@ function Controller() {
     $.lblEmpresa.applyProperties($.createStyle(Alloy.FuenteTitulo()));
     $.btnSeleccionaEmpresa.applyProperties($.createStyle(Alloy.Fuente()));
     $.btnLogin.applyProperties($.createStyle(Alloy.Fuente()));
+    $.txtNEmpleado.applyProperties($.createStyle(Alloy.Fuente()));
     var idEmpresa = 0;
     $.btnLogin.addEventListener("click", function() {
         if ("" == $.txtNEmpleado.value) {

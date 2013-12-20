@@ -108,10 +108,6 @@ function Controller() {
             colors: [ "#001f5b", "#4E6EAD" ]
         },
         color: "#FFF",
-        font: {
-            fontSize: "20%",
-            fontWeight: "blod"
-        },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         borderWidth: "1dp",
         borderRadius: 5,
@@ -132,10 +128,6 @@ function Controller() {
             colors: [ "#001f5b", "#4E6EAD" ]
         },
         color: "#FFF",
-        font: {
-            fontSize: "20%",
-            fontWeight: "blod"
-        },
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         borderWidth: "1dp",
         borderRadius: 5,
@@ -183,7 +175,6 @@ function Controller() {
     $.__views.contentview.add($.__views.cargando);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    Alloy.parent = this;
     $.lblTitulo.applyProperties($.createStyle(Alloy.FuenteTitulo()));
     $.lblNombre.applyProperties($.createStyle(Alloy.FuenteChica()));
     $.lblHeaderSL.applyProperties($.createStyle(Alloy.FuenteMedia()));
@@ -244,6 +235,7 @@ function Controller() {
             $.contentview.add(nuevaVista);
             _currentView = nuevaVista;
             $.cargando.hide();
+            $.contentview.setZIndex(2);
         });
     }
     exports.muestraSubMenu = function() {
