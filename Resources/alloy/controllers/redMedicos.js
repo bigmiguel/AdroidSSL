@@ -25,8 +25,8 @@ function Controller() {
             onload: function() {
                 try {
                     obj = JSON.parse(this.responseText);
-                    mapview.removeAllAnnotations();
-                    mapview.addAnnotation(anotacionUsuario);
+                    $.mapview.removeAllAnnotations();
+                    $.mapview.addAnnotation(anotacionUsuario);
                     if (null == obj.mresultados) alert("no hay resultados"); else {
                         for (var i = 0; obj.mresultados.length > i; i++) {
                             var uno = obj.mresultados[i];
@@ -37,7 +37,7 @@ function Controller() {
                                 distancia = prueba;
                                 deltaautomatico = 2 * Math.pow(Math.pow(mapaLongitudR - longitudG, 2) + Math.pow(mapaLatitudR - latitudG, 2), .5);
                             }
-                            var annotationDoctor = MapModule.createAnnotation({
+                            var annotationDoctor = Alloy.Globals.Map.createAnnotation({
                                 latitude: mapaLatitudR,
                                 longitude: mapaLongitudR,
                                 image: "/images/doc" + calidad,
@@ -58,7 +58,7 @@ function Controller() {
                             longitudeDelta: deltaautomatico
                         };
                         setTimeout(function() {
-                            mapview.setLocation(newRegion);
+                            $.mapview.setLocation(newRegion);
                         }, 1e3);
                     }
                 } catch (errora) {

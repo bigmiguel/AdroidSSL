@@ -85,10 +85,9 @@ function downMedicosCercanos() {
 
 		onload : function(e) {
 			try {
-				alert(JSON.stringify(this.responseText));
 				obj = JSON.parse(this.responseText);
-				mapview.removeAllAnnotations();
-				mapview.addAnnotation(anotacionUsuario);
+				$.mapview.removeAllAnnotations();
+				$.mapview.addAnnotation(anotacionUsuario);
 
 				if (obj.mresultados == null) {
 					alert("no hay resultados");

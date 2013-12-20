@@ -180,7 +180,6 @@ function Controller() {
         _d.push(_menuFila);
         $.leftTableView.add(_menuFila);
         _menuFila.addEventListener("click", function(e) {
-            alert(JSON.stringify(e));
             $.btnMenu.fireEvent("click");
             $.cargando.show();
             $.contentview.remove(_currentView);

@@ -45,7 +45,6 @@ for (var i=0; i < Menu.length; i++) {
 	//Evento que se dispara cuando se hace click sobre una opcion del menu
 	_menuFila.addEventListener('click',function(e)
 	{
-		alert(JSON.stringify(e));
 		$.btnMenu.fireEvent('click');
 		$.cargando.show();
 		$.contentview.remove(_currentView);
