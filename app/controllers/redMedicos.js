@@ -108,7 +108,7 @@ function downMedicosCercanos() {
 							deltaautomatico = 2.0 * Math.pow((Math.pow((mapaLongitudR - longitudG), 2) + Math.pow((mapaLatitudR - latitudG), 2)), 0.5);
 						}
 
-						var annotationDoctor = MapModule.createAnnotation({
+						var annotationDoctor = Alloy.Globals.Map.createAnnotation({
 							latitude : mapaLatitudR,
 							longitude : mapaLongitudR,
 							image : '/images/doc' + calidad,
@@ -132,7 +132,7 @@ function downMedicosCercanos() {
 					};
 
 					setTimeout(function() {
-						mapview.setLocation(newRegion);
+						$.mapview.setLocation(newRegion);
 					}, 1000);
 
 				}
