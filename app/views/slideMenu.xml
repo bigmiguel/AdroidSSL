@@ -9,11 +9,15 @@
 					<ScrollView id="leftTableView" layout="vertical">
 						<Label id="lblHeaderSL" class="lblHeaderMenu">Salud Laboral</Label>	
 					</ScrollView>
+				</View>
+				<View id="rightMenu" visible="false">
+					
 				</View>		
 				<View id="movableview">
 					<View id="shadowview">
 						<View id="navview">							
-							<Button id="btnMenu" />								
+							<Button id="btnMenu" />
+							<Button id="btnMenuDer" />								
 							<Label id="lblTitulo" class="Titulo" backgroundColor="none" backgroundGradient="none">Salud Laboral</Label>														
 						</View>						
 						<View id="contentview">

@@ -21,11 +21,11 @@ Alloy.FuenteTitulo = function () {
  }
  else if(Alloy.Dimension() =='media')
  {
- 	return { font:{ fontSize: "30%", fontWeight :'bold', font: 'PT Sans'} };
+ 	return { font:{ fontSize: "36%", fontWeight :'bold', font: 'PT Sans'} };
  }
  else if(Alloy.Dimension() == 'alta')
  {
- 	return { font:{ fontSize: "45%", fontWeight :'bold', font: 'PT Sans'} };
+ 	return { font:{ fontSize: "72%", fontWeight :'bold', font: 'PT Sans'} };
  }
 };
 
@@ -40,7 +40,7 @@ Alloy.Fuente = function () {
  }
  else if(Alloy.Dimension()=='alta')
  {
- 	return { font:{ fontSize: "30%", fontWeight :'bold', font: 'PT Sans'} };
+ 	return { font:{ fontSize: "40%", fontWeight :'bold', font: 'PT Sans'} };
  }
 };
 
@@ -51,11 +51,11 @@ Alloy.FuenteMedia = function () {
  }
  else if(Alloy.Dimension()=='media')
  {
- 	return { font:{ fontSize: "25%", fontWeight :'bold', font: 'PT Sans'} };
+ 	return { font:{ fontSize: "30%", fontWeight :'bold', font: 'PT Sans'} };
  }
  else if(Alloy.Dimension()=='alta')
  {
- 	return { font:{ fontSize: "30%", fontWeight :'bold', font: 'PT Sans'} };
+ 	return { font:{ fontSize: "60%", fontWeight :'bold', font: 'PT Sans'} };
  }
 };
 
@@ -70,7 +70,7 @@ Alloy.FuenteChica = function () {
  }
  else if(Alloy.Dimension()=='alta')
  {
- 	return { font:{ fontSize: "24%", fontWeight :'bold', font: 'PT Sans'} };
+ 	return { font:{ fontSize: "32%", fontWeight :'bold', font: 'PT Sans'} };
  }
 };
 

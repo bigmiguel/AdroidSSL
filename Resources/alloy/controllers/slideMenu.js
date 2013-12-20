@@ -63,6 +63,17 @@ function Controller() {
         id: "lblHeaderSL"
     });
     $.__views.leftTableView.add($.__views.lblHeaderSL);
+    $.__views.rightMenu = Ti.UI.createView({
+        top: "0dp",
+        right: "0dp",
+        width: "80%",
+        zIndex: "0",
+        backgroundColor: "#303030",
+        layout: "vertical",
+        id: "rightMenu",
+        visible: "false"
+    });
+    $.__views.containerview.add($.__views.rightMenu);
     $.__views.movableview = Ti.UI.createView({
         id: "movableview"
     });
@@ -115,6 +126,30 @@ function Controller() {
         id: "btnMenu"
     });
     $.__views.navview.add($.__views.btnMenu);
+    $.__views.btnMenuDer = Ti.UI.createButton({
+        backgroundGradient: {
+            type: "linear",
+            colors: [ "#001f5b", "#4E6EAD" ]
+        },
+        color: "#FFF",
+        font: {
+            fontSize: "20%",
+            fontWeight: "blod"
+        },
+        borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+        borderWidth: "1dp",
+        borderRadius: 5,
+        backgroundImage: "/images/ButtonMenu.png",
+        backgroundColor: "none",
+        right: "2%",
+        top: "13%",
+        width: "10%",
+        height: "75%",
+        style: "none",
+        zIndex: 2,
+        id: "btnMenuDer"
+    });
+    $.__views.navview.add($.__views.btnMenuDer);
     $.__views.lblTitulo = Ti.UI.createLabel({
         width: Ti.UI.FILL,
         height: Ti.UI.SIZE,
@@ -148,6 +183,7 @@ function Controller() {
     $.__views.contentview.add($.__views.cargando);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    Alloy.parent = this;
     $.lblTitulo.applyProperties($.createStyle(Alloy.FuenteTitulo()));
     $.lblNombre.applyProperties($.createStyle(Alloy.FuenteChica()));
     $.lblHeaderSL.applyProperties($.createStyle(Alloy.FuenteMedia()));
@@ -210,7 +246,15 @@ function Controller() {
             $.cargando.hide();
         });
     }
+    exports.muestraSubMenu = function() {
+        $.btnMenuDer.show();
+    };
+    exports.ocultaSubMenu = function() {
+        $.btnMenuDer.hide();
+    };
     $.btnMenu.addEventListener("click", function(e) {
+        $.leftMenu.show();
+        $.rightMenu.hide();
         if (true == e.source.toggle) {
             $.movableview.setWidth(Titanium.Platform.displayCaps.platformWidth);
             $.movableview.animate({
@@ -222,6 +266,26 @@ function Controller() {
         } else {
             $.movableview.animate({
                 left: "60%",
+                duration: 400,
+                curve: Ti.UI.ANIMATION_CURVE_EASE_IN_OUT
+            });
+            e.source.toggle = true;
+        }
+    });
+    $.btnMenuDer.addEventListener("click", function(e) {
+        $.leftMenu.hide();
+        $.rightMenu.show();
+        if (true == e.source.toggle) {
+            $.movableview.setWidth(Titanium.Platform.displayCaps.platformWidth);
+            $.movableview.animate({
+                left: 0,
+                duration: 400,
+                curve: Ti.UI.ANIMATION_CURVE_EASE_IN_OUT
+            });
+            e.source.toggle = false;
+        } else {
+            $.movableview.animate({
+                left: "-80%",
                 duration: 400,
                 curve: Ti.UI.ANIMATION_CURVE_EASE_IN_OUT
             });

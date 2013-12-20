@@ -6,6 +6,14 @@
 	backgroundColor : "#303030",
 	layout:"vertical"
 },
+"#rightMenu":{
+	top: "0dp",
+	right: "0dp",
+	width: "80%",
+	zIndex: "0",
+	backgroundColor : "#303030",
+	layout:"vertical"
+},
 "#contentview": {
 	left : "0dp",
 	width : Ti.Platform.displayCaps.platformWidth,
@@ -23,6 +31,16 @@
 	backgroundImage : '/images/ButtonMenu.png',	
 	backgroundColor:'none',	
 	left : "2%",
+	top : "13%",
+	width : "10%",
+	height : "75%",
+	style : "none",
+	zIndex: 2
+},
+"#btnMenuDer": {
+	backgroundImage : '/images/ButtonMenu.png',	
+	backgroundColor:'none',	
+	right : "2%",
 	top : "13%",
 	width : "10%",
 	height : "75%",

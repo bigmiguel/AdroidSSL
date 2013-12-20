@@ -134,6 +134,7 @@ function Controller() {
     var calidad = Alloy.Dimension() + ".png";
     var latitudG = 22.71539;
     var longitudG = -101.25489;
+    var distancia = 1e6;
     $.mapview.region = {
         latitude: latitudG,
         longitude: longitudG,

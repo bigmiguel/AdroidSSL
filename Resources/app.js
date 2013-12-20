@@ -14,14 +14,14 @@ Alloy.FuenteTitulo = function() {
     };
     if ("media" == Alloy.Dimension()) return {
         font: {
-            fontSize: "30%",
+            fontSize: "50%",
             fontWeight: "bold",
             font: "PT Sans"
         }
     };
     if ("alta" == Alloy.Dimension()) return {
         font: {
-            fontSize: "45%",
+            fontSize: "70%",
             fontWeight: "bold",
             font: "PT Sans"
         }
@@ -62,14 +62,14 @@ Alloy.FuenteMedia = function() {
     };
     if ("media" == Alloy.Dimension()) return {
         font: {
-            fontSize: "25%",
+            fontSize: "35%",
             fontWeight: "bold",
             font: "PT Sans"
         }
     };
     if ("alta" == Alloy.Dimension()) return {
         font: {
-            fontSize: "30%",
+            fontSize: "50%",
             fontWeight: "bold",
             font: "PT Sans"
         }

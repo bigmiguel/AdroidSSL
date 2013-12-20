@@ -1,3 +1,4 @@
+Alloy.parent = this;
 //Estilos controles
 $.lblTitulo.applyProperties( $.createStyle(Alloy.FuenteTitulo()) );
 $.lblNombre.applyProperties( $.createStyle(Alloy.FuenteChica()) );
@@ -78,8 +79,19 @@ for (var i=0; i < MenuSI.length; i++) {
 		$.cargando.hide();
 	});
 };
+
+//Oculta o muestra el boton 
+exports.muestraSubMenu = function(){
+	$.btnMenuDer.show();
+};
+exports.ocultaSubMenu = function(){
+	$.btnMenuDer.hide();
+};
+
 //Evento para abrir el Menu
 $.btnMenu.addEventListener('click',function(e){
+	$.leftMenu.show();
+    $.rightMenu.hide();
 	 if(e.source.toggle == true){
 	 	$.movableview.setWidth(Titanium.Platform.displayCaps.platformWidth);
         $.movableview.animate({
@@ -93,6 +105,28 @@ $.btnMenu.addEventListener('click',function(e){
     else{
          $.movableview.animate({
             left : "60%",
+            duration : 400,
+            curve : Ti.UI.ANIMATION_CURVE_EASE_IN_OUT
+        });
+        e.source.toggle  = true;
+    }
+});
+$.btnMenuDer.addEventListener('click',function(e){
+$.leftMenu.hide();
+$.rightMenu.show();
+	 if(e.source.toggle == true){
+	 	$.movableview.setWidth(Titanium.Platform.displayCaps.platformWidth);
+        $.movableview.animate({
+            left:0,
+            duration:400,
+            curve:Ti.UI.ANIMATION_CURVE_EASE_IN_OUT
+        });
+        e.source.toggle = false;
+    }
+    // If the menu isn't opened
+    else{
+         $.movableview.animate({
+            left : "-80%",
             duration : 400,
             curve : Ti.UI.ANIMATION_CURVE_EASE_IN_OUT
         });
