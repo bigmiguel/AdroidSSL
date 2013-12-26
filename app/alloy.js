@@ -9,6 +9,21 @@
 // object. For example:
 //
 // Alloy.Globals.someGlobalFunction = function(){};
+Alloy.limpiaPicker = function(picker){
+	try{
+	if(picker.columns[0]) {
+    var _col = picker.columns[0];
+        var len = _col.rowCount;
+        for(var x = len-1; x >= 0; x-- ){
+                var _row = _col.rows[x];
+                _col.removeRow(_row);
+               }
+        }
+       }catch(ex)
+       {
+       	Ti.API.info(ex);
+       }
+};
 try{
 Alloy.Globals.Map = require('ti.map');
 }
@@ -34,45 +49,45 @@ Alloy.FuenteTitulo = function () {
 Alloy.Fuente = function () {
  if(Alloy.Dimension() == 'baja')
  {
- 	return { font:{ fontSize: "10%", fontWeight :'bold', font: 'PT Sans'} };
+ 	return { font:{ fontSize: "13%", font: 'PT Sans'} };
  }
  else if(Alloy.Dimension() =='media')
  {
- 	return { font:{ fontSize: "20%", fontWeight :'bold', font: 'PT Sans'} };
+ 	return { font:{ fontSize: "26%", font: 'PT Sans'} };
  }
  else if(Alloy.Dimension()=='alta')
  {
- 	return { font:{ fontSize: "40%", fontWeight :'bold', font: 'PT Sans'} };
+ 	return { font:{ fontSize: "50%", font: 'PT Sans'} };
  }
 };
 
 Alloy.FuenteMedia = function () {
  if(Alloy.Dimension() == 'baja')
  {
- 	return { font:{ fontSize: "15%", fontWeight :'bold', font: 'PT Sans'} };
+ 	return { font:{ fontSize: "13%", font: 'PT Sans'} };
  }
  else if(Alloy.Dimension()=='media')
  {
- 	return { font:{ fontSize: "25%", fontWeight :'bold', font: 'PT Sans'} };
+ 	return { font:{ fontSize: "25%", font: 'PT Sans'} };
  }
  else if(Alloy.Dimension()=='alta')
  {
- 	return { font:{ fontSize: "50%", fontWeight :'bold', font: 'PT Sans'} };
+ 	return { font:{ fontSize: "50%", font: 'PT Sans'} };
  }
 };
 
 Alloy.FuenteChica = function () {
  if(Alloy.Dimension() == 'baja')
  {
- 	return { font:{ fontSize: "8%", fontWeight :'bold', font: 'PT Sans'} };
+ 	return { font:{ fontSize: "10%", font: 'PT Sans'} };
  }
  else if(Alloy.Dimension()=='media')
  {
- 	return { font:{ fontSize: "16%", fontWeight :'bold', font: 'PT Sans'} };
+ 	return { font:{ fontSize: "16%", font: 'PT Sans'} };
  }
  else if(Alloy.Dimension()=='alta')
  {
- 	return { font:{ fontSize: "32%", fontWeight :'bold', font: 'PT Sans'} };
+ 	return { font:{ fontSize: "32%", font: 'PT Sans'} };
  }
 };
 
@@ -90,9 +105,10 @@ Alloy.espacioMenu = function () {
  	return 30;
  }
 };
+
 Alloy.Dimension = function  () {
   var ancho = Titanium.Platform.displayCaps.platformWidth;
- // Ti.API.info('------------------Ancho: ' + ancho);
+  Ti.API.info('------------------Ancho: ' + ancho);
   if(ancho < 480)
   {
   	return 'baja';

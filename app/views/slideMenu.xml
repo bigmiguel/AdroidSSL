@@ -1,5 +1,5 @@
 <Alloy>
-	<Window id="wnSlideMenu" orientationModes="[Titanium.UI.PORTRAIT]">		
+	<Window id="wnSlideMenu" orientationModes="[Titanium.UI.PORTRAIT]" navBarHidden="true">		
 		<View id="containerview">			
 				<View id="leftMenu" >
 					<View layout="horizontal" bacbackgroundColor="#040404" height="12%" >
@@ -7,11 +7,12 @@
 						<Label id="lblNombre" ></Label>
 					</View>	
 					<ScrollView id="leftTableView" layout="vertical">
-						<Label id="lblHeaderSL" class="lblHeaderMenu">Salud Laboral</Label>	
+						<Label id="lblHeaderSL" class="lblHeaderMenu">Salud Laboral</Label>
+						<Label class="linea"></Label>	
 					</ScrollView>
 				</View>
 				<View id="rightMenu" visible="false">
-					
+				
 				</View>		
 				<View id="movableview">
 					<View id="shadowview">

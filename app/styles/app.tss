@@ -12,7 +12,7 @@
 	textAlign: 'center',
 	color:"#FFF",
 	shadowColor: '#000000',
-    shadowOffset: {x:0,y:-3},
+    shadowOffset: {x:0,y:2},
 	backgroundGradient: {
 		type: 'linear',
 		colors: [ '#001f5b', '#4E6EAD'],
@@ -35,10 +35,6 @@
 	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
 	borderWidth : '1dp',
 	borderRadius : 5
-}
-,
-".tabMenu":{
-	height: '20px'
 },
 ".dato":{
 	color:'#666' 
@@ -48,10 +44,6 @@
 },
 ".rowDatos":{
 	touchEnabled: false
-},
-".vwDatos":
-{
-	layout:'horizontal'
 },
 ".cargando":{
 	width:Ti.UI.FILL,
@@ -79,4 +71,9 @@
 		type: 'linear',
 		colors: [ '#001f5b', '#4E6EAD'],
 	}	
+},
+".linea":{
+	backgroundColor:"#FFFFFF",
+	width:'80%',
+	height: '.5dp'
 }

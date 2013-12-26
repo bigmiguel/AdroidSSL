@@ -73,7 +73,7 @@ $.txtNEmpleado.addEventListener('focus', txtFocus);
 
 function txtFocus(e){	
 	if ($.vwLogin.top == '20%') {
-		$.vwLogin.animate({ top:'8%', duration : 2000});	
+		$.vwLogin.animate({ top:'20%', duration : 2000});	
 	};		
 }
 //Evento que se dispara cuando se carga la vista

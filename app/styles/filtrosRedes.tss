@@ -1,0 +1,28 @@
+".tituloRed": {
+	backgroundColor: '#FFFFFF',
+	color: '#DA0A0A',
+	width: Ti.UI.FILL,
+	textAlign: 'center',
+	left: 0,
+	shadowColor: '#000000',
+    shadowOffset: {x:0,y:2}
+},
+"Picker":{
+	width: '100%'
+},
+"Label":{
+	color:"#FFFFFF",
+	width: Ti.UI.FILL,
+	left: '10dp'
+},
+"#btnBuscarMedico":{
+	color: '#000',
+	top: '5dp',
+	left: '30%',
+	borderColor:'#4C5E82',
+	backgroundGradient:{ 
+        type:'linear', 
+        colors:[{color:'#7E9CD6', position:0.0}, {color:'#4E6EAD', position:1.0}], 
+        backFillStart: true 
+    }
+}

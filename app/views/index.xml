@@ -1,5 +1,5 @@
 <Alloy>
-	<Window class="container">
+	<Window class="container" navBarHidden="true">
 		<View id="navview">													
 			<Label id="lblTitulo" class="Titulo" backgroundColor="none" backgroundGradient="none">Salud Laboral</Label>														
 		</View>	

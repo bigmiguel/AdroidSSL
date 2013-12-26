@@ -2,7 +2,7 @@
 //Estilos controles
 $.lblTitulo.applyProperties( $.createStyle(Alloy.FuenteTitulo()) );
 $.lblNombre.applyProperties( $.createStyle(Alloy.FuenteChica()) );
-$.lblHeaderSL.applyProperties( $.createStyle(Alloy.FuenteMedia()) );
+$.lblHeaderSL.applyProperties( $.createStyle(Alloy.FuenteChica()) );
 
 //Obtiene datos del usuario
 var alto = Titanium.Platform.displayCaps.platformHeight;
@@ -31,7 +31,8 @@ var Menu = [
 var MenuSI = [{
 		icon:'/images/docleftmedia.png',
 		titulo : 'Medicos',
-		vista : 'redMedicos'
+		vista : 'redMedicos',
+		params: { idAfiliacion : 2}
 	}];
 	
 var _d = [];
@@ -49,6 +50,10 @@ for (var i=0; i < Menu.length; i++) {
 		$.btnMenu.fireEvent('click');
 		$.cargando.show();
 		$.contentview.remove(_currentView);
+		
+		if(vistaDer != null)
+			$.rightMenu.remove(vistaDer);
+		$.btnMenuDer.hide();
 		var nuevaVista = Alloy.createController(e.source.vista).getView();	
 		$.contentview.add(nuevaVista);
 		_currentView = nuevaVista;
@@ -57,11 +62,16 @@ for (var i=0; i < Menu.length; i++) {
 };
 //Menu salud interactiva
 var lblTitulo = Ti.UI.createLabel({
-	text:'Salud Laboral'
+	text:'Salud Interactiva'
 });
+var lblLinea = Ti.UI.createLabel();
+$.addClass(lblLinea, 'linea');
+
 $.addClass(lblTitulo, 'lblHeaderMenu');
-lblTitulo.applyProperties( $.createStyle(Alloy.FuenteMedia()) );
+lblTitulo.applyProperties($.createStyle(Alloy.FuenteChica()));
+
 $.leftTableView.add(lblTitulo);
+$.leftTableView.add(lblLinea);
 for (var i=0; i < MenuSI.length; i++) {
   	var _parametros = MenuSI[i];
   	var _menuFila = Alloy.createController('menurow', _parametros).getView();  		 
@@ -78,18 +88,15 @@ for (var i=0; i < MenuSI.length; i++) {
 		_currentView = nuevaVista;
 		$.cargando.hide();
 		$.contentview.setZIndex(2);
-		
 	});
 };
-
-//Oculta o muestra el boton 
-exports.muestraSubMenu = function(){
-	$.btnMenuDer.show();
-};
-exports.ocultaSubMenu = function(){
-	$.btnMenuDer.hide();
-};
-
+//Eventos a nivel Aplicacion
+var vistaDer = null;
+Ti.App.addEventListener('muestraSubMenu', function  (e) {
+  $.btnMenuDer.show();
+  vistaDer = Alloy.createController(e.vista, e.parametros).getView();
+$.rightMenu.add(vistaDer);
+});
 //Evento para abrir el Menu
 $.btnMenu.addEventListener('click',function(e){
 	$.leftMenu.show();

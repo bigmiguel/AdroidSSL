@@ -1,5 +1,5 @@
 //Estilio a los controles
-$.lblCabecera.applyProperties( $.createStyle(Alloy.FuenteMedia()) );
+$.lblCabecera.applyProperties( $.createStyle(Alloy.FuenteTitulo()) );
 //Obtiene datos del usuario
 var emp = JSON.parse(Ti.App.Properties.getString("Empleado"));
 

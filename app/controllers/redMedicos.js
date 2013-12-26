@@ -1,3 +1,4 @@
+
 /*-------------Valida servicios de google play----------------*/
 var rc = Alloy.Globals.Map.isGooglePlayServicesAvailable();
 switch (rc) {
@@ -21,11 +22,21 @@ switch (rc) {
         break;
 }
 /*-----------------------------Variables--------------------*/
+
+var args = arguments[0] || {};
+var idAfiliacion = args.idAfiliacion;
+var img = '';
 var calidad = Alloy.Dimension() + '.png';
 var latitudG = 22.71539;
 var longitudG = -101.25489;
 var distancia = 1000000;
 
+switch(idAfiliacion)
+{
+	case 2:
+	 img = 'doc';
+		break;
+}
 $.mapview.region = {latitude: latitudG, longitude: longitudG,
                     latitudeDelta: 25, longitudeDelta: 30 };
                     
@@ -48,7 +59,11 @@ setTimeout(function(){
 	}, 1000);
 }, 4000);
 
-
+//Muestra subMenu
+Ti.App.fireEvent('muestraSubMenu',{
+	vista:'filtrosRedes',
+	idAfiliacion: idAfiliacion
+});
 //----------------------Funciones
 
 function UbicacionActual () {
@@ -81,7 +96,7 @@ function UbicacionActual () {
 }
 var deltaautomatico = 0.03;
 function downMedicosCercanos() {
-	var url = 'http://www.medicallhome.com/MedicallHomeWeb/index.php/Api/BuscaGeo';
+	var url = Alloy.CFG.urlAPIMH + 'BuscaGeo';
 	var xhr = Titanium.Network.createHTTPClient({
 
 		onload : function(e) {
@@ -111,10 +126,10 @@ function downMedicosCercanos() {
 						var annotationDoctor = Alloy.Globals.Map.createAnnotation({
 							latitude : mapaLatitudR,
 							longitude : mapaLongitudR,
-							image : '/images/doc' + calidad,
+							image : '/images/' + img + calidad,
 							animate : true,
 							title : '' + uno.nomCompleto,
-							leftButton : '/images/docleft' + calidad,
+							leftButton : '/images/' + img + 'left' + calidad,
 							myId : uno.id,
 							rightButton : '/images/der' + calidad,
 							subtitle : 'Servicio Médico'
@@ -146,7 +161,7 @@ function downMedicosCercanos() {
 	});
 
 	var params = {
-		'FiltroEstado[idAfiliacion]' : '2',
+		'FiltroEstado[idAfiliacion]' : idAfiliacion,
 		'Filtros[idTipoBusqueda]' : '1',
 		'FiltroEstado[latitud]' : latitudG,
 		'FiltroEstado[longitud]' : longitudG,
@@ -158,3 +173,7 @@ function downMedicosCercanos() {
 
 };
 
+//---------------Eventos nivel aplicacion-------------------
+Ti.App.addEventListener('resultadosRed',function(e){
+	
+});
