@@ -165,7 +165,8 @@ function Controller() {
         height: "75%",
         style: "none",
         zIndex: 2,
-        id: "btnMenuDer"
+        id: "btnMenuDer",
+        visible: "false"
     });
     $.__views.navview.add($.__views.btnMenuDer);
     $.__views.lblTitulo = Ti.UI.createLabel({

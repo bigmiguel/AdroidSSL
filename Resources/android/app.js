@@ -48,19 +48,19 @@ Alloy.FuenteTitulo = function() {
 Alloy.Fuente = function() {
     if ("baja" == Alloy.Dimension()) return {
         font: {
-            fontSize: "13%",
+            fontSize: "12%",
             font: "PT Sans"
         }
     };
     if ("media" == Alloy.Dimension()) return {
         font: {
-            fontSize: "26%",
+            fontSize: "24%",
             font: "PT Sans"
         }
     };
     if ("alta" == Alloy.Dimension()) return {
         font: {
-            fontSize: "50%",
+            fontSize: "48%",
             font: "PT Sans"
         }
     };
