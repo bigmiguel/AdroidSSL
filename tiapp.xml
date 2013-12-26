@@ -74,7 +74,7 @@
         <module platform="android">ti.map</module>
     </modules>
     <deployment-targets>
-        <target device="iphone">true</target>
+        <target device="iphone">false</target>
         <target device="ipad">false</target>
         <target device="android">true</target>
         <target device="blackberry">false</target>

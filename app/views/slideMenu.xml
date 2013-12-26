@@ -18,7 +18,7 @@
 					<View id="shadowview">
 						<View id="navview">							
 							<Button id="btnMenu" />
-							<Button id="btnMenuDer" />								
+							<Button id="btnMenuDer" visible="false" />								
 							<Label id="lblTitulo" class="Titulo" backgroundColor="none" backgroundGradient="none">Salud Laboral</Label>														
 						</View>						
 						<View id="contentview">
