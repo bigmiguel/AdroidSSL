@@ -10,23 +10,23 @@ function Controller() {
         id: "row"
     });
     $.__views.row && $.addTopLevelView($.__views.row);
-    $.__views.__alloyId40 = Ti.UI.createView({
+    $.__views.__alloyId43 = Ti.UI.createView({
         layout: "horizontal",
-        id: "__alloyId40"
+        id: "__alloyId43"
     });
-    $.__views.row.add($.__views.__alloyId40);
-    $.__views.__alloyId41 = Ti.UI.createView({
+    $.__views.row.add($.__views.__alloyId43);
+    $.__views.__alloyId44 = Ti.UI.createView({
         height: "3dp",
-        id: "__alloyId41"
+        id: "__alloyId44"
     });
-    $.__views.__alloyId40.add($.__views.__alloyId41);
+    $.__views.__alloyId43.add($.__views.__alloyId44);
     $.__views.lblIndicador = Ti.UI.createLabel({
         width: "40%",
         height: Ti.UI.SIZE,
         color: "#001f5b",
         id: "lblIndicador"
     });
-    $.__views.__alloyId40.add($.__views.lblIndicador);
+    $.__views.__alloyId43.add($.__views.lblIndicador);
     $.__views.lblValor = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
@@ -34,12 +34,12 @@ function Controller() {
         text: "Miguel",
         id: "lblValor"
     });
-    $.__views.__alloyId40.add($.__views.lblValor);
-    $.__views.__alloyId42 = Ti.UI.createView({
+    $.__views.__alloyId43.add($.__views.lblValor);
+    $.__views.__alloyId45 = Ti.UI.createView({
         height: "3dp",
-        id: "__alloyId42"
+        id: "__alloyId45"
     });
-    $.__views.__alloyId40.add($.__views.__alloyId42);
+    $.__views.__alloyId43.add($.__views.__alloyId45);
     $.__views.imgBien = Ti.UI.createImageView({
         right: "1dp",
         top: "10%",

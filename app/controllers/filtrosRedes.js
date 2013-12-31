@@ -10,6 +10,7 @@ var idEstado=0;
 var idMunicipio = 0;
 var idEspecialidad = 0;
 var idAfiliacion = args.idAfiliacion;
+var idTipoBusqueda = args.idTipoBusqueda;
 switch(args.tipoRed)
 {
 	case 2:
@@ -19,12 +20,11 @@ switch(args.tipoRed)
 
 //-------------------------------Eventos
 $.pckEstado.addEventListener('change', function(e){
-				Ti.API.info('______________________________Change');
-				idEstado = $.pckEstado.getSelectedRow(0).value;
-				idMunicipio = 0;
-				bajarMunicipiosMedicos();
-				Alloy.limpiaPicker($.pckEspecialidad);
-			});
+	idEstado = $.pckEstado.getSelectedRow(0).value;
+	idMunicipio = 0;
+	bajarMunicipiosMedicos();
+	Alloy.limpiaPicker($.pckEspecialidad);
+});
 $.pckMunicipio.addEventListener('change', function(f) {
 	idEspecialidad = 0;
 	if($.pckMunicipio.getSelectedRow(0) != null){
@@ -35,6 +35,10 @@ $.pckMunicipio.addEventListener('change', function(f) {
 $.pckEspecialidad.addEventListener('change', function(f) {
 	if($.pckEspecialidad.getSelectedRow(0) != null)
 		idEspecialidad = $.pckEspecialidad.getSelectedRow(0).value;
+});
+
+$.btnBuscarMedico.addEventListener('click', function(e){
+	
 });
 
 bajarEstadosMedicos();
@@ -70,7 +74,6 @@ function bajarEstadosMedicos() {
 	xhr.send();
 
 }
-
 function bajarMunicipiosMedicos() {
 	data2 = [];
 	dataEspe = new Array();
@@ -100,7 +103,7 @@ function bajarMunicipiosMedicos() {
 	});
 
 	var params = {
-		'Filtros[idTipoBusqueda]' : '1',
+		'Filtros[idTipoBusqueda]' : idTipoBusqueda,
 		'FiltroEstado[idAfiliacion]' : idAfiliacion,
 		'FiltroEstado[idEstado]' : idEstado
 	};
@@ -108,7 +111,6 @@ function bajarMunicipiosMedicos() {
 	xhr.open("POST", url2);
 	xhr.send(params);
 }
-
 function bajarEspecialidadesMedicos() {
 	//var url = hostApp + '/MedicallHomeWeb/index.php/API/GetMunicipio';
 	//Cambio que hizo Jair
@@ -140,7 +142,7 @@ function bajarEspecialidadesMedicos() {
 	});
 
 	var params = {
-		'Filtros[idTipoBusqueda]' : '1',
+		'Filtros[idTipoBusqueda]' : idTipoBusqueda,
 		'FiltroEstado[idAfiliacion]' : idAfiliacion,
 		'FiltroEstado[idEstado]' : idEstado,
 		'FiltroEstado[idMunicipio]' : idMunicipio,
@@ -151,4 +153,41 @@ function bajarEspecialidadesMedicos() {
 		xhr.send(params);
 	}
 }
+
+function bajarDoctores() {
+	var tableData = [];
+	var url = Alloy.CFG.urlAPIMH + 'busqueda';
+	var latitudNueva;
+	var longitudNueva;
+
+	var xhr = Titanium.Network.createHTTPClient({
+		onload : function(e) {
+			
+			obj = JSON.parse(this.responseText);
+			Ti.App.fireEvent('resultadosRed', obj);
+	
+		},
+		onerror : function(e) {
+			//alert("Error de red");
+		},
+		timeout : 10000
+	});
+
+	//alert('todo estado '+estadoidx);
+	//alert('todo municipio '+municipioidx);
+	//alert('todo espe '+especialidadidx);
+
+	var params = {
+		'Filtros[idTipoBusqueda]' : idTipoBusqueda,
+		'FiltroEstado[idAfiliacion]' : idAfiliacion,
+		'FiltroEstado[idEstado]' : idEstado,
+		'FiltroEstado[idMunicipio]' : idMunicipio,
+		'FiltroEstado[idEspecialidad]' : idEspecialidad,
+	};
+
+	xhr.open("POST", url);
+	xhr.send(params);
+
+}
+//--------------------------------Eventos a nivel aplicacion
 

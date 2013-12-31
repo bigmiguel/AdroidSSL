@@ -52,8 +52,7 @@
 	font : { fontSize : '16px' },
 	color:'#001f5b',
 	left: '50%',
-	top:'50%',
-	style: Ti.UI.ActivityIndicatorStyle.BIG
+	top:'50%'
 },
 ".cabezera":{
 	width: Ti.UI.SIZE,

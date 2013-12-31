@@ -53,11 +53,11 @@ Alloy.Fuente = function () {
  }
  else if(Alloy.Dimension() =='media')
  {
- 	return { font:{ fontSize: "24%", font: 'PT Sans'} };
+ 	return { font:{ fontSize: "22%", font: 'PT Sans'} };
  }
  else if(Alloy.Dimension()=='alta')
  {
- 	return { font:{ fontSize: "48%", font: 'PT Sans'} };
+ 	return { font:{ fontSize: "40%", font: 'PT Sans'} };
  }
 };
 
@@ -108,7 +108,7 @@ Alloy.espacioMenu = function () {
 
 Alloy.Dimension = function  () {
   var ancho = Titanium.Platform.displayCaps.platformWidth;
-  Ti.API.info('------------------Ancho: ' + ancho);
+  //Ti.API.info('------------------Ancho: ' + ancho);
   if(ancho < 480)
   {
   	return 'baja';

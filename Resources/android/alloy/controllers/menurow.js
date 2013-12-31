@@ -1,7 +1,7 @@
 function Controller() {
     function ajustaVista() {
         $.row.setHeight($.title.size.height + Alloy.espacioMenu());
-        $.row.removeListener("postlayout", ajustaVista);
+        $.row.removeEventListener("postlayout", ajustaVista);
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "menurow";

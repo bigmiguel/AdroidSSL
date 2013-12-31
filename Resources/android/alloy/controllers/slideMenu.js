@@ -226,7 +226,8 @@ function Controller() {
         titulo: "Medicos",
         vista: "redMedicos",
         params: {
-            idAfiliacion: 2
+            idAfiliacion: 2,
+            idTipoBusqueda: 1
         }
     } ];
     var _d = [];
@@ -278,6 +279,9 @@ function Controller() {
         $.btnMenuDer.show();
         vistaDer = Alloy.createController(e.vista, e.parametros).getView();
         $.rightMenu.add(vistaDer);
+    });
+    Ti.App.addEventListener("cierraMenuDer", function() {
+        $.btnMenuDer.fireEvent("click");
     });
     $.btnMenu.addEventListener("click", function(e) {
         $.leftMenu.show();

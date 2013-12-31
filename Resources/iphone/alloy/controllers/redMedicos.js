@@ -20,7 +20,7 @@ function Controller() {
         anotacionUsuario.longitude = longitudG;
     }
     function downMedicosCercanos() {
-        var url = "http://www.medicallhome.com/MedicallHomeWeb/index.php/Api/BuscaGeo";
+        var url = Alloy.CFG.urlAPIMH + "BuscaGeo";
         var xhr = Titanium.Network.createHTTPClient({
             onload: function() {
                 try {
@@ -40,10 +40,10 @@ function Controller() {
                             var annotationDoctor = Alloy.Globals.Map.createAnnotation({
                                 latitude: mapaLatitudR,
                                 longitude: mapaLongitudR,
-                                image: "/images/doc" + calidad,
+                                image: "/images/" + img + calidad,
                                 animate: true,
                                 title: "" + uno.nomCompleto,
-                                leftButton: "/images/docleft" + calidad,
+                                leftButton: "/images/" + img + "left" + calidad,
                                 myId: uno.id,
                                 rightButton: "/images/der" + calidad,
                                 subtitle: "Servicio Médico"
@@ -69,8 +69,8 @@ function Controller() {
             timeout: 2e4
         });
         var params = {
-            "FiltroEstado[idAfiliacion]": "2",
-            "Filtros[idTipoBusqueda]": "1",
+            "FiltroEstado[idAfiliacion]": idAfiliacion,
+            "Filtros[idTipoBusqueda]": idTipoBusqueda,
             "FiltroEstado[latitud]": latitudG,
             "FiltroEstado[longitud]": longitudG,
             "FiltroEstado[idEspecialidad]": ""
@@ -128,10 +128,18 @@ function Controller() {
       default:
         alert("Unknown error.");
     }
+    var args = arguments[0] || {};
+    var idAfiliacion = args.idAfiliacion;
+    var idTipoBusqueda = args.idTipoBusqueda;
+    var img = "";
     var calidad = Alloy.Dimension() + ".png";
     var latitudG = 22.71539;
     var longitudG = -101.25489;
     var distancia = 1e6;
+    switch (idAfiliacion) {
+      case 2:
+        img = "doc";
+    }
     $.mapview.region = {
         latitude: latitudG,
         longitude: longitudG,
@@ -154,7 +162,45 @@ function Controller() {
             downMedicosCercanos();
         }, 1e3);
     }, 4e3);
+    Ti.App.fireEvent("muestraSubMenu", {
+        vista: "filtrosRedes",
+        idAfiliacion: idAfiliacion,
+        idTipoBusqueda: idTipoBusqueda
+    });
     var deltaautomatico = .03;
+    Ti.App.addEventListener("resultadosRed", function(e) {
+        var Proveedores = e.mresultados;
+        $.mapview.removeAllAnnotations();
+        $.mapview.addAnnotation(annotation);
+        if (null == Proveedores || 0 == Proveedores.length) alert("no hay resultados"); else {
+            latitudG = Proveedore[0].latitud;
+            longitudG = Proveedore[0].longitud;
+            Ti.App.fireEvent("cierraMenuDer");
+            var newRegion = {
+                latitude: latitudG,
+                longitude: longitudG,
+                latitudeDelta: .03,
+                longitudeDelta: .03,
+                animate: true
+            };
+            $.mapview.setLocation(newRegion);
+            for (var i = 0; Proveedores.length > i; i++) {
+                var proveedor = Proveedores[i];
+                var anotacion = Alloy.Globals.Map.createAnnotation({
+                    latitude: mapaLatitudR,
+                    longitude: mapaLongitudR,
+                    image: "/images/" + img + calidad,
+                    animate: true,
+                    title: "" + uno.nomCompleto,
+                    leftButton: "/images/" + img + "left" + calidad,
+                    myId: proveedor.id,
+                    rightButton: "/images/der" + calidad,
+                    subtitle: "Servicio Médico"
+                });
+                $.mapview.addAnnotation(anotacion);
+            }
+        }
+    });
     _.extend($, exports);
 }
 

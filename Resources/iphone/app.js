@@ -1,5 +1,20 @@
 var Alloy = require("alloy"), _ = Alloy._, Backbone = Alloy.Backbone;
 
+Alloy.limpiaPicker = function(picker) {
+    try {
+        if (picker.columns[0]) {
+            var _col = picker.columns[0];
+            var len = _col.rowCount;
+            for (var x = len - 1; x >= 0; x--) {
+                var _row = _col.rows[x];
+                _col.removeRow(_row);
+            }
+        }
+    } catch (ex) {
+        Ti.API.info(ex);
+    }
+};
+
 try {
     Alloy.Globals.Map = require("ti.map");
 } catch (ex) {
@@ -33,22 +48,19 @@ Alloy.FuenteTitulo = function() {
 Alloy.Fuente = function() {
     if ("baja" == Alloy.Dimension()) return {
         font: {
-            fontSize: "10%",
-            fontWeight: "bold",
+            fontSize: "12%",
             font: "PT Sans"
         }
     };
     if ("media" == Alloy.Dimension()) return {
         font: {
-            fontSize: "20%",
-            fontWeight: "bold",
+            fontSize: "22%",
             font: "PT Sans"
         }
     };
     if ("alta" == Alloy.Dimension()) return {
         font: {
             fontSize: "40%",
-            fontWeight: "bold",
             font: "PT Sans"
         }
     };
@@ -57,22 +69,19 @@ Alloy.Fuente = function() {
 Alloy.FuenteMedia = function() {
     if ("baja" == Alloy.Dimension()) return {
         font: {
-            fontSize: "15%",
-            fontWeight: "bold",
+            fontSize: "13%",
             font: "PT Sans"
         }
     };
     if ("media" == Alloy.Dimension()) return {
         font: {
             fontSize: "25%",
-            fontWeight: "bold",
             font: "PT Sans"
         }
     };
     if ("alta" == Alloy.Dimension()) return {
         font: {
             fontSize: "50%",
-            fontWeight: "bold",
             font: "PT Sans"
         }
     };
@@ -81,22 +90,19 @@ Alloy.FuenteMedia = function() {
 Alloy.FuenteChica = function() {
     if ("baja" == Alloy.Dimension()) return {
         font: {
-            fontSize: "8%",
-            fontWeight: "bold",
+            fontSize: "10%",
             font: "PT Sans"
         }
     };
     if ("media" == Alloy.Dimension()) return {
         font: {
             fontSize: "16%",
-            fontWeight: "bold",
             font: "PT Sans"
         }
     };
     if ("alta" == Alloy.Dimension()) return {
         font: {
             fontSize: "32%",
-            fontWeight: "bold",
             font: "PT Sans"
         }
     };

@@ -1,4 +1,8 @@
 function Controller() {
+    function ajustaVista() {
+        $.vwCita.setHeight(6 * $.lblTFecha.size.height + Alloy.espacioMenu());
+        $.vwCita.removeEventListener("postlayout", ajustaVista);
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "citaDetalle";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -205,8 +209,7 @@ function Controller() {
     $.lblMedico.text = parametros.nomMedico.length > 20 ? parametros.nomMedico.substring(0, 17) + "..." : parametros.nomMedico;
     $.lblEstatus.text = parametros.nomEstatusAgenda;
     $.lblEspecialidad.text = parametros.especialidad;
-    var alto = .25 * Titanium.Platform.displayCaps.platformHeight;
-    $.vwCita.setHeight(alto);
+    $.vwCita.addEventListener("postlayout", ajustaVista);
     _.extend($, exports);
 }
 

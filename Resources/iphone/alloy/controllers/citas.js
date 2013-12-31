@@ -54,7 +54,7 @@ function Controller() {
     $.__views.citas.add($.__views.svCitas);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    $.lblCabecera.applyProperties($.createStyle(Alloy.FuenteMedia()));
+    $.lblCabecera.applyProperties($.createStyle(Alloy.FuenteTitulo()));
     var emp = JSON.parse(Ti.App.Properties.getString("Empleado"));
     actulizaCitas();
     var posYini = 0;

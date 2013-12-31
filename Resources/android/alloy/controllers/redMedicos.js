@@ -70,7 +70,7 @@ function Controller() {
         });
         var params = {
             "FiltroEstado[idAfiliacion]": idAfiliacion,
-            "Filtros[idTipoBusqueda]": "1",
+            "Filtros[idTipoBusqueda]": idTipoBusqueda,
             "FiltroEstado[latitud]": latitudG,
             "FiltroEstado[longitud]": longitudG,
             "FiltroEstado[idEspecialidad]": ""
@@ -130,6 +130,7 @@ function Controller() {
     }
     var args = arguments[0] || {};
     var idAfiliacion = args.idAfiliacion;
+    var idTipoBusqueda = args.idTipoBusqueda;
     var img = "";
     var calidad = Alloy.Dimension() + ".png";
     var latitudG = 22.71539;
@@ -163,10 +164,43 @@ function Controller() {
     }, 4e3);
     Ti.App.fireEvent("muestraSubMenu", {
         vista: "filtrosRedes",
-        idAfiliacion: idAfiliacion
+        idAfiliacion: idAfiliacion,
+        idTipoBusqueda: idTipoBusqueda
     });
     var deltaautomatico = .03;
-    Ti.App.addEventListener("resultadosRed", function() {});
+    Ti.App.addEventListener("resultadosRed", function(e) {
+        var Proveedores = e.mresultados;
+        $.mapview.removeAllAnnotations();
+        $.mapview.addAnnotation(annotation);
+        if (null == Proveedores || 0 == Proveedores.length) alert("no hay resultados"); else {
+            latitudG = Proveedore[0].latitud;
+            longitudG = Proveedore[0].longitud;
+            Ti.App.fireEvent("cierraMenuDer");
+            var newRegion = {
+                latitude: latitudG,
+                longitude: longitudG,
+                latitudeDelta: .03,
+                longitudeDelta: .03,
+                animate: true
+            };
+            $.mapview.setLocation(newRegion);
+            for (var i = 0; Proveedores.length > i; i++) {
+                var proveedor = Proveedores[i];
+                var anotacion = Alloy.Globals.Map.createAnnotation({
+                    latitude: mapaLatitudR,
+                    longitude: mapaLongitudR,
+                    image: "/images/" + img + calidad,
+                    animate: true,
+                    title: "" + uno.nomCompleto,
+                    leftButton: "/images/" + img + "left" + calidad,
+                    myId: proveedor.id,
+                    rightButton: "/images/der" + calidad,
+                    subtitle: "Servicio Médico"
+                });
+                $.mapview.addAnnotation(anotacion);
+            }
+        }
+    });
     _.extend($, exports);
 }
 

@@ -22,8 +22,12 @@ $.lblMedico.text = parametros.nomMedico.length > 20 ? parametros.nomMedico.subst
 $.lblEstatus.text = parametros.nomEstatusAgenda;
 $.lblEspecialidad.text = parametros.especialidad;
 
-var alto = Titanium.Platform.displayCaps.platformHeight * .25;
-$.vwCita.setHeight(alto);
+$.vwCita.addEventListener('postlayout',ajustaVista);
+function ajustaVista(e){
+	$.vwCita.setHeight(($.lblTFecha.size.height * 6) + Alloy.espacioMenu());
+	$.vwCita.removeEventListener('postlayout',ajustaVista);
+}
+
 
 
  

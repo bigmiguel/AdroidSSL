@@ -14,7 +14,7 @@ function Controller() {
     $.__views.cargando && $.addTopLevelView($.__views.cargando);
     $.__views.__alloyId0 = Ti.UI.createActivityIndicator({
         color: "#001f5b",
-        style: Ti.UI.ActivityIndicatorStyle.BIG,
+        style: Titanium.UI.ActivityIndicatorStyle.DARK,
         height: 60,
         width: Ti.UI.FILL,
         top: "50%",

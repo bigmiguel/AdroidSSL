@@ -32,7 +32,10 @@ var MenuSI = [{
 		icon:'/images/docleftmedia.png',
 		titulo : 'Medicos',
 		vista : 'redMedicos',
-		params: { idAfiliacion : 2}
+		params: { 
+			idAfiliacion : 2,
+			idTipoBusqueda: 1
+			}
 	}];
 	
 var _d = [];
@@ -96,6 +99,9 @@ Ti.App.addEventListener('muestraSubMenu', function  (e) {
   $.btnMenuDer.show();
   vistaDer = Alloy.createController(e.vista, e.parametros).getView();
 $.rightMenu.add(vistaDer);
+});
+Ti.App.addEventListener('cierraMenuDer', function(e) {
+  	$.btnMenuDer.fireEvent('click');
 });
 //Evento para abrir el Menu
 $.btnMenu.addEventListener('click',function(e){

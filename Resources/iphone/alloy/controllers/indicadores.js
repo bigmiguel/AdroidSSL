@@ -48,23 +48,23 @@ function Controller() {
         text: "Mis Indicadores:",
         id: "lblCabecera"
     });
-    var __alloyId44 = [];
+    var __alloyId47 = [];
     $.__views.rowPeso = Ti.UI.createTableViewRow({
         id: "rowPeso",
         idIndicador: "-1",
         nombreIndicador: "Peso"
     });
-    __alloyId44.push($.__views.rowPeso);
+    __alloyId47.push($.__views.rowPeso);
     $.__views.vwPeso = Ti.UI.createView({
         id: "vwPeso",
         layout: "horizontal"
     });
     $.__views.rowPeso.add($.__views.vwPeso);
-    $.__views.__alloyId45 = Ti.UI.createView({
+    $.__views.__alloyId48 = Ti.UI.createView({
         height: "3dp",
-        id: "__alloyId45"
+        id: "__alloyId48"
     });
-    $.__views.vwPeso.add($.__views.__alloyId45);
+    $.__views.vwPeso.add($.__views.__alloyId48);
     $.__views.lblTPeso = Ti.UI.createLabel({
         width: "40%",
         height: Ti.UI.SIZE,
@@ -80,25 +80,25 @@ function Controller() {
         id: "lblPeso"
     });
     $.__views.vwPeso.add($.__views.lblPeso);
-    $.__views.__alloyId46 = Ti.UI.createView({
+    $.__views.__alloyId49 = Ti.UI.createView({
         height: "3dp",
-        id: "__alloyId46"
+        id: "__alloyId49"
     });
-    $.__views.vwPeso.add($.__views.__alloyId46);
-    $.__views.__alloyId47 = Ti.UI.createTableViewRow({
-        id: "__alloyId47"
+    $.__views.vwPeso.add($.__views.__alloyId49);
+    $.__views.__alloyId50 = Ti.UI.createTableViewRow({
+        id: "__alloyId50"
     });
-    __alloyId44.push($.__views.__alloyId47);
+    __alloyId47.push($.__views.__alloyId50);
     $.__views.vwEstatura = Ti.UI.createView({
         id: "vwEstatura",
         layout: "horizontal"
     });
-    $.__views.__alloyId47.add($.__views.vwEstatura);
-    $.__views.__alloyId48 = Ti.UI.createView({
+    $.__views.__alloyId50.add($.__views.vwEstatura);
+    $.__views.__alloyId51 = Ti.UI.createView({
         height: "3dp",
-        id: "__alloyId48"
+        id: "__alloyId51"
     });
-    $.__views.vwEstatura.add($.__views.__alloyId48);
+    $.__views.vwEstatura.add($.__views.__alloyId51);
     $.__views.lblTEstatura = Ti.UI.createLabel({
         width: "40%",
         height: Ti.UI.SIZE,
@@ -114,13 +114,13 @@ function Controller() {
         id: "lblEstatura"
     });
     $.__views.vwEstatura.add($.__views.lblEstatura);
-    $.__views.__alloyId49 = Ti.UI.createView({
+    $.__views.__alloyId52 = Ti.UI.createView({
         height: "3dp",
-        id: "__alloyId49"
+        id: "__alloyId52"
     });
-    $.__views.vwEstatura.add($.__views.__alloyId49);
+    $.__views.vwEstatura.add($.__views.__alloyId52);
     $.__views.tbIndicadores = Ti.UI.createTableView({
-        data: __alloyId44,
+        data: __alloyId47,
         headerView: $.__views.lblCabecera,
         id: "tbIndicadores"
     });
@@ -131,7 +131,7 @@ function Controller() {
     $.lblTEstatura.applyProperties($.createStyle(Alloy.Fuente()));
     $.lblPeso.applyProperties($.createStyle(Alloy.Fuente()));
     $.lblEstatura.applyProperties($.createStyle(Alloy.Fuente()));
-    $.lblCabecera.applyProperties($.createStyle(Alloy.FuenteMedia()));
+    $.lblCabecera.applyProperties($.createStyle(Alloy.FuenteTitulo()));
     var emp = JSON.parse(Ti.App.Properties.getString("Empleado"));
     var api = Alloy.CFG.urlAPI + "EmpleadoIndicadores?idEmpresa=" + emp.idEmpresa + "&numEmpleado=" + emp.numEmpleado;
     Ti.API.info(api);

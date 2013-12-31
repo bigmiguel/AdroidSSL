@@ -25,6 +25,7 @@ switch (rc) {
 
 var args = arguments[0] || {};
 var idAfiliacion = args.idAfiliacion;
+var idTipoBusqueda = args.idTipoBusqueda;
 var img = '';
 var calidad = Alloy.Dimension() + '.png';
 var latitudG = 22.71539;
@@ -62,7 +63,8 @@ setTimeout(function(){
 //Muestra subMenu
 Ti.App.fireEvent('muestraSubMenu',{
 	vista:'filtrosRedes',
-	idAfiliacion: idAfiliacion
+	idAfiliacion: idAfiliacion,
+	idTipoBusqueda: idTipoBusqueda
 });
 //----------------------Funciones
 
@@ -162,7 +164,7 @@ function downMedicosCercanos() {
 
 	var params = {
 		'FiltroEstado[idAfiliacion]' : idAfiliacion,
-		'Filtros[idTipoBusqueda]' : '1',
+		'Filtros[idTipoBusqueda]' : idTipoBusqueda,
 		'FiltroEstado[latitud]' : latitudG,
 		'FiltroEstado[longitud]' : longitudG,
 		'FiltroEstado[idEspecialidad]' : ""
@@ -175,5 +177,108 @@ function downMedicosCercanos() {
 
 //---------------Eventos nivel aplicacion-------------------
 Ti.App.addEventListener('resultadosRed',function(e){
-	
+	var Proveedores = e.mresultados;
+	$.mapview.removeAllAnnotations();
+	$.mapview.addAnnotation(annotation);
+	if (Proveedores == null || Proveedores.length == 0) {
+				alert("no hay resultados");
+	} else {
+		latitudG = Proveedore[0].latitud;
+		longitudG = Proveedore[0].longitud;
+		Ti.App.fireEvent('cierraMenuDer');
+		var newRegion = {
+				latitude : latitudG,
+				longitude : longitudG,
+				latitudeDelta : 0.03,
+				longitudeDelta : 0.03,
+				animate : true
+				};
+		$.mapview.setLocation(newRegion);
+		for(var i=0; i < Proveedores.length; i++) {
+			var proveedor = Proveedores[i];
+			var anotacion = Alloy.Globals.Map.createAnnotation({
+							latitude : mapaLatitudR,
+							longitude : mapaLongitudR,
+							image : '/images/' + img + calidad,
+							animate : true,
+							title : '' + uno.nomCompleto,
+							leftButton : '/images/' + img + 'left' + calidad,
+							myId : proveedor.id,
+							rightButton : '/images/der' + calidad,
+							subtitle : 'Servicio Médico'
+					});
+			$.mapview.addAnnotation(anotacion);
+		};
+	}
 });
+/*
+		try {
+					for (var i = 0; i < obj.mresultados.length; i++) {
+						
+						var row = Ti.UI.createTableViewRow();
+						row.height = tamano3 * 4;
+
+						var doctorlista = Titanium.UI.createLabel({
+							text : '',
+							top : alto * .01,
+							left : ancho * .05,
+							width : ancho * .85,
+							height : tamano2,
+							color : '#001F5B',
+							textAlign : 'left',
+							font : {
+								fontSize : tamano3,
+								fontFamily : fuente
+							},
+						});
+
+						doctorlista.text = '' + uno.nomCompleto;
+						doctoresID[i] = uno.nomCompleto;
+
+						var direccionlista = Titanium.UI.createLabel({
+							text : '',
+							top : (alto * .02) + tamano3,
+							left : ancho * .05,
+							width : ancho * .85,
+							height : tamano4 * 2.7,
+							color : '#9D9D9C',
+							textAlign : 'left',
+							font : {
+								fontSize : tamano4,
+								fontFamily : fuente
+							},
+						});
+						direccionlista.text = '' + uno.direccion;
+
+						var flechader = Titanium.UI.createImageView({
+							image : '/imagenes/flechalistas.png',
+							top : tamano3 * 1.5,
+							right : ancho * .03,
+							width : ancho * .02,
+							height : ancho * .05,
+						});
+
+						var separadorlistas = Titanium.UI.createImageView({
+							image : '/imagenes/linealistas.png',
+							bottom : 1,
+							right : ancho * .05,
+							width : ancho * .9,
+						});
+
+						row.add(doctorlista);
+						row.add(direccionlista);
+						row.add(flechader);
+						row.add(separadorlistas);
+						tableData.push(row);
+
+						
+						
+					}
+
+					
+
+					tabla.setData(tableData);
+				}
+			} catch(oerror) {
+
+			}*/

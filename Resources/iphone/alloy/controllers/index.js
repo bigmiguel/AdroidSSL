@@ -1,7 +1,7 @@
 function Controller() {
     function txtFocus() {
         "20%" == $.vwLogin.top && $.vwLogin.animate({
-            top: "8%",
+            top: "20%",
             duration: 2e3
         });
     }
@@ -15,6 +15,7 @@ function Controller() {
     $.__views.index = Ti.UI.createWindow({
         backgroundColor: "white",
         layout: "vertical",
+        navBarHidden: "true",
         id: "index"
     });
     $.__views.index && $.addTopLevelView($.__views.index);
@@ -40,7 +41,7 @@ function Controller() {
         shadowColor: "#000000",
         shadowOffset: {
             x: 0,
-            y: -3
+            y: 2
         },
         backgroundGradient: "none",
         zIndex: 0,
@@ -78,7 +79,7 @@ function Controller() {
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         borderWidth: "1dp",
         borderRadius: 5,
-        top: "5px",
+        top: "5dp",
         title: "Selecciona Empresa",
         id: "btnSeleccionaEmpresa"
     });
@@ -100,7 +101,7 @@ function Controller() {
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         borderWidth: "1dp",
         borderRadius: 5,
-        top: "5px",
+        top: "5dp",
         title: "Login",
         id: "btnLogin"
     });

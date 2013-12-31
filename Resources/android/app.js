@@ -54,13 +54,13 @@ Alloy.Fuente = function() {
     };
     if ("media" == Alloy.Dimension()) return {
         font: {
-            fontSize: "24%",
+            fontSize: "22%",
             font: "PT Sans"
         }
     };
     if ("alta" == Alloy.Dimension()) return {
         font: {
-            fontSize: "48%",
+            fontSize: "40%",
             font: "PT Sans"
         }
     };
@@ -116,7 +116,6 @@ Alloy.espacioMenu = function() {
 
 Alloy.Dimension = function() {
     var ancho = Titanium.Platform.displayCaps.platformWidth;
-    Ti.API.info("------------------Ancho: " + ancho);
     if (480 > ancho) return "baja";
     if (ancho >= 480 && 600 > ancho) return "media";
     if (ancho >= 600) return "alta";
