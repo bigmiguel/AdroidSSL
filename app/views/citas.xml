@@ -1,7 +1,7 @@
 <Alloy>
 	<View class="container">
 		<Label id="lblCabecera"  class="cabezera" left="0">Mis Citas:</Label>
-	    <ScrollView id="svCitas" showVerticalScrollIndicator="true" top="0" layout="vertical" >
+	    <ScrollView id="svCitas" showHorizontalScrollIndicator="true" top="0" layout="vertical" >
 	                  
 	    </ScrollView>
     </View>	

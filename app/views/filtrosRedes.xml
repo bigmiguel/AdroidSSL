@@ -1,6 +1,6 @@
 <Alloy>
 	<View layout="horizontal">
-	  <Label id="lblTitulo" class="tituloRed">Red Medica</Label>
+	  <Label id="lblTitulo">Red Medica</Label>
 	  <Label id="lblTEstado" top="10">Estado:</Label>
 	  <Label class="linea"></Label>
 	  <Picker id="pckEstado"></Picker>

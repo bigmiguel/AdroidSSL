@@ -47,7 +47,7 @@ function Controller() {
         width: Ti.UI.FILL,
         height: Ti.UI.FILL,
         id: "svCitas",
-        showVerticalScrollIndicator: "true",
+        showHorizontalScrollIndicator: "true",
         top: "0",
         layout: "vertical"
     });
@@ -62,7 +62,7 @@ function Controller() {
         posYini = e.y;
     });
     $.svCitas.addEventListener("touchend", function(e) {
-        e.y - posYini > 40 && 0 == $.svCitas.contentOffset.y && actulizaCitas();
+        e.y - posYini > 40 && 0 == $.svCitas.contentOffset.Y && actulizaCitas();
     });
     _.extend($, exports);
 }

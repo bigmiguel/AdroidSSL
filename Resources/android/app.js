@@ -109,13 +109,13 @@ Alloy.FuenteChica = function() {
 };
 
 Alloy.espacioMenu = function() {
-    if ("baja" == Alloy.Dimension()) return 6;
-    if ("media" == Alloy.Dimension()) return 15;
-    if ("alta" == Alloy.Dimension()) return 30;
+    if ("baja" == Alloy.Dimension()) return 12;
+    if ("media" == Alloy.Dimension()) return 30;
+    if ("alta" == Alloy.Dimension()) return 45;
 };
 
 Alloy.Dimension = function() {
-    var ancho = Titanium.Platform.displayCaps.platformWidth;
+    var ancho = Ti.Platform.displayCaps.platformWidth;
     if (480 > ancho) return "baja";
     if (ancho >= 480 && 600 > ancho) return "media";
     if (ancho >= 600) return "alta";

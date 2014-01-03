@@ -1,0 +1,16 @@
+<Alloy>
+	<View class="container">
+		<Label id="lblTitulo">Red Medica</Label>
+		<Label id="lblTNombre" class="lblEtiqueda">Nombre:</Label><Label id="lblNombre" class="lblDato"></Label>
+		<Label id="lblTEspecialidad" class="lblEtiqueda">Especialidad:</Label><Label id="lblEspecialidad" class="lblDato"></Label>
+		<Label id="lblTSucursal" class="lblEtiqueda">Sucursal:</Label><Label id="lblSucursal" class="lblDato"></Label>
+		<Label id="lblTHorario" class="lblEtiqueda">Horario:</Label><Label id="lblHorario" class="lblDato"></Label>
+		<Label id="lblTDireccion" class="lblEtiqueda">Direcciòn:</Label><Label id="lblDireccion" class="lblDato"></Label>
+		<Label id="lblTCosto" class="lblEtiqueda">Costo:</Label><Label id="lblCosto" class="lblDato"></Label>
+		<Label id="lblTTelefono" class="lblEtiqueda">Telèfono(s):</Label><Label id="lblTelefono" class="lblDato"></Label>
+		<View id="mapViewDet" ns="Alloy.Globals.Map" zOrderOnTop="true">
+			<ImageView id="imgRuta" image="/images/vermapa.png" top="0" right="-2%" zIndex="999999" width="25%"></ImageView>
+		</View>
+		<Button id="btnBusqueda" top="5dp" left="25%" >Busqueda</Button>
+	</View>
+</Alloy>

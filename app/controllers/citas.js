@@ -40,7 +40,7 @@ $.svCitas.addEventListener('touchstart', function(e)
 });
 $.svCitas.addEventListener('touchend', function(e)
 {	
-	if((e.y - posYini) > 40 && $.svCitas.contentOffset.y == 0)
+	if((e.y - posYini) > 40 && $.svCitas.contentOffset.Y == 0)
 	{
 		actulizaCitas();
 	};	

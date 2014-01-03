@@ -32,11 +32,17 @@ var latitudG = 22.71539;
 var longitudG = -101.25489;
 var distancia = 1000000;
 
-switch(idAfiliacion)
+switch(idTipoBusqueda)
 {
-	case 2:
-	 img = 'doc';
-		break;
+	case '1':
+	 	img = 'doc';
+	break;
+	case '2':
+		img = 'servicio';
+	break;
+	case '3':
+		img ='descuento';
+	break;
 }
 $.mapview.region = {latitude: latitudG, longitude: longitudG,
                     latitudeDelta: 25, longitudeDelta: 30 };
@@ -59,12 +65,16 @@ setTimeout(function(){
 		downMedicosCercanos();
 	}, 1000);
 }, 4000);
-
+setTimeout(function(){
+	UbicacionActual();
+}, 3000);
 //Muestra subMenu
 Ti.App.fireEvent('muestraSubMenu',{
 	vista:'filtrosRedes',
-	idAfiliacion: idAfiliacion,
-	idTipoBusqueda: idTipoBusqueda
+	parametros:{
+		idAfiliacion: idAfiliacion,
+		idTipoBusqueda: idTipoBusqueda
+		}
 });
 //----------------------Funciones
 
@@ -80,8 +90,11 @@ function UbicacionActual () {
 			                //alert(e.error + " - " + e.code );
 			                return;
 		}
+		
 		longitudG = e.coords.longitude;
 		latitudG = e.coords.latitude;
+		
+		
 	});
 
 	var newRegion = {
@@ -98,6 +111,8 @@ function UbicacionActual () {
 }
 var deltaautomatico = 0.03;
 function downMedicosCercanos() {
+
+
 	var url = Alloy.CFG.urlAPIMH + 'BuscaGeo';
 	var xhr = Titanium.Network.createHTTPClient({
 
@@ -132,7 +147,7 @@ function downMedicosCercanos() {
 							animate : true,
 							title : '' + uno.nomCompleto,
 							leftButton : '/images/' + img + 'left' + calidad,
-							myId : uno.id,
+							id : uno.id,
 							rightButton : '/images/der' + calidad,
 							subtitle : 'Servicio Médico'
 						});
@@ -169,41 +184,53 @@ function downMedicosCercanos() {
 		'FiltroEstado[longitud]' : longitudG,
 		'FiltroEstado[idEspecialidad]' : ""
 	};
-
 	xhr.open("POST", url);
 	xhr.send(params);
 
 };
 
+//--------Eventos del Mapa
+$.mapview.addEventListener('click', function  (e) {
+  if(e.clicksource != null && e.clicksource != 'pin'){
+  	Ti.App.fireEvent('MuestraDetalleProveedor', {
+  		idAfiliacion : idAfiliacion,
+  		idTipoBusqueda : idTipoBusqueda,
+  		id : e.annotation.id
+  	});
+  }
+});
 //---------------Eventos nivel aplicacion-------------------
 Ti.App.addEventListener('resultadosRed',function(e){
+	if(route != null)
+  		$.mapview.removeRoute(route);
 	var Proveedores = e.mresultados;
 	$.mapview.removeAllAnnotations();
-	$.mapview.addAnnotation(annotation);
+	$.mapview.addAnnotation(anotacionUsuario);
 	if (Proveedores == null || Proveedores.length == 0) {
 				alert("no hay resultados");
 	} else {
-		latitudG = Proveedore[0].latitud;
-		longitudG = Proveedore[0].longitud;
+		Ti.API.info(JSON.stringify(Proveedores[0]));
+		var newlatitudG = Proveedores[0].latitud;
+		var newlongitudG = Proveedores[0].longitud;
 		Ti.App.fireEvent('cierraMenuDer');
 		var newRegion = {
-				latitude : latitudG,
-				longitude : longitudG,
-				latitudeDelta : 0.03,
-				longitudeDelta : 0.03,
+				latitude : newlatitudG,
+				longitude : newlongitudG,
+				latitudeDelta : 0.05,
+				longitudeDelta : 0.05,
 				animate : true
 				};
 		$.mapview.setLocation(newRegion);
 		for(var i=0; i < Proveedores.length; i++) {
 			var proveedor = Proveedores[i];
 			var anotacion = Alloy.Globals.Map.createAnnotation({
-							latitude : mapaLatitudR,
-							longitude : mapaLongitudR,
+							latitude : proveedor.latitud,
+							longitude : proveedor.longitud,
 							image : '/images/' + img + calidad,
 							animate : true,
-							title : '' + uno.nomCompleto,
+							title : '' + proveedor.nomCompleto,
 							leftButton : '/images/' + img + 'left' + calidad,
-							myId : proveedor.id,
+							id : proveedor.id,
 							rightButton : '/images/der' + calidad,
 							subtitle : 'Servicio Médico'
 					});
@@ -211,74 +238,85 @@ Ti.App.addEventListener('resultadosRed',function(e){
 		};
 	}
 });
-/*
-		try {
-					for (var i = 0; i < obj.mresultados.length; i++) {
-						
-						var row = Ti.UI.createTableViewRow();
-						row.height = tamano3 * 4;
-
-						var doctorlista = Titanium.UI.createLabel({
-							text : '',
-							top : alto * .01,
-							left : ancho * .05,
-							width : ancho * .85,
-							height : tamano2,
-							color : '#001F5B',
-							textAlign : 'left',
-							font : {
-								fontSize : tamano3,
-								fontFamily : fuente
-							},
-						});
-
-						doctorlista.text = '' + uno.nomCompleto;
-						doctoresID[i] = uno.nomCompleto;
-
-						var direccionlista = Titanium.UI.createLabel({
-							text : '',
-							top : (alto * .02) + tamano3,
-							left : ancho * .05,
-							width : ancho * .85,
-							height : tamano4 * 2.7,
-							color : '#9D9D9C',
-							textAlign : 'left',
-							font : {
-								fontSize : tamano4,
-								fontFamily : fuente
-							},
-						});
-						direccionlista.text = '' + uno.direccion;
-
-						var flechader = Titanium.UI.createImageView({
-							image : '/imagenes/flechalistas.png',
-							top : tamano3 * 1.5,
-							right : ancho * .03,
-							width : ancho * .02,
-							height : ancho * .05,
-						});
-
-						var separadorlistas = Titanium.UI.createImageView({
-							image : '/imagenes/linealistas.png',
-							bottom : 1,
-							right : ancho * .05,
-							width : ancho * .9,
-						});
-
-						row.add(doctorlista);
-						row.add(direccionlista);
-						row.add(flechader);
-						row.add(separadorlistas);
-						tableData.push(row);
-
-						
-						
-					}
-
-					
-
-					tabla.setData(tableData);
-				}
-			} catch(oerror) {
-
-			}*/
+var route = null;
+Ti.App.addEventListener('creaRuta', function (e) {
+	var urlGoogle = 'http://maps.google.com/maps/api/directions/json?origin=' + latitudG + ',' + longitudG  + '&destination=' + e.latitud + ','  + e.longitud + '&sensor=false';
+	Ti.API.info(urlGoogle);
+	Ti.App.fireEvent('cierraMenuDer');
+	var cliGoogle =  Ti.Network.createHTTPClient({
+  		onload : function(e){
+  			if(route != null)
+  				$.mapview.removeRoute(route);
+  			var res = JSON.parse(this.responseText);
+  			var puntos = [];
+  			var pasos = res.routes[0].legs[0].steps;
+  			
+  			for (var i=0; i < pasos.length; i++) {
+				var paso = pasos[i];
+				
+				var decodedPolyline = decodeLine(paso.polyline.points);
+				
+				for (var j=0; j < decodedPolyline.length; j++) {
+					var linea =  decodedPolyline[j];
+					if (linea != null) {
+	                    puntos.push({
+	                        latitude: linea[0],
+	                        longitude: linea[1]
+	                    });
+                	}
+				};
+				
+			};	
+		
+			route = Alloy.Globals.Map.createRoute({
+		 		points : puntos,
+		 		color: '#001f5b'
+		 	});
+		 $.mapview.addRoute(route);
+		 UbicacionActual();
+  		},
+  		onerror: function(e){
+  			alert(e);
+  		}
+  	});
+  	
+  	cliGoogle.open('GET', urlGoogle);
+  	cliGoogle.send();		
+});
+//Funcion para generar las lineas
+function decodeLine(encoded) {
+    var len = encoded.length;
+    var index = 0;
+    var array = [];
+    var lat = 0;
+    var lng = 0;
+ 
+    while (index < len) {
+        var b;
+        var shift = 0;
+        var result = 0;
+        do {
+            b = encoded.charCodeAt(index++) - 63;
+            result |= (b & 0x1f) << shift;
+            shift += 5;
+        } while (b >= 0x20);
+ 
+        var dlat = ((result & 1) ? ~(result >> 1) : (result >> 1));
+        lat += dlat;
+ 
+        shift = 0;
+        result = 0;
+        do {
+            b = encoded.charCodeAt(index++) - 63;
+            result |= (b & 0x1f) << shift;
+            shift += 5;
+        } while (b >= 0x20);
+ 
+        var dlng = ((result & 1) ? ~(result >> 1) : (result >> 1));
+        lng += dlng;
+ 
+        array.push([lat * 1e-5, lng * 1e-5]);
+    }
+ 
+    return array;
+}

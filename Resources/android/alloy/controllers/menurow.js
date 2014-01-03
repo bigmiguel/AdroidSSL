@@ -25,19 +25,19 @@ function Controller() {
         top: "10%"
     });
     $.__views.row.add($.__views.icon);
-    $.__views.__alloyId53 = Ti.UI.createView({
+    $.__views.vGroup = Ti.UI.createView({
         layout: "vertical",
         height: Ti.UI.SIZE,
         top: "10%",
         bottom: "10%",
-        id: "__alloyId53"
+        id: "vGroup"
     });
-    $.__views.row.add($.__views.__alloyId53);
-    $.__views.__alloyId54 = Ti.UI.createView({
-        height: "3dp",
-        id: "__alloyId54"
+    $.__views.row.add($.__views.vGroup);
+    $.__views.rowUP = Ti.UI.createView({
+        id: "rowUP",
+        height: "3dp"
     });
-    $.__views.__alloyId53.add($.__views.__alloyId54);
+    $.__views.vGroup.add($.__views.rowUP);
     $.__views.title = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
@@ -45,18 +45,19 @@ function Controller() {
         left: "48dp",
         id: "title"
     });
-    $.__views.__alloyId53.add($.__views.title);
-    $.__views.__alloyId55 = Ti.UI.createView({
-        height: "3dp",
-        id: "__alloyId55"
+    $.__views.vGroup.add($.__views.title);
+    $.__views.rowDown = Ti.UI.createView({
+        id: "rowDown",
+        height: "3dp"
     });
-    $.__views.__alloyId53.add($.__views.__alloyId55);
+    $.__views.vGroup.add($.__views.rowDown);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var parametros = arguments[0] || {};
     $.icon.image = parametros.icon;
     $.title.text = parametros.titulo || "";
-    this.vista = $.title.vista = $.icon.vista = $.row.vista = parametros.vista || "";
+    this.vista = $.title.vista = $.icon.vista = $.row.vista = $.vGroup.vista = $.rowUP.vista = $.rowDown.vista = parametros.vista || "";
+    this.params = $.title.params = $.icon.params = $.row.params = $.vGroup.params = $.rowUP.params = $.rowDown.params = parametros.params || "";
     $.title.applyProperties($.createStyle(Alloy.FuenteMedia()));
     $.row.addEventListener("postlayout", ajustaVista);
     _.extend($, exports);

@@ -24,7 +24,8 @@
 	borderWidth:'1dp',
 	borderRadius:5,
 	borderColor:'#999',
-	color: "#001f5b"
+	color: "#001f5b",
+	backgroundColor: "#FFFFFF"
 },
 "Button":{
 	backgroundGradient: {
@@ -33,7 +34,7 @@
 	},
 	color: "#FFF",
 	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-	borderWidth : '1dp',
+	borderWidth : '0.4dp',
 	borderRadius : 5
 },
 ".dato":{

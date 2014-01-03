@@ -11,10 +11,19 @@ var idMunicipio = 0;
 var idEspecialidad = 0;
 var idAfiliacion = args.idAfiliacion;
 var idTipoBusqueda = args.idTipoBusqueda;
-switch(args.tipoRed)
+switch(idTipoBusqueda)
 {
-	case 2:
+	case '1':
 		$.lblTitulo.text = "Red Mèdica";
+		$.addClass($.lblTitulo, 'tituloRed', { color: '#DA0A0A' });
+	break;
+	case '2':
+		$.lblTitulo.text = "Servicio";
+		$.addClass($.lblTitulo, 'tituloRed', { color: '#DA0A0A' });
+	break;
+	case '3':
+		$.lblTitulo.text = "Descuentos TDC";
+		$.addClass($.lblTitulo, 'tituloRed', { color: '#628f02' });
 	break;
 }
 
@@ -38,7 +47,7 @@ $.pckEspecialidad.addEventListener('change', function(f) {
 });
 
 $.btnBuscarMedico.addEventListener('click', function(e){
-	
+	bajarDoctores();
 });
 
 bajarEstadosMedicos();
@@ -82,7 +91,6 @@ function bajarMunicipiosMedicos() {
 	Alloy.limpiaPicker($.pckMunicipio);
 	var xhr = Titanium.Network.createHTTPClient({
 		onload : function(e) {
-			Ti.API.info(this.responseText);
 			var obj2 = JSON.parse(this.responseText);
 			Alloy.limpiaPicker($.pckMunicipio);
 			for (var i = 0; i < obj2.mmunicipios.length; i++) {
@@ -107,7 +115,7 @@ function bajarMunicipiosMedicos() {
 		'FiltroEstado[idAfiliacion]' : idAfiliacion,
 		'FiltroEstado[idEstado]' : idEstado
 	};
-
+	Ti.API.info(JSON.stringify(params));
 	xhr.open("POST", url2);
 	xhr.send(params);
 }
@@ -119,10 +127,8 @@ function bajarEspecialidadesMedicos() {
 	
 	var url = Alloy.CFG.urlAPIMH + 'busqueda';
 	var xhr = Titanium.Network.createHTTPClient({
-		onload : function(e) {
-			
+		onload : function(e) {			
 			obj = JSON.parse(this.responseText);
-			Ti.API.info(this.responseText);
 			for (var i = 0; i < obj.mespecialidades.length; i++) {
 				var efr = obj.mespecialidades[i];
 				dataEspe[i] = Titanium.UI.createPickerRow({
@@ -182,7 +188,7 @@ function bajarDoctores() {
 		'FiltroEstado[idAfiliacion]' : idAfiliacion,
 		'FiltroEstado[idEstado]' : idEstado,
 		'FiltroEstado[idMunicipio]' : idMunicipio,
-		'FiltroEstado[idEspecialidad]' : idEspecialidad,
+		'FiltroEstado[idEspecialidad]' : idEspecialidad == 0 ? '' : idEspecialidad,
 	};
 
 	xhr.open("POST", url);

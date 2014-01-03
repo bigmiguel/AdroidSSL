@@ -44,7 +44,7 @@ function Controller() {
                                 animate: true,
                                 title: "" + uno.nomCompleto,
                                 leftButton: "/images/" + img + "left" + calidad,
-                                myId: uno.id,
+                                id: uno.id,
                                 rightButton: "/images/der" + calidad,
                                 subtitle: "Servicio Médico"
                             });
@@ -77,6 +77,36 @@ function Controller() {
         };
         xhr.open("POST", url);
         xhr.send(params);
+    }
+    function decodeLine(encoded) {
+        var len = encoded.length;
+        var index = 0;
+        var array = [];
+        var lat = 0;
+        var lng = 0;
+        while (len > index) {
+            var b;
+            var shift = 0;
+            var result = 0;
+            do {
+                b = encoded.charCodeAt(index++) - 63;
+                result |= (31 & b) << shift;
+                shift += 5;
+            } while (b >= 32);
+            var dlat = 1 & result ? ~(result >> 1) : result >> 1;
+            lat += dlat;
+            shift = 0;
+            result = 0;
+            do {
+                b = encoded.charCodeAt(index++) - 63;
+                result |= (31 & b) << shift;
+                shift += 5;
+            } while (b >= 32);
+            var dlng = 1 & result ? ~(result >> 1) : result >> 1;
+            lng += dlng;
+            array.push([ 1e-5 * lat, 1e-5 * lng ]);
+        }
+        return array;
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "redMedicos";
@@ -136,9 +166,17 @@ function Controller() {
     var latitudG = 22.71539;
     var longitudG = -101.25489;
     var distancia = 1e6;
-    switch (idAfiliacion) {
-      case 2:
+    switch (idTipoBusqueda) {
+      case "1":
         img = "doc";
+        break;
+
+      case "2":
+        img = "servicio";
+        break;
+
+      case "3":
+        img = "descuento";
     }
     $.mapview.region = {
         latitude: latitudG,
@@ -162,44 +200,94 @@ function Controller() {
             downMedicosCercanos();
         }, 1e3);
     }, 4e3);
+    setTimeout(function() {
+        UbicacionActual();
+    }, 3e3);
     Ti.App.fireEvent("muestraSubMenu", {
         vista: "filtrosRedes",
-        idAfiliacion: idAfiliacion,
-        idTipoBusqueda: idTipoBusqueda
+        parametros: {
+            idAfiliacion: idAfiliacion,
+            idTipoBusqueda: idTipoBusqueda
+        }
     });
     var deltaautomatico = .03;
+    $.mapview.addEventListener("click", function(e) {
+        null != e.clicksource && "pin" != e.clicksource && Ti.App.fireEvent("MuestraDetalleProveedor", {
+            idAfiliacion: idAfiliacion,
+            idTipoBusqueda: idTipoBusqueda,
+            id: e.annotation.id
+        });
+    });
     Ti.App.addEventListener("resultadosRed", function(e) {
+        null != route && $.mapview.removeRoute(route);
         var Proveedores = e.mresultados;
         $.mapview.removeAllAnnotations();
-        $.mapview.addAnnotation(annotation);
+        $.mapview.addAnnotation(anotacionUsuario);
         if (null == Proveedores || 0 == Proveedores.length) alert("no hay resultados"); else {
-            latitudG = Proveedore[0].latitud;
-            longitudG = Proveedore[0].longitud;
+            Ti.API.info(JSON.stringify(Proveedores[0]));
+            var newlatitudG = Proveedores[0].latitud;
+            var newlongitudG = Proveedores[0].longitud;
             Ti.App.fireEvent("cierraMenuDer");
             var newRegion = {
-                latitude: latitudG,
-                longitude: longitudG,
-                latitudeDelta: .03,
-                longitudeDelta: .03,
+                latitude: newlatitudG,
+                longitude: newlongitudG,
+                latitudeDelta: .05,
+                longitudeDelta: .05,
                 animate: true
             };
             $.mapview.setLocation(newRegion);
             for (var i = 0; Proveedores.length > i; i++) {
                 var proveedor = Proveedores[i];
                 var anotacion = Alloy.Globals.Map.createAnnotation({
-                    latitude: mapaLatitudR,
-                    longitude: mapaLongitudR,
+                    latitude: proveedor.latitud,
+                    longitude: proveedor.longitud,
                     image: "/images/" + img + calidad,
                     animate: true,
-                    title: "" + uno.nomCompleto,
+                    title: "" + proveedor.nomCompleto,
                     leftButton: "/images/" + img + "left" + calidad,
-                    myId: proveedor.id,
+                    id: proveedor.id,
                     rightButton: "/images/der" + calidad,
                     subtitle: "Servicio Médico"
                 });
                 $.mapview.addAnnotation(anotacion);
             }
         }
+    });
+    var route = null;
+    Ti.App.addEventListener("creaRuta", function(e) {
+        var urlGoogle = "http://maps.google.com/maps/api/directions/json?origin=" + latitudG + "," + longitudG + "&destination=" + e.latitud + "," + e.longitud + "&sensor=false";
+        Ti.API.info(urlGoogle);
+        Ti.App.fireEvent("cierraMenuDer");
+        var cliGoogle = Ti.Network.createHTTPClient({
+            onload: function() {
+                null != route && $.mapview.removeRoute(route);
+                var res = JSON.parse(this.responseText);
+                var puntos = [];
+                var pasos = res.routes[0].legs[0].steps;
+                for (var i = 0; pasos.length > i; i++) {
+                    var paso = pasos[i];
+                    var decodedPolyline = decodeLine(paso.polyline.points);
+                    for (var j = 0; decodedPolyline.length > j; j++) {
+                        var linea = decodedPolyline[j];
+                        null != linea && puntos.push({
+                            latitude: linea[0],
+                            longitude: linea[1]
+                        });
+                    }
+                }
+                route = Alloy.Globals.Map.createRoute({
+                    points: puntos,
+                    color: "#001f5b"
+                });
+                $.mapview.addRoute(route);
+                UbicacionActual();
+            },
+            onerror: function(e) {
+                alert(e);
+            }
+        });
+        cliGoogle.open("GET", urlGoogle);
+        cliGoogle.send();
     });
     _.extend($, exports);
 }

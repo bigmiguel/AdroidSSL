@@ -1,5 +1,3 @@
-if (Titanium.Platform.osname == 'android') 
-	Ti.Android.currentActivity.setRequestedOrientation(Ti.Android.SCREEN_ORIENTATION_PORTRAIT);
 //Estilos controles
 $.lblTitulo.applyProperties( $.createStyle(Alloy.FuenteTitulo()) );
 $.lblEmpresa.applyProperties( $.createStyle(Alloy.FuenteTitulo()) );

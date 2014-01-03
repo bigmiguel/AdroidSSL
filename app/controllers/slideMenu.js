@@ -33,8 +33,24 @@ var MenuSI = [{
 		titulo : 'Medicos',
 		vista : 'redMedicos',
 		params: { 
-			idAfiliacion : 2,
-			idTipoBusqueda: 1
+			idAfiliacion : '2',
+			idTipoBusqueda: '1'
+			}
+	},{
+		icon:'/images/descuentoleftmedia.png',
+		titulo : 'Descuentos TDC',
+		vista : 'redMedicos',
+		params: { 
+			idAfiliacion : '2',
+			idTipoBusqueda: '3'
+			}
+	},{
+		icon:'/images/servicioleftmedia.png',
+		titulo : ' Serviciòs',
+		vista : 'redMedicos',
+		params: { 
+			idAfiliacion : '2',
+			idTipoBusqueda: '2'
 			}
 	}];
 	
@@ -57,7 +73,7 @@ for (var i=0; i < Menu.length; i++) {
 		if(vistaDer != null)
 			$.rightMenu.remove(vistaDer);
 		$.btnMenuDer.hide();
-		var nuevaVista = Alloy.createController(e.source.vista).getView();	
+		var nuevaVista = Alloy.createController(e.source.vista, e.source.params).getView();	
 		$.contentview.add(nuevaVista);
 		_currentView = nuevaVista;
 		$.cargando.hide();
@@ -86,7 +102,7 @@ for (var i=0; i < MenuSI.length; i++) {
 		$.btnMenu.fireEvent('click');
 		$.cargando.show();
 		$.contentview.remove(_currentView);
-		var nuevaVista = Alloy.createController(e.source.vista).getView();	
+		var nuevaVista = Alloy.createController(e.source.vista, e.source.params).getView();	
 		$.contentview.add(nuevaVista);
 		_currentView = nuevaVista;
 		$.cargando.hide();
@@ -96,12 +112,31 @@ for (var i=0; i < MenuSI.length; i++) {
 //Eventos a nivel Aplicacion
 var vistaDer = null;
 Ti.App.addEventListener('muestraSubMenu', function  (e) {
+	$.rightMenu.removeAllChildren();
   $.btnMenuDer.show();
   vistaDer = Alloy.createController(e.vista, e.parametros).getView();
 $.rightMenu.add(vistaDer);
 });
 Ti.App.addEventListener('cierraMenuDer', function(e) {
   	$.btnMenuDer.fireEvent('click');
+});
+var vistaDet = null;
+Ti.App.addEventListener('MuestraDetalleProveedor', function(e){
+	setTimeout(function(e) {
+		if(!$.btnMenuDer.toogle)
+	   $.btnMenuDer.fireEvent('click');	
+	}, 500);
+	$.rightMenu.removeAllChildren();
+	 vistaDet = null;
+	 vistaDet = Alloy.createController('detalleProveedor', e).getView();
+	 $.rightMenu.add(vistaDet);
+});
+
+Ti.App.addEventListener('regresaBusqueda', function(){
+	if(vistaDet != null)
+		$.rightMenu.remove(vistaDet);
+	$.rightMenu.add(vistaDer);
+	vistaDet = null;
 });
 //Evento para abrir el Menu
 $.btnMenu.addEventListener('click',function(e){

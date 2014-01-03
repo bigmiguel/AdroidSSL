@@ -26,13 +26,13 @@ function Controller() {
         id: "leftMenu"
     });
     $.__views.containerview.add($.__views.leftMenu);
-    $.__views.__alloyId56 = Ti.UI.createView({
+    $.__views.__alloyId53 = Ti.UI.createView({
         layout: "horizontal",
         bacbackgroundColor: "#040404",
-        height: "12%",
-        id: "__alloyId56"
+        height: "8%",
+        id: "__alloyId53"
     });
-    $.__views.leftMenu.add($.__views.__alloyId56);
+    $.__views.leftMenu.add($.__views.__alloyId53);
     $.__views.imgEmpelado = Ti.UI.createImageView({
         id: "imgEmpelado",
         left: "5px",
@@ -41,7 +41,7 @@ function Controller() {
         height: "40%",
         image: "/images/empDefault.png"
     });
-    $.__views.__alloyId56.add($.__views.imgEmpelado);
+    $.__views.__alloyId53.add($.__views.imgEmpelado);
     $.__views.lblNombre = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
@@ -49,7 +49,7 @@ function Controller() {
         left: "5%",
         id: "lblNombre"
     });
-    $.__views.__alloyId56.add($.__views.lblNombre);
+    $.__views.__alloyId53.add($.__views.lblNombre);
     $.__views.leftTableView = Ti.UI.createScrollView({
         id: "leftTableView",
         layout: "vertical"
@@ -64,14 +64,14 @@ function Controller() {
         id: "lblHeaderSL"
     });
     $.__views.leftTableView.add($.__views.lblHeaderSL);
-    $.__views.__alloyId57 = Ti.UI.createLabel({
+    $.__views.__alloyId54 = Ti.UI.createLabel({
         width: "80%",
         height: ".5dp",
         color: "#001f5b",
         backgroundColor: "#FFFFFF",
-        id: "__alloyId57"
+        id: "__alloyId54"
     });
-    $.__views.leftTableView.add($.__views.__alloyId57);
+    $.__views.leftTableView.add($.__views.__alloyId54);
     $.__views.rightMenu = Ti.UI.createView({
         top: "0dp",
         right: "0dp",
@@ -135,7 +135,7 @@ function Controller() {
         },
         color: "#FFF",
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-        borderWidth: "1dp",
+        borderWidth: "0.4dp",
         borderRadius: 5,
         backgroundImage: "/images/ButtonMenu.png",
         backgroundColor: "none",
@@ -155,7 +155,7 @@ function Controller() {
         },
         color: "#FFF",
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-        borderWidth: "1dp",
+        borderWidth: "0.4dp",
         borderRadius: 5,
         backgroundImage: "/images/ButtonMenu.png",
         backgroundColor: "none",
@@ -202,6 +202,7 @@ function Controller() {
     $.__views.contentview.add($.__views.cargando);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    Ti.Android.currentActivity.setRequestedOrientation(Ti.Android.SCREEN_ORIENTATION_PORTRAIT);
     $.lblTitulo.applyProperties($.createStyle(Alloy.FuenteTitulo()));
     $.lblNombre.applyProperties($.createStyle(Alloy.FuenteChica()));
     $.lblHeaderSL.applyProperties($.createStyle(Alloy.FuenteChica()));
@@ -226,8 +227,24 @@ function Controller() {
         titulo: "Medicos",
         vista: "redMedicos",
         params: {
-            idAfiliacion: 2,
-            idTipoBusqueda: 1
+            idAfiliacion: "2",
+            idTipoBusqueda: "1"
+        }
+    }, {
+        icon: "/images/descuentoleftmedia.png",
+        titulo: "Descuentos TDC",
+        vista: "redMedicos",
+        params: {
+            idAfiliacion: "2",
+            idTipoBusqueda: "3"
+        }
+    }, {
+        icon: "/images/servicioleftmedia.png",
+        titulo: " Serviciòs",
+        vista: "redMedicos",
+        params: {
+            idAfiliacion: "2",
+            idTipoBusqueda: "2"
         }
     } ];
     var _d = [];
@@ -243,7 +260,7 @@ function Controller() {
             $.contentview.remove(_currentView);
             null != vistaDer && $.rightMenu.remove(vistaDer);
             $.btnMenuDer.hide();
-            var nuevaVista = Alloy.createController(e.source.vista).getView();
+            var nuevaVista = Alloy.createController(e.source.vista, e.source.params).getView();
             $.contentview.add(nuevaVista);
             _currentView = nuevaVista;
             $.cargando.hide();
@@ -267,7 +284,7 @@ function Controller() {
             $.btnMenu.fireEvent("click");
             $.cargando.show();
             $.contentview.remove(_currentView);
-            var nuevaVista = Alloy.createController(e.source.vista).getView();
+            var nuevaVista = Alloy.createController(e.source.vista, e.source.params).getView();
             $.contentview.add(nuevaVista);
             _currentView = nuevaVista;
             $.cargando.hide();
@@ -276,12 +293,28 @@ function Controller() {
     }
     var vistaDer = null;
     Ti.App.addEventListener("muestraSubMenu", function(e) {
+        $.rightMenu.removeAllChildren();
         $.btnMenuDer.show();
         vistaDer = Alloy.createController(e.vista, e.parametros).getView();
         $.rightMenu.add(vistaDer);
     });
     Ti.App.addEventListener("cierraMenuDer", function() {
         $.btnMenuDer.fireEvent("click");
+    });
+    var vistaDet = null;
+    Ti.App.addEventListener("MuestraDetalleProveedor", function(e) {
+        setTimeout(function() {
+            $.btnMenuDer.toogle || $.btnMenuDer.fireEvent("click");
+        }, 500);
+        $.rightMenu.removeAllChildren();
+        vistaDet = null;
+        vistaDet = Alloy.createController("detalleProveedor", e).getView();
+        $.rightMenu.add(vistaDet);
+    });
+    Ti.App.addEventListener("regresaBusqueda", function() {
+        null != vistaDet && $.rightMenu.remove(vistaDet);
+        $.rightMenu.add(vistaDer);
+        vistaDet = null;
     });
     $.btnMenu.addEventListener("click", function(e) {
         $.leftMenu.show();

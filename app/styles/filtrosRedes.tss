@@ -1,6 +1,5 @@
 ".tituloRed": {
 	backgroundColor: '#FFFFFF',
-	color: '#DA0A0A',
 	width: Ti.UI.FILL,
 	textAlign: 'center',
 	left: 0,
@@ -16,13 +15,13 @@
 	left: '10dp'
 },
 "#btnBuscarMedico":{
-	color: '#000',
+	color: '#666',
 	top: '5dp',
-	left: '30%',
-	borderColor:'#4C5E82',
+	left: '35%',
+	borderColor:'#dcdcdc',
 	backgroundGradient:{ 
         type:'linear', 
-        colors:[{color:'#7E9CD6', position:0.0}, {color:'#4E6EAD', position:1.0}], 
+        colors:[{color:'#f9f9f9', position:0.0}, {color:'#e9e9e9', position:1.0}], 
         backFillStart: true 
     }
 }

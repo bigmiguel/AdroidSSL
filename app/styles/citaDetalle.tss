@@ -4,4 +4,13 @@
 ".datoCita":
 {
 	color:'#666'
+},
+"View":{
+	horizontalWrap: true
+},
+"TableView":{
+	horizontalWrap: true
+},
+"TableViewRow":{
+	horizontalWrap: true
 }

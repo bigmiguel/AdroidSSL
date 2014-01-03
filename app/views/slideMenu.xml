@@ -2,7 +2,7 @@
 	<Window id="wnSlideMenu" orientationModes="[Titanium.UI.PORTRAIT]" navBarHidden="true">		
 		<View id="containerview">			
 				<View id="leftMenu" >
-					<View layout="horizontal" bacbackgroundColor="#040404" height="12%" >
+					<View layout="horizontal" bacbackgroundColor="#040404" height="8%" >
 						<ImageView id="imgEmpelado" left='5px' top="5px" width="15%" height="40%" image="/images/empDefault.png"></ImageView>
 						<Label id="lblNombre" ></Label>
 					</View>	

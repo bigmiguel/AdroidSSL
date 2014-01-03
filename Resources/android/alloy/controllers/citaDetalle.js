@@ -1,7 +1,6 @@
 function Controller() {
     function ajustaVista() {
-        $.vwCita.setHeight(6 * $.lblTFecha.size.height + Alloy.espacioMenu());
-        $.vwCita.removeEventListener("postlayout", ajustaVista);
+        $.vwCita.setHeight(6 * (5 > $.lblTFecha.size.height ? 53 : $.lblTFecha.size.height) + Alloy.espacioMenu());
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "citaDetalle";
@@ -11,6 +10,7 @@ function Controller() {
     var $ = this;
     var exports = {};
     $.__views.vwCita = Ti.UI.createView({
+        horizontalWrap: "true",
         id: "vwCita",
         top: "0"
     });
@@ -24,6 +24,7 @@ function Controller() {
     });
     $.__views.vwCita.add($.__views.__alloyId1);
     $.__views.__alloyId2 = Ti.UI.createView({
+        horizontalWrap: true,
         layout: "vertical",
         top: "0",
         left: "16%",
@@ -31,6 +32,7 @@ function Controller() {
     });
     $.__views.vwCita.add($.__views.__alloyId2);
     $.__views.__alloyId3 = Ti.UI.createView({
+        horizontalWrap: true,
         height: "1px",
         backgroundColor: "#001f5b",
         id: "__alloyId3"
@@ -38,10 +40,12 @@ function Controller() {
     $.__views.__alloyId2.add($.__views.__alloyId3);
     var __alloyId5 = [];
     $.__views.rowFecha = Ti.UI.createTableViewRow({
+        horizontalWrap: true,
         id: "rowFecha"
     });
     __alloyId5.push($.__views.rowFecha);
     $.__views.__alloyId6 = Ti.UI.createView({
+        horizontalWrap: true,
         layout: "horizontal",
         id: "__alloyId6"
     });
@@ -62,10 +66,12 @@ function Controller() {
     });
     $.__views.__alloyId6.add($.__views.lblFecha);
     $.__views.__alloyId7 = Ti.UI.createTableViewRow({
+        horizontalWrap: true,
         id: "__alloyId7"
     });
     __alloyId5.push($.__views.__alloyId7);
     $.__views.__alloyId8 = Ti.UI.createView({
+        horizontalWrap: true,
         layout: "horizontal",
         id: "__alloyId8"
     });
@@ -86,10 +92,12 @@ function Controller() {
     });
     $.__views.__alloyId8.add($.__views.lblHorario);
     $.__views.__alloyId9 = Ti.UI.createTableViewRow({
+        horizontalWrap: true,
         id: "__alloyId9"
     });
     __alloyId5.push($.__views.__alloyId9);
     $.__views.__alloyId10 = Ti.UI.createView({
+        horizontalWrap: true,
         layout: "horizontal",
         id: "__alloyId10"
     });
@@ -110,10 +118,12 @@ function Controller() {
     });
     $.__views.__alloyId10.add($.__views.lblConsultorio);
     $.__views.__alloyId11 = Ti.UI.createTableViewRow({
+        horizontalWrap: true,
         id: "__alloyId11"
     });
     __alloyId5.push($.__views.__alloyId11);
     $.__views.__alloyId12 = Ti.UI.createView({
+        horizontalWrap: true,
         layout: "horizontal",
         id: "__alloyId12"
     });
@@ -134,10 +144,12 @@ function Controller() {
     });
     $.__views.__alloyId12.add($.__views.lblMedico);
     $.__views.__alloyId13 = Ti.UI.createTableViewRow({
+        horizontalWrap: true,
         id: "__alloyId13"
     });
     __alloyId5.push($.__views.__alloyId13);
     $.__views.__alloyId14 = Ti.UI.createView({
+        horizontalWrap: true,
         layout: "horizontal",
         id: "__alloyId14"
     });
@@ -158,10 +170,12 @@ function Controller() {
     });
     $.__views.__alloyId14.add($.__views.lblEstatus);
     $.__views.__alloyId15 = Ti.UI.createTableViewRow({
+        horizontalWrap: true,
         id: "__alloyId15"
     });
     __alloyId5.push($.__views.__alloyId15);
     $.__views.__alloyId16 = Ti.UI.createView({
+        horizontalWrap: true,
         layout: "horizontal",
         id: "__alloyId16"
     });
@@ -182,6 +196,7 @@ function Controller() {
     });
     $.__views.__alloyId16.add($.__views.lblEspecialidad);
     $.__views.__alloyId4 = Ti.UI.createTableView({
+        horizontalWrap: true,
         data: __alloyId5,
         allowsSelection: "false",
         separatorColor: "transparent",

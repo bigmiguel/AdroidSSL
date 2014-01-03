@@ -29,7 +29,6 @@ function Controller() {
         Alloy.limpiaPicker($.pckMunicipio);
         var xhr = Titanium.Network.createHTTPClient({
             onload: function() {
-                Ti.API.info(this.responseText);
                 var obj2 = JSON.parse(this.responseText);
                 Alloy.limpiaPicker($.pckMunicipio);
                 for (var i = 0; obj2.mmunicipios.length > i; i++) {
@@ -52,6 +51,7 @@ function Controller() {
             "FiltroEstado[idAfiliacion]": idAfiliacion,
             "FiltroEstado[idEstado]": idEstado
         };
+        Ti.API.info(JSON.stringify(params));
         xhr.open("POST", url2);
         xhr.send(params);
     }
@@ -62,7 +62,6 @@ function Controller() {
         var xhr = Titanium.Network.createHTTPClient({
             onload: function() {
                 obj = JSON.parse(this.responseText);
-                Ti.API.info(this.responseText);
                 for (var i = 0; obj.mespecialidades.length > i; i++) {
                     var efr = obj.mespecialidades[i];
                     dataEspe[i] = Titanium.UI.createPickerRow({
@@ -88,6 +87,26 @@ function Controller() {
             xhr.send(params);
         }
     }
+    function bajarDoctores() {
+        var url = Alloy.CFG.urlAPIMH + "busqueda";
+        var xhr = Titanium.Network.createHTTPClient({
+            onload: function() {
+                obj = JSON.parse(this.responseText);
+                Ti.App.fireEvent("resultadosRed", obj);
+            },
+            onerror: function() {},
+            timeout: 1e4
+        });
+        var params = {
+            "Filtros[idTipoBusqueda]": idTipoBusqueda,
+            "FiltroEstado[idAfiliacion]": idAfiliacion,
+            "FiltroEstado[idEstado]": idEstado,
+            "FiltroEstado[idMunicipio]": idMunicipio,
+            "FiltroEstado[idEspecialidad]": 0 == idEspecialidad ? "" : idEspecialidad
+        };
+        xhr.open("POST", url);
+        xhr.send(params);
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "filtrosRedes";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -103,15 +122,8 @@ function Controller() {
     $.__views.lblTitulo = Ti.UI.createLabel({
         width: Ti.UI.FILL,
         height: Ti.UI.SIZE,
-        color: "#DA0A0A",
-        left: 0,
-        backgroundColor: "#FFFFFF",
-        textAlign: "center",
-        shadowColor: "#000000",
-        shadowOffset: {
-            x: 0,
-            y: 2
-        },
+        color: "#FFFFFF",
+        left: "10dp",
         text: "Red Medica",
         id: "lblTitulo"
     });
@@ -190,21 +202,21 @@ function Controller() {
         backgroundGradient: {
             type: "linear",
             colors: [ {
-                color: "#7E9CD6",
+                color: "#f9f9f9",
                 position: 0
             }, {
-                color: "#4E6EAD",
+                color: "#e9e9e9",
                 position: 1
             } ],
             backFillStart: true
         },
-        color: "#000",
+        color: "#666",
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-        borderWidth: "1dp",
+        borderWidth: "0.4dp",
         borderRadius: 5,
         top: "5dp",
         left: "30%",
-        borderColor: "#4C5E82",
+        borderColor: "#dcdcdc",
         title: "Buscar",
         id: "btnBuscarMedico"
     });
@@ -222,9 +234,26 @@ function Controller() {
     var idEspecialidad = 0;
     var idAfiliacion = args.idAfiliacion;
     var idTipoBusqueda = args.idTipoBusqueda;
-    switch (args.tipoRed) {
-      case 2:
+    switch (idTipoBusqueda) {
+      case "1":
         $.lblTitulo.text = "Red Mèdica";
+        $.addClass($.lblTitulo, "tituloRed", {
+            color: "#DA0A0A"
+        });
+        break;
+
+      case "2":
+        $.lblTitulo.text = "Servicio";
+        $.addClass($.lblTitulo, "tituloRed", {
+            color: "#DA0A0A"
+        });
+        break;
+
+      case "3":
+        $.lblTitulo.text = "Descuentos TDC";
+        $.addClass($.lblTitulo, "tituloRed", {
+            color: "#628f02"
+        });
     }
     $.pckEstado.addEventListener("change", function() {
         idEstado = $.pckEstado.getSelectedRow(0).value;
@@ -242,7 +271,9 @@ function Controller() {
     $.pckEspecialidad.addEventListener("change", function() {
         null != $.pckEspecialidad.getSelectedRow(0) && (idEspecialidad = $.pckEspecialidad.getSelectedRow(0).value);
     });
-    $.btnBuscarMedico.addEventListener("click", function() {});
+    $.btnBuscarMedico.addEventListener("click", function() {
+        bajarDoctores();
+    });
     bajarEstadosMedicos();
     _.extend($, exports);
 }

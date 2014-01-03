@@ -22,12 +22,11 @@ $.lblMedico.text = parametros.nomMedico.length > 20 ? parametros.nomMedico.subst
 $.lblEstatus.text = parametros.nomEstatusAgenda;
 $.lblEspecialidad.text = parametros.especialidad;
 
-$.vwCita.addEventListener('postlayout',ajustaVista);
+
 function ajustaVista(e){
-	$.vwCita.setHeight(($.lblTFecha.size.height * 6) + Alloy.espacioMenu());
-	$.vwCita.removeEventListener('postlayout',ajustaVista);
+	$.vwCita.setHeight((($.lblTFecha.size.height < 5  ? 53 : $.lblTFecha.size.height) * 6) + Alloy.espacioMenu());
 }
 
-
+$.vwCita.addEventListener('postlayout', ajustaVista);
 
  

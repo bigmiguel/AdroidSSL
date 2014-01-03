@@ -94,20 +94,20 @@ Alloy.FuenteChica = function () {
 Alloy.espacioMenu = function () {
  if(Alloy.Dimension() == 'baja')
  {
- 	return 6;
+ 	return 12;
  }
  else if(Alloy.Dimension()=='media')
  {
- 	return 15;
+ 	return 30;
  }
  else if(Alloy.Dimension()=='alta')
  {
- 	return 30;
+ 	return 45;
  }
 };
 
 Alloy.Dimension = function  () {
-  var ancho = Titanium.Platform.displayCaps.platformWidth;
+  var ancho = Ti.Platform.displayCaps.platformWidth;
   //Ti.API.info('------------------Ancho: ' + ancho);
   if(ancho < 480)
   {

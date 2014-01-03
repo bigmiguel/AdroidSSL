@@ -1,5 +1,5 @@
 <Alloy>
-	 <View id="vwCita" top="0">
+	 <View id="vwCita" top="0" horizontalWrap="true">
     	<ImageView image="/images/calendar.png" top="23%" left="0" width="15%"></ImageView>
     	<View layout="vertical" top="0" left="16%" >
     		<View height="1px" backgroundColor="#001f5b"></View>
