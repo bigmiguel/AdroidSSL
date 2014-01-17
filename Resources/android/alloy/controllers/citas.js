@@ -1,5 +1,6 @@
 function Controller() {
     function actulizaCitas() {
+        Ti.App.fireEvent("muestraCargando");
         $.svCitas.removeAllChildren();
         Ti.API.info("----ActulizaCitas");
         var api = Alloy.CFG.urlAPI + "citas?idEmpresa=" + emp.idEmpresa + "&idEmpleado=" + emp.idEmpleado;
@@ -12,6 +13,7 @@ function Controller() {
                     var vwCita = Alloy.createController("citaDetalle", cita).getView();
                     $.svCitas.add(vwCita);
                 }
+                Ti.App.fireEvent("ocultaCargando");
             },
             onerror: function() {
                 var error = JSON.parse(this.responseText);
@@ -37,7 +39,7 @@ function Controller() {
     $.__views.lblCabecera = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
-        color: "#001f5b",
+        color: "#21485D",
         text: "Mis Citas:",
         id: "lblCabecera",
         left: "0"

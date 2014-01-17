@@ -5,18 +5,15 @@
 "Label": {
 	width: Ti.UI.SIZE,
 	height: Ti.UI.SIZE,
-	color: "#001f5b"
+	color: "#21485D"
 } ,
 ".Titulo":{
+	
 	width: Ti.UI.FILL,
 	textAlign: 'center',
-	color:"#FFF",
+	color:"#21485D",
 	shadowColor: '#000000',
-    shadowOffset: {x:0,y:2},
-	backgroundGradient: {
-		type: 'linear',
-		colors: [ '#001f5b', '#4E6EAD'],
-	},
+    shadowOffset: {x:0,y:3},
 	zIndex: 0
 },
 "TextField":{
@@ -28,10 +25,7 @@
 	backgroundColor: "#FFFFFF"
 },
 "Button":{
-	backgroundGradient: {
-		type: 'linear',
-		colors: [ '#001f5b', '#4E6EAD'],
-	},
+	backgroundColor: '#21485D',
 	color: "#FFF",
 	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
 	borderWidth : '0.4dp',
@@ -47,18 +41,12 @@
 	touchEnabled: false
 },
 ".cargando":{
-	width:Ti.UI.FILL,
-	height:60,
-	message : 'Cargando...',
-	font : { fontSize : '16px' },
-	color:'#001f5b',
-	left: '50%',
-	top:'50%'
+	opacity: '1'
 },
 ".cabezera":{
 	width: Ti.UI.SIZE,
 	height: Ti.UI.SIZE,
-	color: "#001f5b"
+	color: "#21485D"
 },
 "#navview": {
 	top: "0dp",
@@ -67,10 +55,7 @@
 	height : "10%",
 	backgroundColor:"#001f5b",
 	color:"#FFF",
-	backgroundGradient: {
-		type: 'linear',
-		colors: [ '#001f5b', '#4E6EAD'],
-	}	
+	backgroundColor: '#21485D'
 },
 ".linea":{
 	backgroundColor:"#FFFFFF",

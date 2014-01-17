@@ -1,3 +1,4 @@
 /**
  * @author jbennetts
  */
+$.actIndicador.show();

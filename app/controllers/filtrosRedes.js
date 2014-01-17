@@ -161,6 +161,7 @@ function bajarEspecialidadesMedicos() {
 }
 
 function bajarDoctores() {
+	Ti.App.fireEvent('muestraCargando');
 	var tableData = [];
 	var url = Alloy.CFG.urlAPIMH + 'busqueda';
 	var latitudNueva;

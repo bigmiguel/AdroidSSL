@@ -1,7 +1,0 @@
-".cargando":{
-	color:'#FFF',
-	style: Titanium.UI.ActivityIndicatorStyle.DARK,
-	height:'100px',
-  	width: '200px',
-  	top: '50%'
-}

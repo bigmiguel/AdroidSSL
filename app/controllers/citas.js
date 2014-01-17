@@ -5,6 +5,7 @@ var emp = JSON.parse(Ti.App.Properties.getString("Empleado"));
 
 //Metodos y Funciones
 function actulizaCitas () {	
+	Ti.App.fireEvent('muestraCargando');
 	//Elimina las citas anteriores   	
    	$.svCitas.removeAllChildren();
 	Ti.API.info('----ActulizaCitas');
@@ -19,7 +20,8 @@ function actulizaCitas () {
 				 var cita = citas[i];
 				 var vwCita = Alloy.createController('citaDetalle', cita).getView();
 				 $.svCitas.add(vwCita);
-				};				
+				};	
+				Ti.App.fireEvent('ocultaCargando');			
 		},
 		//En case de error
 		onerror: function  (e) {

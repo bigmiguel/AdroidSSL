@@ -1,6 +1,6 @@
 <Alloy>
   <View id="row">
-    <ImageView id="icon" height="80%"  top="10%" />
+    <ImageView id="icon" width="45dp" top="10%"  />
     <View id="vGroup" class="vgroup">
        <View id="rowUP" height="3dp"> </View>
        <Label id="title"></Label>

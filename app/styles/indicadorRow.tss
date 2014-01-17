@@ -1,4 +1,16 @@
 "#imgBien" : {
   right : '1dp',
   top: '0dp'
+},
+".lbl":{
+	color :"#FFF",
+	lef: "2%"
+},
+".dato" :
+{
+	color: "#FFF"
+},
+".cabezera": {
+	color: "#FFF",
+	textAlign : "center"
 }

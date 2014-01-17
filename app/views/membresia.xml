@@ -1,0 +1,8 @@
+<Alloy>
+	<View id="vwMembresia">
+		<ImageView id="imgTarjeta" image="/images/clasica.png" visible="false"></ImageView>
+		<Label id="lblHora" color="#FFF"  ></Label>
+		<Label id="lblTitular" zIndex="99999" ></Label>
+		<Label id="lblMembresia" zIndex="99999" ></Label>
+	</View>
+</Alloy>

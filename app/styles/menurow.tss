@@ -1,19 +1,19 @@
 ".vgroup": {
-  layout: "vertical",
   height: Ti.UI.SIZE,
   top: '10%',
   bottom: '10%'
 },
 "#row": {
   selectedBackgroundColor : "#001f5b",
+  backgroundColor: "#4D4D4D",
   selectedColor : '#FFF',
-  color:'#FFF',
-  backgroundColor : "none"
+  color:'#FFF'
   },
 "#icon": {
   left: "5dp"
 },
-"#title": {
+"#title": {	
+  top: '15%',
   left: "48dp",
   color:"#FFF"
 }

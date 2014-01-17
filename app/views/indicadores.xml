@@ -1,7 +1,10 @@
 <Alloy>	
+	<ScrollView layout="vertical">
+	<ImageView width="30%" height="22%" image="/images/info.png"></ImageView>
+	<ImageView image="/images/sprite.png" layout="center"></ImageView>
 	<TableView id="tbIndicadores">
 		<HeaderView>
-			<Label id="lblCabecera" class="cabezera">Mis Indicadores:</Label>
+			<Label id="lblCabecera" class="cabezera">Mis Indicadores</Label>
 		</HeaderView>		
 		<TableViewRow id="rowPeso" idIndicador="-1" nombreIndicador="Peso">
 			<View id="vwPeso" layout="horizontal">
@@ -18,4 +21,5 @@
 			</View>
 		</TableViewRow>
 	</TableView>
+	</ScrollView>
 </Alloy>

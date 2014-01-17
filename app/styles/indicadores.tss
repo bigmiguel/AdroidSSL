@@ -1,0 +1,32 @@
+"#tbIndicadores":{
+	backgroundColor: "#21485D",
+	width: '98%',
+	left: '1%',
+	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+	borderWidth : '0.5dp',
+	borderRadius : 10,
+	separatorColor: "#21485D",
+	top: '-4dp'
+},
+"#tbDatos": {
+	backgroundColor: "#21485D",
+	width: '98%',
+	left: '1%',
+	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+	borderWidth : '0.5dp',
+	borderRadius : 10,
+	separatorColor: "#21485D",
+	top: '-4dp'
+},
+".lbl":{
+	color :"#FFF",
+	lef: "2%"
+},
+".dato" :
+{
+	color: "#FFF"
+},
+".cabezera": {
+	color: "#FFF",
+	textAlign : "center"
+}

@@ -23,6 +23,9 @@ switch (rc) {
 }
 /*-----------------------------Variables--------------------*/
 
+//login para mostrar todos los resultados
+Alloy.LoginWeb();
+
 var args = arguments[0] || {};
 var idAfiliacion = args.idAfiliacion;
 var idTipoBusqueda = args.idTipoBusqueda;
@@ -149,12 +152,12 @@ function downMedicosCercanos() {
 							leftButton : '/images/' + img + 'left' + calidad,
 							id : uno.id,
 							rightButton : '/images/der' + calidad,
-							subtitle : 'Servicio Médico'
+							subtitle : uno.nomEspecialidad
 						});
 						
 						$.mapview.addAnnotation(annotationDoctor);
 					}
-
+					
 					var newRegion = {
 						latitude : latitudG,
 						longitude : longitudG,
@@ -165,8 +168,9 @@ function downMedicosCercanos() {
 
 					setTimeout(function() {
 						$.mapview.setLocation(newRegion);
+						Ti.App.fireEvent('ocultaCargando');
 					}, 1000);
-
+					
 				}
 			} catch (errora) {
 				alert('Error: ' + errora);
@@ -201,6 +205,7 @@ $.mapview.addEventListener('click', function  (e) {
 });
 //---------------Eventos nivel aplicacion-------------------
 Ti.App.addEventListener('resultadosRed',function(e){
+	
 	if(route != null)
   		$.mapview.removeRoute(route);
 	var Proveedores = e.mresultados;
@@ -232,14 +237,16 @@ Ti.App.addEventListener('resultadosRed',function(e){
 							leftButton : '/images/' + img + 'left' + calidad,
 							id : proveedor.id,
 							rightButton : '/images/der' + calidad,
-							subtitle : 'Servicio Médico'
+							subtitle : proveedor.nomEspecialidad
 					});
 			$.mapview.addAnnotation(anotacion);
+			Ti.App.fireEvent('ocultaCargando');
 		};
 	}
 });
 var route = null;
 Ti.App.addEventListener('creaRuta', function (e) {
+	Ti.App.fireEvent('muestraCargando');
 	var urlGoogle = 'http://maps.google.com/maps/api/directions/json?origin=' + latitudG + ',' + longitudG  + '&destination=' + e.latitud + ','  + e.longitud + '&sensor=false';
 	Ti.API.info(urlGoogle);
 	Ti.App.fireEvent('cierraMenuDer');
@@ -274,6 +281,7 @@ Ti.App.addEventListener('creaRuta', function (e) {
 		 	});
 		 $.mapview.addRoute(route);
 		 UbicacionActual();
+		 Ti.App.fireEvent('ocultaCargando');
   		},
   		onerror: function(e){
   			alert(e);

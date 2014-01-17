@@ -88,6 +88,7 @@ function Controller() {
         }
     }
     function bajarDoctores() {
+        Ti.App.fireEvent("muestraCargando");
         var url = Alloy.CFG.urlAPIMH + "busqueda";
         var xhr = Titanium.Network.createHTTPClient({
             onload: function() {
@@ -138,15 +139,15 @@ function Controller() {
         top: "10"
     });
     $.__views.filtrosRedes.add($.__views.lblTEstado);
-    $.__views.__alloyId40 = Ti.UI.createLabel({
+    $.__views.__alloyId48 = Ti.UI.createLabel({
         width: "80%",
         height: ".5dp",
         color: "#FFFFFF",
         left: "10dp",
         backgroundColor: "#FFFFFF",
-        id: "__alloyId40"
+        id: "__alloyId48"
     });
-    $.__views.filtrosRedes.add($.__views.__alloyId40);
+    $.__views.filtrosRedes.add($.__views.__alloyId48);
     $.__views.pckEstado = Ti.UI.createPicker({
         width: "100%",
         id: "pckEstado"
@@ -161,15 +162,15 @@ function Controller() {
         id: "lblTMunicipio"
     });
     $.__views.filtrosRedes.add($.__views.lblTMunicipio);
-    $.__views.__alloyId41 = Ti.UI.createLabel({
+    $.__views.__alloyId49 = Ti.UI.createLabel({
         width: "80%",
         height: ".5dp",
         color: "#FFFFFF",
         left: "10dp",
         backgroundColor: "#FFFFFF",
-        id: "__alloyId41"
+        id: "__alloyId49"
     });
-    $.__views.filtrosRedes.add($.__views.__alloyId41);
+    $.__views.filtrosRedes.add($.__views.__alloyId49);
     $.__views.pckMunicipio = Ti.UI.createPicker({
         width: "100%",
         id: "pckMunicipio"
@@ -184,21 +185,29 @@ function Controller() {
         id: "lblTEspecailidad"
     });
     $.__views.filtrosRedes.add($.__views.lblTEspecailidad);
-    $.__views.__alloyId42 = Ti.UI.createLabel({
+    $.__views.__alloyId50 = Ti.UI.createLabel({
         width: "80%",
         height: ".5dp",
         color: "#FFFFFF",
         left: "10dp",
         backgroundColor: "#FFFFFF",
-        id: "__alloyId42"
+        id: "__alloyId50"
     });
-    $.__views.filtrosRedes.add($.__views.__alloyId42);
+    $.__views.filtrosRedes.add($.__views.__alloyId50);
     $.__views.pckEspecialidad = Ti.UI.createPicker({
         width: "100%",
         id: "pckEspecialidad"
     });
     $.__views.filtrosRedes.add($.__views.pckEspecialidad);
     $.__views.btnBuscarMedico = Ti.UI.createButton({
+        backgroundColor: "#21485D",
+        color: "#666",
+        borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+        borderWidth: "0.4dp",
+        borderRadius: 5,
+        top: "5dp",
+        left: "35%",
+        borderColor: "#dcdcdc",
         backgroundGradient: {
             type: "linear",
             colors: [ {
@@ -210,13 +219,6 @@ function Controller() {
             } ],
             backFillStart: true
         },
-        color: "#666",
-        borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-        borderWidth: "0.4dp",
-        borderRadius: 5,
-        top: "5dp",
-        left: "30%",
-        borderColor: "#dcdcdc",
         title: "Buscar",
         id: "btnBuscarMedico"
     });

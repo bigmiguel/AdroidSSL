@@ -46,7 +46,7 @@ function Controller() {
                                 leftButton: "/images/" + img + "left" + calidad,
                                 id: uno.id,
                                 rightButton: "/images/der" + calidad,
-                                subtitle: "Servicio Médico"
+                                subtitle: uno.nomEspecialidad
                             });
                             $.mapview.addAnnotation(annotationDoctor);
                         }
@@ -59,6 +59,7 @@ function Controller() {
                         };
                         setTimeout(function() {
                             $.mapview.setLocation(newRegion);
+                            Ti.App.fireEvent("ocultaCargando");
                         }, 1e3);
                     }
                 } catch (errora) {
@@ -158,6 +159,7 @@ function Controller() {
       default:
         alert("Unknown error.");
     }
+    Alloy.LoginWeb();
     var args = arguments[0] || {};
     var idAfiliacion = args.idAfiliacion;
     var idTipoBusqueda = args.idTipoBusqueda;
@@ -247,14 +249,16 @@ function Controller() {
                     leftButton: "/images/" + img + "left" + calidad,
                     id: proveedor.id,
                     rightButton: "/images/der" + calidad,
-                    subtitle: "Servicio Médico"
+                    subtitle: proveedor.nomEspecialidad
                 });
                 $.mapview.addAnnotation(anotacion);
+                Ti.App.fireEvent("ocultaCargando");
             }
         }
     });
     var route = null;
     Ti.App.addEventListener("creaRuta", function(e) {
+        Ti.App.fireEvent("muestraCargando");
         var urlGoogle = "http://maps.google.com/maps/api/directions/json?origin=" + latitudG + "," + longitudG + "&destination=" + e.latitud + "," + e.longitud + "&sensor=false";
         Ti.API.info(urlGoogle);
         Ti.App.fireEvent("cierraMenuDer");
@@ -281,6 +285,7 @@ function Controller() {
                 });
                 $.mapview.addRoute(route);
                 UbicacionActual();
+                Ti.App.fireEvent("ocultaCargando");
             },
             onerror: function(e) {
                 alert(e);

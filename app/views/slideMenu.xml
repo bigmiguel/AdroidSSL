@@ -2,13 +2,8 @@
 	<Window id="wnSlideMenu" orientationModes="[Titanium.UI.PORTRAIT]" navBarHidden="true">		
 		<View id="containerview">			
 				<View id="leftMenu" >
-					<View layout="horizontal" bacbackgroundColor="#040404" height="8%" >
-						<ImageView id="imgEmpelado" left='5px' top="5px" width="15%" height="40%" image="/images/empDefault.png"></ImageView>
-						<Label id="lblNombre" ></Label>
-					</View>	
 					<ScrollView id="leftTableView" layout="vertical">
-						<Label id="lblHeaderSL" class="lblHeaderMenu">Salud Laboral</Label>
-						<Label class="linea"></Label>	
+						
 					</ScrollView>
 				</View>
 				<View id="rightMenu" visible="false">
@@ -19,10 +14,12 @@
 						<View id="navview">							
 							<Button id="btnMenu" />
 							<Button id="btnMenuDer" visible="false" />								
-							<Label id="lblTitulo" class="Titulo" backgroundColor="none" backgroundGradient="none">Salud Laboral</Label>														
+							<Label id="lblTitulo" class="Titulo" color="#FFFFFF" backgroundColor="none" backgroundGradient="none">Salud Laboral</Label>														
 						</View>						
 						<View id="contentview">
-							<ActivityIndicator id="cargando" class=".cargando"></ActivityIndicator>
+							<View id="vwCarga">
+								<ActivityIndicator id="cargando" class="cargando" zIndex="9999" message="Cargando... porfavor espere un momento"></ActivityIndicator>
+							</View>
 						</View>
 					</View>
 				</View>

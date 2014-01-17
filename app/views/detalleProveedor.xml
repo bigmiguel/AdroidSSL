@@ -1,5 +1,5 @@
 <Alloy>
-	<View class="container">
+	<ScrollView class="container">
 		<Label id="lblTitulo">Red Medica</Label>
 		<Label id="lblTNombre" class="lblEtiqueda">Nombre:</Label><Label id="lblNombre" class="lblDato"></Label>
 		<Label id="lblTEspecialidad" class="lblEtiqueda">Especialidad:</Label><Label id="lblEspecialidad" class="lblDato"></Label>
@@ -12,5 +12,5 @@
 			<ImageView id="imgRuta" image="/images/vermapa.png" top="0" right="-2%" zIndex="999999" width="25%"></ImageView>
 		</View>
 		<Button id="btnBusqueda" top="5dp" left="25%" >Busqueda</Button>
-	</View>
+	</ScrollView>
 </Alloy>

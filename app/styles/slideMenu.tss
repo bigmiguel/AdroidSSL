@@ -3,7 +3,7 @@
 	left: "0dp",
 	width: "60%",
 	zIndex: "0",
-	backgroundColor : "#303030",
+	backgroundColor : "#333333",
 	layout:"vertical"
 },
 "#rightMenu":{
@@ -44,7 +44,7 @@
 	zIndex: 2
 },
 "#btnMenuDer": {
-	backgroundImage : '/images/ButtonMenu.png',	
+	backgroundImage : '/images/ButtonMenuDer.png',	
 	backgroundColor:'none',	
 	right : "2%",
 	top : "13%",
@@ -60,4 +60,13 @@
 ".lblHeaderMenu":{
 	color:'#FFF',
 	left: '10dp'
+},
+"#vwCarga":{
+	width: Ti.API.FILL,
+	height: Ti.API.FILL,
+	top: 0,
+	backgroundColor: "#21485D",
+	zIndex: 99999,
+	opacity: '.5',
+	color: '#FFF'
 }

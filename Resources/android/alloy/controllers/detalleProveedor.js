@@ -50,7 +50,7 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.detalleProveedor = Ti.UI.createView({
+    $.__views.detalleProveedor = Ti.UI.createScrollView({
         backgroundColor: "white",
         layout: "horizontal",
         backgroundGradient: {
@@ -70,7 +70,7 @@ function Controller() {
     $.__views.lblTitulo = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
-        color: "#001f5b",
+        color: "#21485D",
         text: "Red Medica",
         id: "lblTitulo"
     });
@@ -78,7 +78,7 @@ function Controller() {
     $.__views.lblTNombre = Ti.UI.createLabel({
         width: "28%",
         height: Ti.UI.SIZE,
-        color: "#001f5b",
+        color: "#21485D",
         top: "2dp",
         left: "2%",
         text: "Nombre:",
@@ -96,7 +96,7 @@ function Controller() {
     $.__views.lblTEspecialidad = Ti.UI.createLabel({
         width: "28%",
         height: Ti.UI.SIZE,
-        color: "#001f5b",
+        color: "#21485D",
         top: "2dp",
         left: "2%",
         text: "Especialidad:",
@@ -114,7 +114,7 @@ function Controller() {
     $.__views.lblTSucursal = Ti.UI.createLabel({
         width: "28%",
         height: Ti.UI.SIZE,
-        color: "#001f5b",
+        color: "#21485D",
         top: "2dp",
         left: "2%",
         text: "Sucursal:",
@@ -132,7 +132,7 @@ function Controller() {
     $.__views.lblTHorario = Ti.UI.createLabel({
         width: "28%",
         height: Ti.UI.SIZE,
-        color: "#001f5b",
+        color: "#21485D",
         top: "2dp",
         left: "2%",
         text: "Horario:",
@@ -150,7 +150,7 @@ function Controller() {
     $.__views.lblTDireccion = Ti.UI.createLabel({
         width: "28%",
         height: Ti.UI.SIZE,
-        color: "#001f5b",
+        color: "#21485D",
         top: "2dp",
         left: "2%",
         text: "Direcciòn:",
@@ -168,7 +168,7 @@ function Controller() {
     $.__views.lblTCosto = Ti.UI.createLabel({
         width: "28%",
         height: Ti.UI.SIZE,
-        color: "#001f5b",
+        color: "#21485D",
         top: "2dp",
         left: "2%",
         text: "Costo:",
@@ -186,7 +186,7 @@ function Controller() {
     $.__views.lblTTelefono = Ti.UI.createLabel({
         width: "28%",
         height: Ti.UI.SIZE,
-        color: "#001f5b",
+        color: "#21485D",
         top: "2dp",
         left: "2%",
         text: "Telèfono(s):",
@@ -222,10 +222,7 @@ function Controller() {
     });
     $.__views.mapViewDet.add($.__views.imgRuta);
     $.__views.btnBusqueda = Ti.UI.createButton({
-        backgroundGradient: {
-            type: "linear",
-            colors: [ "#001f5b", "#4E6EAD" ]
-        },
+        backgroundColor: "#21485D",
         color: "#FFF",
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         borderWidth: "0.4dp",

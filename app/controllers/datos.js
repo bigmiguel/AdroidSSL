@@ -7,6 +7,9 @@ $.lblEdad.text =  emp.edad;
 $.lblNEmpleado.text = emp.numEmpleado;
 $.lblNomArea.text = emp.nomArea;
 $.lblNomPuesto.text = emp.nomPuesto;
+$.lblNSS.text = emp.numSS;
+$.lblPoliza.text = emp.numPoliza;
+$.lblAseguradora.text = emp.nomAseguradora;
 
 //Estilo a los controles
 $.lblNombre.applyProperties( $.createStyle(Alloy.Fuente()) );
@@ -21,5 +24,19 @@ $.lblTEmpleado.applyProperties( $.createStyle(Alloy.Fuente()) );
 $.lblTCentroLaboral.applyProperties( $.createStyle(Alloy.Fuente()) );
 $.lblTArea.applyProperties( $.createStyle(Alloy.Fuente()) );
 $.lblTPuesto.applyProperties( $.createStyle(Alloy.Fuente()) );
+$.lblTNSS.applyProperties( $.createStyle(Alloy.Fuente()) );
+$.lblNSS.applyProperties( $.createStyle(Alloy.Fuente()) );
+$.lblTPoliza.applyProperties( $.createStyle(Alloy.Fuente()) );
+$.lblPoliza.applyProperties( $.createStyle(Alloy.Fuente()) );
+$.lblTAseguradora.applyProperties( $.createStyle(Alloy.Fuente()) );
+$.lblAseguradora.applyProperties( $.createStyle(Alloy.Fuente()) );
 
 $.lblCabecera.applyProperties( $.createStyle(Alloy.FuenteTitulo()) );
+
+function ajustaVista(e){
+	var tamanio = ($.lblTNombre.size.height + 9) * 10 + $.lblCabecera.size.height + Alloy.espacioMenu();
+	$.tbDatos.setHeight(tamanio);
+	Ti.App.fireEvent('ocultaCargando');
+}
+
+$.tbDatos.addEventListener('postlayout',ajustaVista);

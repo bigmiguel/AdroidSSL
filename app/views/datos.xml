@@ -1,9 +1,10 @@
 <Alloy>	
 	<View layout="vertical">
 		<ImageView width="30%" height="22%" image="/images/empDefault.png"></ImageView>
-		<TableView>		
+		<ImageView image="/images/sprite.png" layout="center"></ImageView>
+		<TableView id="tbDatos">		
 			<HeaderView>
-				<Label id="lblCabecera" class="cabezera">Mis Datos:</Label>
+				<Label id="lblCabecera" class="cabezera" textAlign="center">Mis Datos</Label>
 			</HeaderView>		
 			<TableViewSection>									
 				<TableViewRow class="rowDatos" layout="horizontal">
@@ -34,6 +35,21 @@
 				<TableViewRow class="rowDatos" layout="horizontal">
 					<View height="3dp"> </View>
 						 <Label id="lblTPuesto" class="lbl" >Puesto:</Label><Label id="lblNomPuesto" class="dato">Miguel</Label>
+					<View height="3dp"> </View>
+				</TableViewRow>
+				<TableViewRow class="rowDatos" layout="horizontal">
+					<View height="3dp"> </View>
+						 <Label id="lblTNSS" class="lbl" >Nº Seguro Social:</Label><Label id="lblNSS" class="dato">Miguel</Label>
+					<View height="3dp"> </View>
+				</TableViewRow>
+				<TableViewRow class="rowDatos" layout="horizontal">
+					<View height="3dp"> </View>
+						 <Label id="lblTPoliza" class="lbl" >Nº Poliza:</Label><Label id="lblPoliza" class="dato">Miguel</Label>
+					<View height="3dp"> </View>
+				</TableViewRow>
+				<TableViewRow class="rowDatos" layout="horizontal">
+					<View height="3dp"> </View>
+						 <Label id="lblTAseguradora" class="lbl" >Aseguradora:</Label><Label id="lblAseguradora" class="dato">Miguel</Label>
 					<View height="3dp"> </View>
 				</TableViewRow>
 			</TableViewSection>

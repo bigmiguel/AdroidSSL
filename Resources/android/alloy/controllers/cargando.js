@@ -8,26 +8,17 @@ function Controller() {
     var exports = {};
     $.__views.cargando = Ti.UI.createWindow({
         fullscreen: "true",
-        backgroundColor: "bla4ck",
         id: "cargando"
     });
     $.__views.cargando && $.addTopLevelView($.__views.cargando);
-    $.__views.__alloyId0 = Ti.UI.createActivityIndicator({
-        color: "#001f5b",
-        style: Titanium.UI.ActivityIndicatorStyle.DARK,
-        height: 60,
-        width: Ti.UI.FILL,
-        top: "50%",
-        message: "Cargando...",
-        font: {
-            fontSize: "16px"
-        },
-        left: "50%",
-        id: "__alloyId0"
+    $.__views.actIndicador = Ti.UI.createActivityIndicator({
+        opacity: "1",
+        id: "actIndicador"
     });
-    $.__views.cargando.add($.__views.__alloyId0);
+    $.__views.cargando.add($.__views.actIndicador);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    $.actIndicador.show();
     _.extend($, exports);
 }
 

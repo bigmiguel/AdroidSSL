@@ -10,8 +10,7 @@ $.lblCabecera.applyProperties( $.createStyle(Alloy.FuenteTitulo()) );
 var emp = JSON.parse(Ti.App.Properties.getString("Empleado"));
 
 var api = Alloy.CFG.urlAPI + 'EmpleadoIndicadores?idEmpresa=' + emp.idEmpresa + '&numEmpleado='+ emp.numEmpleado;
-
-Ti.API.info(api);
+var total = 0;
 
 //Valida si algun empleado ya a sido guardado en el dispositivo
 var indicadores = JSON.parse(Ti.App.Properties.getString("Indicadores"));
@@ -50,7 +49,7 @@ function creaTablaIndicadores(indicadores){
 	
 	$.lblPeso.text = indicadores.peso;
 	$.lblEstatura.text = indicadores.estatura;	
-		
+	total = indicadores.indicadores.length + 3;
 	for (var i=0; i < indicadores.indicadores.length; i++) {
 	 	 var ind = indicadores.indicadores[i];
 	 	 //Se crea un indicador
@@ -71,5 +70,14 @@ function creaTablaIndicadores(indicadores){
 	 //Evento Peso 
 	$.rowPeso.addEventListener('click',function(e){
 	 	_indciadorActual = Alloy.createController('indicadorDetalle',{ nombreIndicador : e.row.nombreIndicador, idIndicador: e.row.idIndicador }).getView().open({ modal: true, navBarHidden: true });
-	});	 	
+	});	 
+		ajustaVista();
 }
+function ajustaVista(e){
+	var tamanio = ($.lblTPeso.size.height + 15) * total + $.lblCabecera.size.height + Alloy.espacioMenu();
+	$.tbIndicadores.setHeight(tamanio);	
+	Ti.App.fireEvent('ocultaCargando');
+}
+
+$.tbIndicadores.addEventListener('postlayout',ajustaVista);
+

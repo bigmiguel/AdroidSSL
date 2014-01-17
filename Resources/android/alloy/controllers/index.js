@@ -24,12 +24,8 @@ function Controller() {
         left: "0dp",
         width: Ti.Platform.displayCaps.platformWidth,
         height: "10%",
-        backgroundColor: "#001f5b",
+        backgroundColor: "#21485D",
         color: "#FFF",
-        backgroundGradient: {
-            type: "linear",
-            colors: [ "#001f5b", "#4E6EAD" ]
-        },
         id: "navview"
     });
     $.__views.index.add($.__views.navview);
@@ -41,13 +37,13 @@ function Controller() {
         shadowColor: "#000000",
         shadowOffset: {
             x: 0,
-            y: 2
+            y: 3
         },
-        backgroundGradient: "none",
         zIndex: 0,
         text: "Salud Laboral",
         id: "lblTitulo",
-        backgroundColor: "none"
+        backgroundColor: "none",
+        backgroundGradient: "none"
     });
     $.__views.navview.add($.__views.lblTitulo);
     $.__views.vwLogin = Ti.UI.createView({
@@ -72,10 +68,7 @@ function Controller() {
     });
     $.__views.vwLogin.add($.__views.txtNEmpleado);
     $.__views.btnSeleccionaEmpresa = Ti.UI.createButton({
-        backgroundGradient: {
-            type: "linear",
-            colors: [ "#001f5b", "#4E6EAD" ]
-        },
+        backgroundColor: "#21485D",
         color: "#FFF",
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         borderWidth: "0.4dp",
@@ -88,16 +81,13 @@ function Controller() {
     $.__views.lblEmpresa = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
-        color: "#001f5b",
+        color: "#21485D",
         text: "Selecciona Empresa",
         id: "lblEmpresa"
     });
     $.__views.vwLogin.add($.__views.lblEmpresa);
     $.__views.btnLogin = Ti.UI.createButton({
-        backgroundGradient: {
-            type: "linear",
-            colors: [ "#001f5b", "#4E6EAD" ]
-        },
+        backgroundColor: "#21485D",
         color: "#FFF",
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         borderWidth: "0.4dp",
@@ -109,7 +99,6 @@ function Controller() {
     $.__views.vwLogin.add($.__views.btnLogin);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    Ti.Android.currentActivity.setRequestedOrientation(Ti.Android.SCREEN_ORIENTATION_PORTRAIT);
     $.lblTitulo.applyProperties($.createStyle(Alloy.FuenteTitulo()));
     $.lblEmpresa.applyProperties($.createStyle(Alloy.FuenteTitulo()));
     $.btnSeleccionaEmpresa.applyProperties($.createStyle(Alloy.Fuente()));

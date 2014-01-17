@@ -1,6 +1,10 @@
 function Controller() {
     function ajustaVista() {
-        $.row.setHeight($.title.size.height + Alloy.espacioMenu());
+        var tamanio = $.title.size.height + Alloy.espacioMenu();
+        $.row.setHeight(tamanio);
+        $.icon.setHeight(.8 * tamanio);
+        $.icon.setWidth(.8 * tamanio);
+        $.icon.setTop(.1 * tamanio);
         $.row.removeEventListener("postlayout", ajustaVista);
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
@@ -12,21 +16,20 @@ function Controller() {
     var exports = {};
     $.__views.row = Ti.UI.createView({
         selectedBackgroundColor: "#001f5b",
+        backgroundColor: "#4D4D4D",
         selectedColor: "#FFF",
         color: "#FFF",
-        backgroundColor: "none",
         id: "row"
     });
     $.__views.row && $.addTopLevelView($.__views.row);
     $.__views.icon = Ti.UI.createImageView({
         left: "5dp",
         id: "icon",
-        height: "80%",
+        width: "45dp",
         top: "10%"
     });
     $.__views.row.add($.__views.icon);
     $.__views.vGroup = Ti.UI.createView({
-        layout: "vertical",
         height: Ti.UI.SIZE,
         top: "10%",
         bottom: "10%",
@@ -42,6 +45,7 @@ function Controller() {
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
         color: "#FFF",
+        top: "15%",
         left: "48dp",
         id: "title"
     });
