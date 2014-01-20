@@ -4,6 +4,23 @@ function Controller() {
         $.tbDatos.setHeight(tamanio);
         Ti.App.fireEvent("ocultaCargando");
     }
+    function loginDefault() {
+        Cloud.Users.login({
+            login: "ssl",
+            password: "medicall"
+        }, function(e) {
+            e.success ? defaultSubscribe() : alert("Error:\\n" + (e.error && e.message || JSON.stringify(e)));
+        });
+    }
+    function defaultSubscribe() {
+        Cloud.PushNotifications.subscribe({
+            channel: "alert",
+            device_token: deviceToken,
+            type: "android"
+        }, function(e) {
+            e.success ? alert("Subscribed!") : alert("Error:" + (e.error && e.message || JSON.stringify(e)));
+        });
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "datos";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -385,6 +402,32 @@ function Controller() {
     $.lblAseguradora.applyProperties($.createStyle(Alloy.Fuente()));
     $.lblCabecera.applyProperties($.createStyle(Alloy.FuenteTitulo()));
     $.tbDatos.addEventListener("postlayout", ajustaVista);
+    var CloudPush = require("ti.cloudpush");
+    var deviceToken;
+    CloudPush.enabled = true;
+    CloudPush.retrieveDeviceToken({
+        success: function(e) {
+            deviceToken = e.deviceToken;
+            Ti.API.info("Device Token: " + e.deviceToken);
+            loginDefault();
+        },
+        error: function(e) {
+            Ti.API.info(JSON.stringify(e));
+            alert("Failed to register for push! " + e.error);
+        }
+    });
+    var Cloud = require("ti.cloud");
+    Cloud.debug = true;
+    CloudPush.addEventListener("callback", function(evt) {
+        Ti.API.info(JSON.stringify(evt));
+        alert(evt);
+    });
+    CloudPush.addEventListener("trayClickLaunchedApp", function() {
+        Ti.API.info("Tray Click Launched App (app was not running)");
+    });
+    CloudPush.addEventListener("trayClickFocusedApp", function() {
+        Ti.API.info("Tray Click Focused App (app was already running)");
+    });
     _.extend($, exports);
 }
 

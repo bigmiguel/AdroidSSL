@@ -8,7 +8,7 @@
 		<Label id="lblTDireccion" class="lblEtiqueda">Direcciòn:</Label><Label id="lblDireccion" class="lblDato"></Label>
 		<Label id="lblTCosto" class="lblEtiqueda">Costo:</Label><Label id="lblCosto" class="lblDato"></Label>
 		<Label id="lblTTelefono" class="lblEtiqueda">Telèfono(s):</Label><Label id="lblTelefono" class="lblDato"></Label>
-		<View id="mapViewDet" ns="Alloy.Globals.Map" zOrderOnTop="true">
+		<View id="mapViewDet" ns="Alloy.Globals.Map">
 			<ImageView id="imgRuta" image="/images/vermapa.png" top="0" right="-2%" zIndex="999999" width="25%"></ImageView>
 		</View>
 		<Button id="btnBusqueda" top="5dp" left="25%" >Busqueda</Button>

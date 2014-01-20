@@ -208,8 +208,7 @@ function Controller() {
         top: "20dp",
         enableZoomControls: false,
         id: "mapViewDet",
-        ns: "Alloy.Globals.Map",
-        zOrderOnTop: "true"
+        ns: "Alloy.Globals.Map"
     });
     $.__views.detalleProveedor.add($.__views.mapViewDet);
     $.__views.imgRuta = Ti.UI.createImageView({

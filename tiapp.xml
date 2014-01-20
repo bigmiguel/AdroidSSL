@@ -3,12 +3,13 @@
     <property name="acs-oauth-secret-production" type="string">E8KW94mSlyj73NgLP1gnHf5WK5XljgD4</property>
     <property name="acs-oauth-key-production" type="string">m4eKuImQNu2tgNQmK7ZoyEXhGykNCeiL</property>
     <property name="acs-api-key-production" type="string">pZvulGqpyrLO51u4ONFoQqSmTe0NVfvW</property>
-    <property name="acs-oauth-secret-development" type="string">lfvd4Xo5zCpNLYpdOEIXb2SMJdE4bWYa</property>
-    <property name="acs-oauth-key-development" type="string">TDryDGgo61yTj16JrwkJ9rwEzHE1kxWL</property>
-    <property name="acs-api-key-development" type="string">9MhtCzEQ50vyVKfkQxSOOUfvPimjcLSr</property>
-    <property name="acs-push-type-development" type="string">gcm</property>
-    <property name="acs-push-type-productions" type="string">gcm</property>
+    <property name="acs-oauth-secret-development" type="string">Xx2criKussSS5wbS0OqV7797M73fc3RI</property>
+    <property name="acs-oauth-key-development" type="string">79fDgLZS9nuJcCSSMeHLnMEcT4lLcCMf</property>
+    <property name="acs-api-key-development" type="string">9dS8XQwP9svoDS2j9EvjBoVX5HH1Xwra</property>
     <property name="acs-push-type" type="string">gcm</property>
+    <property name="acs-push-type-development" type="string">gcm</property>
+    <property name="acs-push-type-production" type="string">gcm</property>
+    <property name="acs-grouped-notification-message" type="string">Tienes $number$ sin leer.</property>
     <id>com.si.ssl</id>
     <name>Salud Laboral</name>
     <version>1.0</version>
@@ -39,7 +40,6 @@
     </iphone>
     <android xmlns:android="http://schemas.android.com/apk/res/android">
         <manifest>
-        	
             <!-- Allows the API to download data from Google Map servers -->
             <uses-permission android:name="android.permission.INTERNET"/>
             <!-- Allows the API to cache data -->
@@ -60,20 +60,24 @@
                 <!-- Replace "PASTE YOUR GOOGLE MAPS API KEY HERE" with the Google API key you obtained -->
                 <meta-data
                     android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyDEmlpWJ_s_u5rux8WvytEIJXXDFXpSOio"/>
-                    
-               <activity android:name=".SaludLaboralActivity" 
-               			 android:label="@string/app_name" 
-               			 android:theme="@style/Theme.Titanium" 
-               			 android:screenOrientation="portrait"
-               			 android:configChanges="keyboardHidden">
-					<intent-filter>
-						<action android:name="android.intent.action.MAIN"/>
-						<category android:name="android.intent.category.LAUNCHER"/>
-					</intent-filter>
-				</activity>
-				<activity android:name="org.appcelerator.titanium.TiActivity"  android:screenOrientation="portrait" android:configChanges="keyboardHidden|screenSize"/>
-				<activity android:name="org.appcelerator.titanium.TiTranslucentActivity"  android:screenOrientation="portrait" android:configChanges="keyboardHidden|screenSize" android:theme="@android:style/Theme.Translucent"/>
-				<activity android:name="ti.modules.titanium.ui.android.TiPreferencesActivity"  android:screenOrientation="portrait" android:configChanges="screenSize"/>
+                <activity android:configChanges="keyboardHidden"
+                    android:label="@string/app_name"
+                    android:name=".SaludLaboralActivity"
+                    android:screenOrientation="portrait" android:theme="@style/Theme.Titanium">
+                    <intent-filter>
+                        <action android:name="android.intent.action.MAIN"/>
+                        <category android:name="android.intent.category.LAUNCHER"/>
+                    </intent-filter>
+                </activity>
+                <activity
+                    android:configChanges="keyboardHidden|screenSize"
+                    android:name="org.appcelerator.titanium.TiActivity" android:screenOrientation="portrait"/>
+                <activity
+                    android:configChanges="keyboardHidden|screenSize"
+                    android:name="org.appcelerator.titanium.TiTranslucentActivity"
+                    android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent"/>
+                <activity android:configChanges="screenSize"
+                    android:name="ti.modules.titanium.ui.android.TiPreferencesActivity" android:screenOrientation="portrait"/>
             </application>
         </manifest>
     </android>
@@ -87,6 +91,8 @@
     </mobileweb>
     <modules>
         <module platform="android">ti.map</module>
+        <module platform="commonjs">ti.cloud</module>
+        <module platform="android">ti.cloudpush</module>
     </modules>
     <deployment-targets>
         <target device="iphone">false</target>

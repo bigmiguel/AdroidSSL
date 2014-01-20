@@ -129,7 +129,7 @@ function Controller() {
         left: "0%",
         id: "mapview",
         ns: "Alloy.Globals.Map",
-        zOrderOnTop: "true"
+        zindex: "99998"
     });
     $.__views.redMedicos.add($.__views.mapview);
     exports.destroy = function() {};
