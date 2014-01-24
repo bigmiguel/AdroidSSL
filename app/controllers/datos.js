@@ -43,53 +43,23 @@ $.tbDatos.addEventListener('postlayout',ajustaVista);
 
 var CloudPush = require('ti.cloudpush');
 var deviceToken;
-    CloudPush.enabled = true;
+    
     CloudPush.retrieveDeviceToken({
     success: function deviceTokenSuccess(e) {
     	deviceToken = e.deviceToken;
     	
         Ti.API.info('Device Token: ' + e.deviceToken);
-        loginDefault();
+      CloudPush.enabled = true;
     },
     error: function deviceTokenError(e) {
     	Ti.API.info(JSON.stringify(e));
         alert('Failed to register for push! ' + e.error);
     }
 });
-
-    var Cloud = require('ti.cloud');
-    Cloud.debug = true;
-    function loginDefault(e){
-        Cloud.Users.login({
-            login: 'ssl',
-            password: 'medicall'
-        }, function (e) {
-            if (e.success) {
-                defaultSubscribe();
-            } else {
-                alert('Error:\\n' +((e.error && e.message) || JSON.stringify(e)));
-            }
-        });
-    }
- 
-    function defaultSubscribe(){
-        Cloud.PushNotifications.subscribe({
-                    channel: 'alert',
-                    device_token: deviceToken,
-                    type: 'android'
-                }, function (e) {
-                    if (e.success) {
-                       alert('Subscribed!');
-                    }
-                    else {
-                        alert('Error:' +((e.error && e.message) || JSON.stringify(e)));
-                    }
-                });
-    }
     
 CloudPush.addEventListener('callback', function (evt) {
-	Ti.API.info(JSON.stringify(evt));
-    alert(evt);
+	Ti.API.info(JSON.stringify(evt.payload));
+    alert(evt.payload);
 });
 CloudPush.addEventListener('trayClickLaunchedApp', function (evt) {
     Ti.API.info('Tray Click Launched App (app was not running)');

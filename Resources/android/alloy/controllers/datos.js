@@ -4,23 +4,6 @@ function Controller() {
         $.tbDatos.setHeight(tamanio);
         Ti.App.fireEvent("ocultaCargando");
     }
-    function loginDefault() {
-        Cloud.Users.login({
-            login: "ssl",
-            password: "medicall"
-        }, function(e) {
-            e.success ? defaultSubscribe() : alert("Error:\\n" + (e.error && e.message || JSON.stringify(e)));
-        });
-    }
-    function defaultSubscribe() {
-        Cloud.PushNotifications.subscribe({
-            channel: "alert",
-            device_token: deviceToken,
-            type: "android"
-        }, function(e) {
-            e.success ? alert("Subscribed!") : alert("Error:" + (e.error && e.message || JSON.stringify(e)));
-        });
-    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "datos";
     arguments[0] ? arguments[0]["__parentSymbol"] : null;
@@ -409,7 +392,6 @@ function Controller() {
         success: function(e) {
             deviceToken = e.deviceToken;
             Ti.API.info("Device Token: " + e.deviceToken);
-            loginDefault();
         },
         error: function(e) {
             Ti.API.info(JSON.stringify(e));
