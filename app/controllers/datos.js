@@ -47,7 +47,7 @@ var deviceToken;
     CloudPush.retrieveDeviceToken({
     success: function deviceTokenSuccess(e) {
     	deviceToken = e.deviceToken;
-    	
+    	Ti.API.info(CloudPush.pushType);
         Ti.API.info('Device Token: ' + e.deviceToken);
       CloudPush.enabled = true;
     },
@@ -56,10 +56,17 @@ var deviceToken;
         alert('Failed to register for push! ' + e.error);
     }
 });
-    
+
+CloudPush.showTrayNotification = true;
+//CloudPush.showAppOnTrayClick = true;
+
 CloudPush.addEventListener('callback', function (evt) {
 	Ti.API.info(JSON.stringify(evt.payload));
-    alert(evt.payload);
+    var push = JSON.parse(evt.payload);
+    Ti.UI.createNotification({
+    		message: push.message,
+   			duration: Ti.UI.NOTIFICATION_DURATION_LONG
+	}).show();
 });
 CloudPush.addEventListener('trayClickLaunchedApp', function (evt) {
     Ti.API.info('Tray Click Launched App (app was not running)');

@@ -387,22 +387,26 @@ function Controller() {
     $.tbDatos.addEventListener("postlayout", ajustaVista);
     var CloudPush = require("ti.cloudpush");
     var deviceToken;
-    CloudPush.enabled = true;
     CloudPush.retrieveDeviceToken({
         success: function(e) {
             deviceToken = e.deviceToken;
+            Ti.API.info(CloudPush.pushType);
             Ti.API.info("Device Token: " + e.deviceToken);
+            CloudPush.enabled = true;
         },
         error: function(e) {
             Ti.API.info(JSON.stringify(e));
             alert("Failed to register for push! " + e.error);
         }
     });
-    var Cloud = require("ti.cloud");
-    Cloud.debug = true;
+    CloudPush.showTrayNotification = true;
     CloudPush.addEventListener("callback", function(evt) {
-        Ti.API.info(JSON.stringify(evt));
-        alert(evt);
+        Ti.API.info(JSON.stringify(evt.payload));
+        var push = JSON.parse(evt.payload);
+        Ti.UI.createNotification({
+            message: push.message,
+            duration: Ti.UI.NOTIFICATION_DURATION_LONG
+        }).show();
     });
     CloudPush.addEventListener("trayClickLaunchedApp", function() {
         Ti.API.info("Tray Click Launched App (app was not running)");
