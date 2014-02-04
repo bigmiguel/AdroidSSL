@@ -94,7 +94,7 @@ function Controller() {
         borderWidth: "0.4dp",
         borderRadius: 5,
         backgroundImage: "/images/ButtonMenu.png",
-        left: "2%",
+        left: "4%",
         top: "13%",
         width: "10%",
         height: "75%",
@@ -110,7 +110,7 @@ function Controller() {
         borderWidth: "0.4dp",
         borderRadius: 5,
         backgroundImage: "/images/ButtonMenuDer.png",
-        right: "2%",
+        right: "4%",
         top: "13%",
         width: "10%",
         height: "75%",
@@ -347,6 +347,46 @@ function Controller() {
     });
     var _currentView = Alloy.createController("datos").getView();
     $.contentview.add(_currentView);
+    var CloudPush = require("ti.cloudpush");
+    var deviceToken;
+    CloudPush.retrieveDeviceToken({
+        success: function(e) {
+            deviceToken = e.deviceToken;
+            Ti.API.info(CloudPush.pushType);
+            Ti.API.info("Device Token: " + e.deviceToken);
+            CloudPush.enabled = true;
+        },
+        error: function(e) {
+            Ti.API.info(JSON.stringify(e));
+            alert("Failed to register for push! " + e.error);
+        }
+    });
+    CloudPush.showTrayNotification = true;
+    CloudPush.showAppOnTrayClick = true;
+    CloudPush.showTrayNotificationsWhenFocused = true;
+    CloudPush.addEventListener("callback", function(evt) {
+        Ti.Android.NotificationManager.cancelAll();
+        Ti.API.info(JSON.stringify(evt.payload));
+        var push = JSON.parse(evt.payload);
+        Ti.UI.createNotification({
+            message: push.message,
+            duration: Ti.UI.NOTIFICATION_DURATION_LONG
+        }).show();
+    });
+    CloudPush.addEventListener("trayClickLaunchedApp", function() {
+        Ti.UI.createNotification({
+            message: "Tray Click Launched App (app was not running) ",
+            duration: Ti.UI.NOTIFICATION_DURATION_LONG
+        }).show();
+        Ti.API.info("Tray Click Launched App (app was not running)");
+    });
+    CloudPush.addEventListener("trayClickFocusedApp", function() {
+        Ti.UI.createNotification({
+            message: "Tray Click Focused App (app was already running)",
+            duration: Ti.UI.NOTIFICATION_DURATION_LONG
+        }).show();
+        Ti.API.info("Tray Click Focused App (app was already running)");
+    });
     _.extend($, exports);
 }
 

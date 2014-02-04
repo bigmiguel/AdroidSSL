@@ -385,35 +385,27 @@ function Controller() {
     $.lblAseguradora.applyProperties($.createStyle(Alloy.Fuente()));
     $.lblCabecera.applyProperties($.createStyle(Alloy.FuenteTitulo()));
     $.tbDatos.addEventListener("postlayout", ajustaVista);
-    var CloudPush = require("ti.cloudpush");
-    var deviceToken;
-    CloudPush.retrieveDeviceToken({
-        success: function(e) {
-            deviceToken = e.deviceToken;
-            Ti.API.info(CloudPush.pushType);
-            Ti.API.info("Device Token: " + e.deviceToken);
-            CloudPush.enabled = true;
-        },
-        error: function(e) {
-            Ti.API.info(JSON.stringify(e));
-            alert("Failed to register for push! " + e.error);
-        }
+    var intent = Titanium.Android.createServiceIntent({
+        url: "servicioNotificacion.js"
     });
-    CloudPush.showTrayNotification = true;
-    CloudPush.addEventListener("callback", function(evt) {
-        Ti.API.info(JSON.stringify(evt.payload));
-        var push = JSON.parse(evt.payload);
+    intent.putExtra("interval", 5e3);
+    intent.putExtra("message_to_echo", "Titanium rocks!");
+    var service = Titanium.Android.createService(intent);
+    service.addEventListener("resume", function(e) {
+        Titanium.API.info("Service code resumes, iteration " + e.iteration);
+    });
+    service.addEventListener("pause", function(e) {
         Ti.UI.createNotification({
-            message: push.message,
+            message: "Iteration " + e.iteration,
             duration: Ti.UI.NOTIFICATION_DURATION_LONG
         }).show();
+        Titanium.API.info("Service code pauses, iteration " + e.iteration);
+        if (50 === e.iteration) {
+            Titanium.API.info("Service code has run 3 times, will now stop it.");
+            service.stop();
+        }
     });
-    CloudPush.addEventListener("trayClickLaunchedApp", function() {
-        Ti.API.info("Tray Click Launched App (app was not running)");
-    });
-    CloudPush.addEventListener("trayClickFocusedApp", function() {
-        Ti.API.info("Tray Click Focused App (app was already running)");
-    });
+    service.start();
     _.extend($, exports);
 }
 

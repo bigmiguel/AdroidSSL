@@ -221,3 +221,50 @@ function muestraCargando () {
 	$.cargando.show();
 	$.vwCarga.show();  
 }
+
+//-----------------PUSH Notification
+
+
+var CloudPush = require('ti.cloudpush');
+var deviceToken;
+    
+    CloudPush.retrieveDeviceToken({
+    success: function deviceTokenSuccess(e) {
+    	deviceToken = e.deviceToken;
+        Ti.API.info('Device Token: ' + e.deviceToken);
+      CloudPush.enabled = true;
+    },
+    error: function deviceTokenError(e) {
+    	Ti.API.info(JSON.stringify(e));
+        alert('Failed to register for push! ' + e.error);
+    }
+});
+
+CloudPush.showTrayNotification = true;
+CloudPush.showAppOnTrayClick = true;
+CloudPush.showTrayNotificationsWhenFocused = true;
+
+CloudPush.addEventListener('callback', function (evt) {
+	Ti.Android.NotificationManager.cancelAll(); 
+	Ti.API.info(JSON.stringify(evt.payload));
+    var push = JSON.parse(evt.payload);
+    
+  	Ti.UI.createNotification({
+    		message: push.message,
+   			duration: Ti.UI.NOTIFICATION_DURATION_LONG
+	}).show();
+});
+CloudPush.addEventListener('trayClickLaunchedApp', function (evt) {
+	Ti.UI.createNotification({
+    		message: 'Tray Click Launched App (app was not running) ',
+   			duration: Ti.UI.NOTIFICATION_DURATION_LONG
+	}).show();
+    Ti.API.info('Tray Click Launched App (app was not running)');
+});
+CloudPush.addEventListener('trayClickFocusedApp', function (evt) {
+	Ti.UI.createNotification({
+    		message: 'Tray Click Focused App (app was already running)',
+   			duration: Ti.UI.NOTIFICATION_DURATION_LONG
+	}).show();
+    Ti.API.info('Tray Click Focused App (app was already running)');
+});

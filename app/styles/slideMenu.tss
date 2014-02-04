@@ -36,7 +36,7 @@
 "#btnMenu": {
 	backgroundImage : '/images/ButtonMenu.png',	
 	backgroundColor:'none',	
-	left : "2%",
+	left : "4%",
 	top : "13%",
 	width : "10%",
 	height : "75%",
@@ -46,7 +46,7 @@
 "#btnMenuDer": {
 	backgroundImage : '/images/ButtonMenuDer.png',	
 	backgroundColor:'none',	
-	right : "2%",
+	right : "4%",
 	top : "13%",
 	width : "10%",
 	height : "75%",
